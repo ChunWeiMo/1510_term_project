@@ -37,6 +37,7 @@ def game():
             print("A loud resounding roar can be heard from deep in the depths of the dungeon. Uh-oh...did the dragon "
                   "wake up while you were leveling up? You hurry towards the sound.")
             # next map you enter will be boss map
+            current_map = map.select_map(character_stats, map_list)
     if character_stats["Current HP"] == 0:
         print("You died...The town of Moland, helpless against the dragon's resurrection, has gone up in flames, "
               "not a single human spared by the dragon's wrath.")

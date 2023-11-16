@@ -1,3 +1,6 @@
+"""
+Map module.
+"""
 import random
 
 
@@ -37,16 +40,19 @@ def make_maps():
     return map_list
 
 
-def select_map(character, map_list):
-    if character["LUK"] > 5:
-        current_map = map_list[random.randint(1, 10)]
+def select_map(character_stats, map_list):
+    if character_stats["Level"] < 3:
+        if character_stats["LUK"] > 5:
+            current_map = map_list[random.randint(1, 10)]
+        else:
+            current_map = map_list[random.randint(1, 9)]
     else:
-        current_map = map_list[random.randint(1, 9)]
+        current_map = map_list[11]
     return current_map
 
 
-def describe_current_map(character, current_map):
-    if character["Level"] == 1:
+def describe_current_map(character_stats, current_map):
+    if character_stats["Level"] == 1:
         print(current_map["Description 1"])
     else:
         print(current_map["Description 2"])

@@ -7,6 +7,9 @@ A00959925
 """
 import time
 from character import make_character
+from map import make_maps
+from map import select_map
+from map import describe_current_map
 
 
 def game():
@@ -14,8 +17,9 @@ def game():
     Drive the game.
     """
     achieved_goal = False
-    # map_list = make_maps()
+    map_list = make_maps()
     character = make_character()  # dictionary of character Level and 6 stats
+    character_position = {"X-coordinate": 0, "Y-coordinate": 0}
     time.sleep(2)
     print("In the small town of Moland there is a ruined dungeon where a dragon sleeps.\n"
           "It has been prophesized that he will wake up in 100 years to take revenge on the town that sealed him.\n"
@@ -27,7 +31,10 @@ def game():
     while character["HP"] > 0 and not achieved_goal:
         if character["Level"] < 3:
             current_map = select_map(character, map_list)  # need to use char lvl and char LUK to select a map
-            # explore map
+            describe_current_map(character, current_map)
+            # move around map
+            # event
+            # combat
         else:
             print("A loud resounding roar can be heard from deep in the depths of the dungeon. Uh-oh...did the dragon "
                   "wake up while you were leveling up? You hurry towards the sound.")

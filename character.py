@@ -1,8 +1,6 @@
 """
 Character module.
 """
-
-
 import time
 
 

@@ -9,7 +9,7 @@ import time
 def make_character():
     character = {"Level": 1, "HP": 100, "STR": 1, "DEF": 1, "CHR": 1, "SPD": 1, "LUK": 1}
     print("Welcome Hero! In this game there are 6 attributes:\n"
-          "[1] HP (Health points) - When this reaches 0, you die and the game is over.\n"
+          "[1] HP (Health points) - If HP reaches 0, you die and the game is over.\n"
           "[2] STR (Strength) - Deal more damage to the enemy.\n"
           "[3] DEF (Defense) - Defense against enemy damage.\n"
           "[4] CHR (Charisma) - Avoid battles by talking to monsters.\n"

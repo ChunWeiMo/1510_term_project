@@ -23,16 +23,36 @@ def make_maps():
              "Description 2": ""}
     map_5 = {"Description 1": "",
              "Description 2": ""}
-    map_6 = {"Description 1": "",
-             "Description 2": ""}
+    map_6 = {"Description 1": "A group of monsters seems to be surrounding something. Do you want to go and investigate?\n",
+             "Description 2": "A group of monsters fiercely guards treasure chests. It's time for a high-risk, high-reward endeavor.\n",
+             "Door": [(4, 0), (9, 4), (0, 5), (5, 9)],
+             "Chest": [(4, 4), (5, 4), (4, 5), (5, 5)],
+             "Enemy": [(1, 1), (2, 1), (3, 1), (4, 1), (5, 1), (6, 1), (7, 1), (8, 1),
+                       (1, 2), (2, 2), (3, 2), (4, 2), (5,
+                                                        2), (6, 2), (7, 2), (8, 2),
+                       (1, 3), (2, 3), (7, 3), (8, 3),
+                       (1, 4), (2, 4), (7, 4), (8, 4),
+                       (1, 5), (2, 5), (7, 5), (8, 5),
+                       (1, 6), (2, 6), (7, 6), (8, 6),
+                       (1, 7), (2, 7), (3, 7), (4, 7), (5,
+                                                        7), (6, 7), (7, 7), (8, 7),
+                       (1, 8), (2, 8), (3, 8), (4, 8), (5, 8), (6, 8), (7, 8), (8, 8),],
+             "boss": [(5, 3), (4, 6)],
+             "Merchant": [(3, 5)],
+             "Healing_fountain": [(3, 4), (6, 4), (3, 5), (6, 5)]}
     map_7 = {"Description 1": "",
              "Description 2": ""}
     map_8 = {"Description 1": "",
              "Description 2": ""}
     map_9 = {"Description 1": "",
              "Description 2": ""}
-    map_lucky = {"Description 1": "",
-                 "Description 2": ""}
+    map_lucky = {"Description 1": "You discover an abandoned adventurers' guild, and for some reason, the equipment inside has not been taken.\n",
+                 "Description 2": "You unexpectedly entered a treasure vault, with a dazzling array of treasures waiting for you.\n",
+                 "Door": [(3, 9), (6, 9)],
+                 "Chest": [(2, 2), (5, 2), (8, 2), (1, 6), (4, 6), (7, 6)],
+                 "Merchant": [(0, 0)],
+                 "Healing_fountain": [(4, 4), (6, 4)]
+                 }
     map_boss = {"Description": ""}
 
     map_list = {1: map_1, 2: map_2, 3: map_3, 4: map_4, 5: map_5,

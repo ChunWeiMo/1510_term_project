@@ -72,7 +72,11 @@ def make_maps():
                  "Merchant": [(0, 0)],
                  "Healing_fountain": [(4, 4), (6, 4)]
                  }
-    map_boss = {"Description": ""}
+    map_boss = {"Description": "",
+                "Door": [(4, 9), (5, 9)],
+                "Final_boss": [(4, 4), (5, 4), (4, 5), (5, 5)],
+                "Merchant": [(9, 9)]
+                }
 
     map_list = {1: map_1, 2: map_2, 3: map_3, 4: map_4, 5: map_5,
                 6: map_6, 7: map_7, 8: map_8, 9: map_9, 10: map_lucky, 11: map_boss}

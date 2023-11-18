@@ -37,15 +37,34 @@ def make_maps():
                        (1, 7), (2, 7), (3, 7), (4, 7), (5,
                                                         7), (6, 7), (7, 7), (8, 7),
                        (1, 8), (2, 8), (3, 8), (4, 8), (5, 8), (6, 8), (7, 8), (8, 8),],
-             "boss": [(5, 3), (4, 6)],
+             "Boss": [(5, 3), (4, 6)],
              "Merchant": [(3, 5)],
              "Healing_fountain": [(3, 4), (6, 4), (3, 5), (6, 5)]}
-    map_7 = {"Description 1": "",
-             "Description 2": ""}
-    map_8 = {"Description 1": "",
-             "Description 2": ""}
-    map_9 = {"Description 1": "",
-             "Description 2": ""}
+    map_7 = {"Description 1": "You accidentally stumbled into the monsters' lair. But fortunately, the number of monsters is not large enough to necessitate a fight for your exit.",
+             "Description 2": "The monsters have formed a maze-like formation, but you can see a safe path leading to the other side.",
+             "Door": [(9, 0), (0, 9)],
+             "Chest": [(9, 3), (9, 9)],
+             "Enemy": [(3, 0), (3, 1), (7, 1), (7, 2), (8, 2), (9, 2), (1, 3), (2, 3), (3, 3), (4, 3), (5, 3),
+                       (5, 4), (7, 4),  (8, 4), (9, 4), (5, 5), (0,
+                                                                 6), (1, 6), (3, 6), (6, 6), (3, 7), (7, 7),
+                       (3, 8), (6, 8), (3, 9)],
+             "Healing_fountain": [(0, 0), (4, 4)]
+             }
+
+    map_8 = {"Description 1": "Rumor has it there's a group of monsters known as the 'Newbie Slayers.' Never expected to encounter them here.",
+             "Description 2": "'Hello, adventurer! Impressive that you've made it this far. Now, let our Four Guardians become your opponents!!'",
+             "Door": [(0, 0), (0, 9)],
+             "Boss": [(0, 4), (0, 5), (0, 6), (0, 7)],
+             "Chest": [(0, 2), (0, 3)],
+             "Merchant": [(0, 1)]
+             }
+    map_9 = {"Description 1": "Who has been digging so many holes in the wilderness?",
+             "Description 2": "The Chronomancer has altered the structure of this dungeon. Conventional knowledge of entrances and exits no longer seems applicable.",
+             "Door": [(6, 2), (4, 4), (4, 5), (7, 6), (2, 7)],
+             "Chest": [(0, 0), (9, 9)],
+             "Enemy": [(3, 0), (6, 0), (9, 0), (0, 2), (3, 3), (9, 4), (0, 5), (5, 6), (0, 9), (0, 3), (0, 7)],
+             "Healing_fountain": [(6, 4), (3, 6)]
+             }
     map_lucky = {"Description 1": "You discover an abandoned adventurers' guild, and for some reason, the equipment inside has not been taken.\n",
                  "Description 2": "You unexpectedly entered a treasure vault, with a dazzling array of treasures waiting for you.\n",
                  "Door": [(3, 9), (6, 9)],
@@ -53,7 +72,11 @@ def make_maps():
                  "Merchant": [(0, 0)],
                  "Healing_fountain": [(4, 4), (6, 4)]
                  }
-    map_boss = {"Description": ""}
+    map_boss = {"Description": "",
+                "Door": [(4, 9), (5, 9)],
+                "Final_boss": [(4, 4), (5, 4), (4, 5), (5, 5)],
+                "Merchant": [(9, 9)]
+                }
 
     map_list = {1: map_1, 2: map_2, 3: map_3, 4: map_4, 5: map_5,
                 6: map_6, 7: map_7, 8: map_8, 9: map_9, 10: map_lucky, 11: map_boss}

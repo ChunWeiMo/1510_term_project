@@ -99,3 +99,29 @@ def describe_current_map(character_stats, current_map):
         print(current_map["Description 1"])
     else:
         print(current_map["Description 2"])
+
+
+def set_element_on_map(map_elements, element, current_map):
+    try:
+        map_elements[element]
+    except KeyError:
+        print(f"There is no {element} in map_elements.")
+        return
+
+    for coordinate in map_elements[element]:
+        try:
+            current_map[coordinate] = element
+            print(f"set {element}")
+        except KeyError:
+            print(f"{coordinate} is not in the map.")
+
+
+def walls(current_map):
+    east_wall = 1
+    south_wall = 1
+    for grid in current_map:
+        if grid[0] > east_wall:
+            east_wall = grid[0]
+        if grid[1] > south_wall:
+            south_wall = grid[1]
+    return south_wall, east_wall

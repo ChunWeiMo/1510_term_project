@@ -3,6 +3,7 @@ Character module.
 """
 import time
 import map
+import random
 
 
 def make_character():
@@ -18,7 +19,7 @@ def make_character():
     time.sleep(3)
     attribute_points = 10
     add_attribute_points(attribute_points, character_stats)
-    return {"Character_status": character_stats, "X-coordinate": 5, "Y-coordinate": 0}
+    return {"Character_status": character_stats, "X-coordinate": 0, "Y-coordinate": 0}
 
 
 def add_attribute_points(attribute_points, character_stats):
@@ -39,6 +40,13 @@ def add_attribute_points(attribute_points, character_stats):
         attribute_points -= 1
     print(f"Your stats are: {character_stats}\n")
 
+
+def start_from_door(map_elements, character):
+    doors = map_elements["Door"]
+    door_rand = doors[random.randint(0, len(doors)-1)]
+    character["X-coordinate"] = door_rand[0]
+    character["Y-coordinate"] = door_rand[1]
+    
 
 def validate_move(current_map, character, direction):
     north_wall, west_all = 0, 0

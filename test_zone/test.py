@@ -1,11 +1,9 @@
-# import character
-# import map
-from .. import character
-from .. import map
+import character
+import map
+import random
 
 
 def main():
-    # character.make_character()
     map_list = map.make_maps()
     # map_element = map.select_map(character, map_list)
 
@@ -19,7 +17,7 @@ def main():
             coordinate = (column, row)
             current_map[coordinate] = "Empty"
 
-    map_elements = map_list[6]
+    map_elements = map_list[9]
     map.set_element_on_map(map_elements, "Door", current_map)
     map.set_element_on_map(map_elements, "Enemy", current_map)
     map.set_element_on_map(map_elements, "Chest", current_map)
@@ -32,7 +30,10 @@ def main():
     character_status = {'Level': 1, 'HP': 100, 'STR': 10,
                         'DEF': 1, 'CHR': 1, 'SPD': 1, 'LUK': 2}
     character_1 = {"character_status": character_status,
-                   "X-coordinate": 4, "Y-coordinate": 4}
+                   "X-coordinate": 0, "Y-coordinate": 0}
+    
+    character.start_from_door(map_elements, character_1)
+    
     direction = 3
     can_move = character.validate_move(current_map, character_1, direction)
     print(can_move)

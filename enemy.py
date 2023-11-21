@@ -1,28 +1,33 @@
 """
 Enemy module.
 """
+import random
+import battle
 
 
 def enemy():
-    slime = {"HP": 10, "STR": 6, "DEF": 1, "SPD": 2}
-    pixie = {"HP": 6, "STR": 2, "DEF": 1, "SPD": 3}
-    wolf = {"HP": 15, "STR": 3, "DEF": 1, "SPD": 2}
-    skeleton = {"HP": 15, "STR": 2, "DEF": 2, "SPD": 2}
-    ghost = {"HP": 10, "STR": 2, "DEF": 0, "SPD": 4}
-    golem = {"HP": 20, "STR": 1, "DEF": 5, "SPD": 0}
+    slime = {"Name": "Slime", "HP": 10, "STR": 6, "DEF": 1, "SPD": 2}
+    pixie = {"Name": "Pixie", "HP": 6, "STR": 2, "DEF": 1, "SPD": 3}
+    wolf = {"Name": "Wolf", "HP": 15, "STR": 3, "DEF": 1, "SPD": 2}
+    skeleton = {"Name": "Skeleton", "HP": 15, "STR": 2, "DEF": 2, "SPD": 2}
+    ghost = {"Name": "Ghost", "HP": 10, "STR": 2, "DEF": 0, "SPD": 4}
+    golem = {"Name": "Golem", "HP": 20, "STR": 1, "DEF": 5, "SPD": 0}
 
-    cave_spider = {"HP": 25, "STR": 1, "DEF": 2, "SPD": 5}
-    skeleton_archer = {"HP": 20, "STR": 4, "DEF": 0, "SPD": 4}
-    restless_spirit = {"HP": 30, "STR": 4, "DEF": 1, "SPD": 3}
-    succubus = {"HP": 20, "STR": 3, "DEF": 1, "SPD": 4}
-    dungeon_maid = {"HP": 25, "STR": 3, "DEF": 3, "SPD": 2}
-    gargoyle = {"HP": 40, "STR": 2, "DEF": 6, "SPD": 0}
+    cave_spider = {"Name": "Cave Spider", "HP": 25, "STR": 1, "DEF": 2, "SPD": 5}
+    skeleton_archer = {"Name": "Skeleton Archer", "HP": 20, "STR": 4, "DEF": 0, "SPD": 4}
+    restless_spirit = {"Name": "Restless Spirit", "HP": 30, "STR": 4, "DEF": 1, "SPD": 3}
+    succubus = {"Name": "Succubus", "HP": 20, "STR": 3, "DEF": 1, "SPD": 4}
+    dungeon_maid = {"Name": "Dungeon Maid", "HP": 25, "STR": 3, "DEF": 3, "SPD": 2}
+    gargoyle = {"Name": "Gargoyle", "HP": 40, "STR": 2, "DEF": 6, "SPD": 0}
 
-    cerberus = {"HP": 50, "STR": 5, "DEF": 5, "SPD": 0}  # special: attack will cause burn for extra 1 dmg
-    oberon = {"HP": 40, "STR": 4, "DEF": 0, "SPD": 6}  # special: summons 2 pixies every 3 turns
-    dracula = {"HP": 40, "STR": 5, "DEF": 1, "SPD": 4}  # special: gains 1 HP after attack
+    # special: attack will cause burn for extra 1 dmg
+    cerberus = {"Name": "Cerberus", "HP": 50, "STR": 5, "DEF": 5, "SPD": 0}
+    # special: summons 2 pixies every 3 turns
+    oberon = {"Name": "Oberon", "HP": 40, "STR": 4, "DEF": 0, "SPD": 6}
+    # special: gains 1 HP after attack
+    dracula = {"Name": "Dracula", "HP": 40, "STR": 5, "DEF": 1, "SPD": 4}
 
-    dragon = {"HP": 100, "STR": 7, "DEF": 4, "SPD": 3}  # 3 special moves
+    dragon = {"Name": "Evil Dragon", "HP": 100, "STR": 7, "DEF": 4, "SPD": 3}  # 3 special moves
 
     enemy_dictionary = {
         "Level 1": {1: slime, 2: pixie, 3: wolf, 4: skeleton, 5: ghost, 6: golem},
@@ -31,3 +36,34 @@ def enemy():
         "Final Boss": dragon
     }
     return enemy_dictionary
+
+
+def select_enemy(character_dictionary, enemy_dictionary):
+    if character_dictionary["Character_status"]["Level"] == 1:
+        enemy_appeared = enemy_dictionary["Level 1"][random.randint(1, 6)]
+    elif character_dictionary["Character_status"]["Level"] == 2:
+        enemy_appeared = enemy_dictionary["Level 2"][random.randint(1, 6)]
+    else:
+        enemy_appeared = enemy_dictionary["Final Boss"]
+    return enemy_appeared
+
+
+def ask_user(enemy_appeared):
+    print(f"A {enemy_appeared['Name']} appears before you!")
+    user_input = input("What will you do?\n[1] Battle the monster\n[2] Talk to the monster\n[3] Run away")
+    return user_input
+
+
+def battle_talk_escape(character_dictionary, user_input, enemy_appeared):
+    if user_input == "1":
+        battle.fight(character_dictionary, enemy_appeared)
+    elif user_input == "2":
+        talk(character_dictionary, enemy_appeared)
+    else:
+        can_run = battle.run_away(character_dictionary)
+        if not can_run:
+            battle.fight(character_dictionary, enemy_appeared)
+
+
+def talk(character_dictionary, enemy_appeared):
+    pass

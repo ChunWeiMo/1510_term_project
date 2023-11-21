@@ -1,7 +1,6 @@
 """
 Character module.
 """
-import time
 import map
 import random
 
@@ -16,7 +15,6 @@ def make_character():
           "[4] CHR (Charisma) - Avoid battles by talking to monsters.\n"
           "[5] SPD (Speed) - Allows you to act more often in battle\n"
           "[6] LUK (Luck) - Affects lucky map spawn chance\n")
-    time.sleep(3)
     attribute_points = 10
     add_attribute_points(attribute_points, character_stats)
     return {"Character_status": character_stats, "X-coordinate": 0, "Y-coordinate": 0}
@@ -41,42 +39,42 @@ def add_attribute_points(attribute_points, character_stats):
     print(f"Your stats are: {character_stats}\n")
 
 
-def start_from_door(map_elements, character):
+def start_from_door(map_elements, character_dictionary):
     doors = map_elements["Door"]
     door_rand = doors[random.randint(0, len(doors)-1)]
-    character["X-coordinate"] = door_rand[0]
-    character["Y-coordinate"] = door_rand[1]
+    character_dictionary["X-coordinate"] = door_rand[0]
+    character_dictionary["Y-coordinate"] = door_rand[1]
     
 
-def validate_move(current_map, character, direction):
+def validate_move(current_map, character_dictionary, direction):
     north_wall, west_all = 0, 0
     south_wall, east_wall = map.walls(current_map)
     can_move = True
-    if character["Y-coordinate"] <= north_wall and direction == 0:
+    if character_dictionary["Y-coordinate"] <= north_wall and direction == 0:
         can_move = False
         print("You are stopped by North wall\n")
-    if character["X-coordinate"] >= east_wall and direction == 1:
+    if character_dictionary["X-coordinate"] >= east_wall and direction == 1:
         can_move = False
         print("You are stopped by East wall\n")
-    if character["Y-coordinate"] >= south_wall and direction == 2:
+    if character_dictionary["Y-coordinate"] >= south_wall and direction == 2:
         can_move = False
         print("You are stopped by South wall\n")
-    if character["X-coordinate"] <= west_all and direction == 3:
+    if character_dictionary["X-coordinate"] <= west_all and direction == 3:
         can_move = False
         print("You are stopped by West wall\n")
     return can_move
 
 
-def move_character(character, direction):
+def move_character(character_dictionary, direction):
     if direction == 0:
-        character["Y-coordinate"] -= 1
+        character_dictionary["Y-coordinate"] -= 1
         print("moving toward North...")
     if direction == 1:
-        character["X-coordinate"] += 1
+        character_dictionary["X-coordinate"] += 1
         print("moving toward East...")
     if direction == 2:
-        character["Y-coordinate"] += 1
+        character_dictionary["Y-coordinate"] += 1
         print("moving toward South...")
     if direction == 3:
-        character["X-coordinate"] -= 1
+        character_dictionary["X-coordinate"] -= 1
         print("moving toward West...")

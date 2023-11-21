@@ -23,8 +23,10 @@ def make_maps():
              "Description 2": ""}
     map_5 = {"Description 1": "",
              "Description 2": ""}
-    map_6 = {"Description 1": "A group of monsters seems to be surrounding something. Do you want to go and investigate?\n",
-             "Description 2": "A group of monsters fiercely guards treasure chests. It's time for a high-risk, high-reward endeavor.\n",
+    map_6 = {"Description 1": "A group of monsters seems to be surrounding something. "
+                              "Do you want to go and investigate?\n",
+             "Description 2": "A group of monsters fiercely guards treasure chests. "
+                              "It's time for a high-risk, high-reward endeavor.\n",
              "Door": [(4, 0), (9, 4), (0, 5), (5, 9)],
              "Chest": [(4, 4), (5, 4), (4, 5), (5, 5)],
              "Enemy": [(1, 1), (2, 1), (3, 1), (4, 1), (5, 1), (6, 1), (7, 1), (8, 1),
@@ -40,8 +42,10 @@ def make_maps():
              "Boss": [(5, 3), (4, 6)],
              "Merchant": [(3, 5)],
              "Healing_fountain": [(3, 4), (6, 4), (3, 5), (6, 5)]}
-    map_7 = {"Description 1": "You accidentally stumbled into the monsters' lair. But fortunately, the number of monsters is not large enough to necessitate a fight for your exit.",
-             "Description 2": "The monsters have formed a maze-like formation, but you can see a safe path leading to the other side.",
+    map_7 = {"Description 1": "You accidentally stumbled into the monsters' lair. But fortunately, "
+                              "the number of monsters is not large enough to necessitate a fight for your exit.",
+             "Description 2": "The monsters have formed a maze-like formation, but you can "
+                              "see a safe path leading to the other side.",
              "Door": [(9, 0), (0, 9)],
              "Chest": [(9, 3), (9, 9)],
              "Enemy": [(3, 0), (3, 1), (7, 1), (7, 2), (8, 2), (9, 2), (1, 3), (2, 3), (3, 3), (4, 3), (5, 3),
@@ -51,22 +55,27 @@ def make_maps():
              "Healing_fountain": [(0, 0), (4, 4)]
              }
 
-    map_8 = {"Description 1": "Rumor has it there's a group of monsters known as the 'Newbie Slayers.' Never expected to encounter them here.",
-             "Description 2": "'Hello, adventurer! Impressive that you've made it this far. Now, let our Four Guardians become your opponents!!'",
+    map_8 = {"Description 1": "Rumor has it there's a group of monsters known as the 'Newbie Slayers.' "
+                              "Never expected to encounter them here.",
+             "Description 2": "'Hello, adventurer! Impressive that you've made it this far. Now, let our Four "
+                              "Guardians become your opponents!!'",
              "Door": [(0, 0), (0, 9)],
              "Boss": [(0, 4), (0, 5), (0, 6), (0, 7)],
              "Chest": [(0, 2), (0, 3)],
              "Merchant": [(0, 1)]
              }
     map_9 = {"Description 1": "Who has been digging so many holes in the wilderness?",
-             "Description 2": "The Chronomancer has altered the structure of this dungeon. Conventional knowledge of entrances and exits no longer seems applicable.",
+             "Description 2": "The Chronomancer has altered the structure of this dungeon. "
+                              "Conventional knowledge of entrances and exits no longer seems applicable.",
              "Door": [(6, 2), (4, 4), (4, 5), (7, 6), (2, 7)],
              "Chest": [(0, 0), (9, 9)],
              "Enemy": [(3, 0), (6, 0), (9, 0), (0, 2), (3, 3), (9, 4), (0, 5), (5, 6), (0, 9), (0, 3), (0, 7)],
              "Healing_fountain": [(6, 4), (3, 6)]
              }
-    map_lucky = {"Description 1": "You discover an abandoned adventurers' guild, and for some reason, the equipment inside has not been taken.\n",
-                 "Description 2": "You unexpectedly entered a treasure vault, with a dazzling array of treasures waiting for you.\n",
+    map_lucky = {"Description 1": "You discover an abandoned adventurers' guild, and for some reason, the equipment "
+                                  "inside has not been taken.\n",
+                 "Description 2": "You unexpectedly entered a treasure vault, with a dazzling array of "
+                                  "treasures waiting for you.\n",
                  "Door": [(3, 9), (6, 9)],
                  "Chest": [(2, 2), (5, 2), (8, 2), (1, 6), (4, 6), (7, 6)],
                  "Merchant": [(0, 0)],
@@ -83,9 +92,9 @@ def make_maps():
     return map_list
 
 
-def select_map(character_stats, map_list):
-    if character_stats["Level"] < 3:
-        if character_stats["LUK"] > 5:
+def select_map(character_dictionary, map_list):
+    if character_dictionary["Character_status"]["Level"] < 3:
+        if character_dictionary["Character_status"]["LUK"] > 5:
             current_map = map_list[random.randint(1, 10)]
         else:
             current_map = map_list[random.randint(1, 9)]
@@ -94,8 +103,8 @@ def select_map(character_stats, map_list):
     return current_map
 
 
-def describe_current_map(character_stats, current_map):
-    if character_stats["Level"] == 1:
+def describe_current_map(character_dictionary, current_map):
+    if character_dictionary["Character_status"]["Level"] == 1:
         print(current_map["Description 1"])
     else:
         print(current_map["Description 2"])

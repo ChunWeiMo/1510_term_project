@@ -3,6 +3,7 @@ Enemy module.
 """
 import random
 import battle
+import talk
 
 
 def enemy():
@@ -58,12 +59,8 @@ def battle_talk_escape(character_dictionary, user_input, enemy_appeared):
     if user_input == "1":
         battle.fight(character_dictionary, enemy_appeared)
     elif user_input == "2":
-        talk(character_dictionary, enemy_appeared)
+        talk.talk_to_enemy(character_dictionary, enemy_appeared)
     else:
         can_run = battle.run_away(character_dictionary)
         if not can_run:
             battle.fight(character_dictionary, enemy_appeared)
-
-
-def talk(character_dictionary, enemy_appeared):
-    pass

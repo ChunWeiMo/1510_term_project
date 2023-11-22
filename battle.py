@@ -46,6 +46,14 @@ def fight(character_dictionary, enemy_appeared, can_start):
             else:
                 print(f"You deal {damage_to_enemy} damage to the {enemy_appeared['Name']}!\n"
                       f"The {enemy_appeared['Name']} has 0 HP left.")
+            if character_dictionary["Character_status"]["SPD"] >= enemy_appeared["SPD"] * 2:
+                enemy_appeared["HP"] -= damage_to_enemy
+                if enemy_appeared["HP"] > 0:
+                    print(f"You deal {damage_to_enemy} damage to the {enemy_appeared['Name']}!\n"
+                          f"The {enemy_appeared['Name']} has {enemy_appeared['HP']} HP left.")
+                else:
+                    print(f"You deal {damage_to_enemy} damage to the {enemy_appeared['Name']}!\n"
+                          f"The {enemy_appeared['Name']} has 0 HP left.")
             first_turn = "enemy"
         else:
             if enemy_appeared["STR"] - character_dictionary["Character_status"]["DEF"] <= 0:
@@ -59,6 +67,14 @@ def fight(character_dictionary, enemy_appeared, can_start):
             else:
                 print(f"The {enemy_appeared['Name']} dealt {damage_to_character} damage to you!\n"
                       f"You now have 0 HP left.")
+            if enemy_appeared["SPD"] >= character_dictionary["Character_status"]["SPD"] * 2:
+                character_dictionary["Character_status"]["HP"] -= damage_to_character
+                if character_dictionary['Character_status']['HP'] > 0:
+                    print(f"The {enemy_appeared['Name']} dealt {damage_to_character} damage to you!\n"
+                          f"You now have {character_dictionary['Character_status']['HP']} HP left.")
+                else:
+                    print(f"The {enemy_appeared['Name']} dealt {damage_to_character} damage to you!\n"
+                          f"You now have 0 HP left.")
             first_turn = "character"
     if enemy_appeared["HP"] <= 0:
         character_dictionary["EXP"] += enemy_appeared["EXP"]

@@ -15,28 +15,29 @@ def make_character():
           "[4] CHR (Charisma) - Avoid battles by talking to monsters.\n"
           "[5] SPD (Speed) - Allows you to act more often in battle\n"
           "[6] LUK (Luck) - Affects lucky map spawn chance\n")
+    character_dictionary = {"Character_status": character_stats, "X-coordinate": 0, "Y-coordinate": 0, "EXP": 0}
     attribute_points = 10
-    add_attribute_points(attribute_points, character_stats)
-    return {"Character_status": character_stats, "X-coordinate": 0, "Y-coordinate": 0}
+    add_attribute_points(attribute_points, character_dictionary)
+    return character_dictionary
 
 
-def add_attribute_points(attribute_points, character_stats):
+def add_attribute_points(attribute_points, character_dictionary):
     while attribute_points > 0:
         player_point_input = int(input(f"Distribute your attribute points now. You have {attribute_points} points left "
                                        f"to use.\nWhich attribute would you like to increase?\n[1] STR\n[2] DEF\n[3] "
                                        f"CHR\n[4] SPD\n[5] LUK\n"))
         if player_point_input == 1:
-            character_stats["STR"] += 1
+            character_dictionary["Character_status"]["STR"] += 1
         elif player_point_input == 2:
-            character_stats["DEF"] += 1
+            character_dictionary["Character_status"]["DEF"] += 1
         elif player_point_input == 3:
-            character_stats["CHR"] += 1
+            character_dictionary["Character_status"]["CHR"] += 1
         elif player_point_input == 4:
-            character_stats["SPD"] += 1
+            character_dictionary["Character_status"]["SPD"] += 1
         else:
-            character_stats["LUK"] += 1
+            character_dictionary["Character_status"]["LUK"] += 1
         attribute_points -= 1
-    print(f"Your stats are: {character_stats}\n")
+    print(f"Your stats are: {character_dictionary['Character_status']}\n")
 
 
 def start_from_door(map_elements, character_dictionary):

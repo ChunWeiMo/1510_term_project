@@ -16,7 +16,7 @@ def game():
     """
     achieved_goal = False
     map_list = map.make_maps()
-    character_dictionary = character.make_character()  # dictionary of character Level and 6 stats
+    character_dictionary = character.make_character()
     print("In the small town of Moland there is a ruined dungeon where a dragon sleeps.\n"
           "It has been prophesized that he will wake up in 100 years to take revenge on the town that sealed him.\n"
           "The 100 years are almost up and the townsfolk are getting restless.\n"
@@ -42,7 +42,7 @@ def game():
                   "wake up while you were leveling up? You hurry towards the sound.")
             # next map you enter will be boss map
             current_map = map.select_map(character_dictionary, map_list)
-    if character_dictionary["Character_status"]["Current HP"] == 0:
+    if character_dictionary["Character_status"]["HP"] == 0:
         print("You died...The town of Moland, helpless against the dragon's resurrection, has gone up in flames, "
               "not a single human spared by the dragon's wrath.")
     if achieved_goal:

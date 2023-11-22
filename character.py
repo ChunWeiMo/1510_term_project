@@ -15,7 +15,11 @@ def make_character():
           "[4] CHR (Charisma) - Avoid battles by talking to monsters.\n"
           "[5] SPD (Speed) - Allows you to act more often in battle\n"
           "[6] LUK (Luck) - Affects lucky map spawn chance\n")
-    character_dictionary = {"Character_status": character_stats, "X-coordinate": 0, "Y-coordinate": 0, "EXP": 0}
+    character_dictionary = {"Character_status": character_stats,
+                            "X-coordinate": 0,
+                            "Y-coordinate": 0,
+                            "EXP": 0,
+                            "Items": {"Gold": 0, "Potions": 0}}
     attribute_points = 10
     add_attribute_points(attribute_points, character_dictionary)
     return character_dictionary

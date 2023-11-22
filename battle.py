@@ -78,8 +78,10 @@ def fight(character_dictionary, enemy_appeared, can_start):
             first_turn = "character"
     if enemy_appeared["HP"] <= 0:
         character_dictionary["EXP"] += enemy_appeared["EXP"]
-        print(f"{enemy_appeared['Name']} has been slain!\nYou've gained {enemy_appeared['EXP']} experience!\nYour "
-              f"experience is now at {character_dictionary['EXP']}/100!")
+        print(f"{enemy_appeared['Name']} has been slain!\n"
+              f"You've gained {character_dictionary['Items']['Gold']} gold!\n"
+              f"You've gained {enemy_appeared['EXP']} experience!\n"
+              f"Your experience is now at {character_dictionary['EXP']}/100!")
         if character_dictionary["EXP"] >= 100:
             character_dictionary["Character_status"]["Level"] += 1
             print(f"You leveled up! You are now level {character_dictionary['Character_status']['Level']}")

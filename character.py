@@ -83,3 +83,13 @@ def move_character(character_dictionary, direction):
     if direction == 3:
         character_dictionary["X-coordinate"] -= 1
         print("moving toward West...")
+
+
+def describe_current_location(current_map, character):
+    east_wall, south_wall = map.walls(current_map)
+    print(
+        f"You are at X: {character['X-coordinate']}, Y: {character['Y-coordinate']}.")
+    print()
+    if character['X-coordinate'] > east_wall or character['X-coordinate'] < 0 or character['Y-coordinate'] > south_wall or character['Y-coordinate'] < 0:
+        print("!!WARNING!!: Out of the board")
+        print()

@@ -13,9 +13,9 @@ def vision_east(character, current_map, vision_range):
             break
         else:
             if map_element != "Empty":
-                print(f"You can see {map_element} at East.")
-                break
-
+                print(
+                    f"You can see {map_element} at East {vision_range} step.")
+                
 
 def vision_west(character, current_map, vision_range):
     for vision_range in range(1, 4):
@@ -27,9 +27,8 @@ def vision_west(character, current_map, vision_range):
             break
         else:
             if map_element != "Empty":
-                print(f"You can see {map_element} at Wast.")
-                break
-
+                print(f"You can see {map_element} at Wast {vision_range} step.")
+                
 
 def vision_north(character, current_map, vision_range):
     for vision_range in range(1, 4):
@@ -41,9 +40,9 @@ def vision_north(character, current_map, vision_range):
             break
         else:
             if map_element != "Empty":
-                print(f"You can see {map_element} at North.")
-                break
-
+                print(
+                    f"You can see {map_element} at North {vision_range} step.")
+                
 
 def vision_south(character, current_map, vision_range):
     for vision_range in range(1, 4):
@@ -55,9 +54,9 @@ def vision_south(character, current_map, vision_range):
             break
         else:
             if map_element != "Empty":
-                print(f"You can see {map_element} at South.")
-                break
-
+                print(
+                    f"You can see {map_element} at South {vision_range} step.")
+                
 
 def main():
     pass

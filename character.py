@@ -3,18 +3,13 @@ Character module.
 """
 import map
 import random
+import story_lines
 
 
 def make_character():
     character_stats = {"Level": 1, "HP": 100, "STR": 1,
                        "DEF": 1, "CHR": 1, "SPD": 1, "LUK": 1}
-    print("Welcome Hero! In this game there are 6 attributes:\n"
-          "[1] HP (Health points) - If HP reaches 0, you die and the game is over.\n"
-          "[2] STR (Strength) - Deal more damage to the enemy.\n"
-          "[3] DEF (Defense) - Defense against enemy damage.\n"
-          "[4] CHR (Charisma) - Avoid battles by talking to monsters.\n"
-          "[5] SPD (Speed) - Allows you to act more often in battle\n"
-          "[6] LUK (Luck) - Affects lucky map spawn chance\n")
+    print(story_lines.help_lines["character stats"])
     character_dictionary = {"Character_status": character_stats,
                             "X-coordinate": 0,
                             "Y-coordinate": 0,

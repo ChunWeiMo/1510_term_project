@@ -44,40 +44,6 @@ def start_from_door(map_elements, character_dictionary):
     door_rand = doors[random.randint(0, len(doors)-1)]
     character_dictionary["X-coordinate"] = door_rand[0]
     character_dictionary["Y-coordinate"] = door_rand[1]
-    
-
-def validate_move(current_map, character_dictionary, direction):
-    north_wall, west_all = 0, 0
-    south_wall, east_wall = map.walls(current_map)
-    can_move = True
-    if character_dictionary["Y-coordinate"] <= north_wall and direction == 0:
-        can_move = False
-        print("You are stopped by North wall\n")
-    if character_dictionary["X-coordinate"] >= east_wall and direction == 1:
-        can_move = False
-        print("You are stopped by East wall\n")
-    if character_dictionary["Y-coordinate"] >= south_wall and direction == 2:
-        can_move = False
-        print("You are stopped by South wall\n")
-    if character_dictionary["X-coordinate"] <= west_all and direction == 3:
-        can_move = False
-        print("You are stopped by West wall\n")
-    return can_move
-
-
-def move_character(character_dictionary, direction):
-    if direction == 0:
-        character_dictionary["Y-coordinate"] -= 1
-        print("moving toward North...")
-    if direction == 1:
-        character_dictionary["X-coordinate"] += 1
-        print("moving toward East...")
-    if direction == 2:
-        character_dictionary["Y-coordinate"] += 1
-        print("moving toward South...")
-    if direction == 3:
-        character_dictionary["X-coordinate"] -= 1
-        print("moving toward West...")
 
 
 def describe_current_location(current_map, character):

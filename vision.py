@@ -59,38 +59,31 @@ def vision_south(character, current_map, vision_range):
                     f"You can see {map_element} at South {vision_range} step.")
 
 
+def map_element_in_vision(character, current_map, column, row):
+    try:
+        map_element = current_map[(character["X-coordinate"]+column,character["Y-coordinate"]+row)]
+    except KeyError:
+        map_element = None
+    try:
+        current_map[(character["X-coordinate"]+column,character["Y-coordinate"])]
+    except KeyError:
+        map_element = 'EW_wall'
+    try:
+        current_map[(character["X-coordinate"],character["Y-coordinate"]+row)]
+    except KeyError:
+        map_element = 'NS_wall'
+    return map_element
+    
+            
 def print_vision(character, current_map, vision_range):
     map_icon = {'Empty': ' ', 'Door': 'D', 'Healing_fountain': 'H', 'Enemy': 'E',
                 'Chest': 'C', 'Character': '#', 'EW_wall': '|', 'NS_wall': '-'}
     for row in range(-vision_range, vision_range+1):
         print()
         for column in range(-vision_range, vision_range+1):
-            try:
-                map_element = current_map[(character["X-coordinate"]+column,
-                             character["Y-coordinate"]+row)]
-            except KeyError:
-                map_element = None
-            
-            
-            try:
-                current_map[(character["X-coordinate"]+column,
-                                character["Y-coordinate"])]
-            except KeyError:
-                map_element = 'EW_wall'
-                
-            try:
-                current_map[(character["X-coordinate"],
-                                character["Y-coordinate"]+row)]
-            except KeyError:
-                map_element = 'NS_wall'
-            
+            map_element = map_element_in_vision(character, current_map, column, row)
             
             if row == 0 and column == 0:
                 map_element = 'Character'
 
-            print(map_icon[map_element],end=' ')
-            # if map_element == 'EW_wall':
-            #     break
-                #     map_element = ''
-                #     break
-                # print(map_icon[map_element],end=' ')
+            print(map_icon[map_element], end=' ')

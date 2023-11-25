@@ -120,7 +120,6 @@ def set_element_on_map(map_elements, element, current_map):
     for coordinate in map_elements[element]:
         try:
             current_map[coordinate] = element
-            print(f"set {element}")
         except KeyError:
             print(f"{coordinate} is not in the map.")
 

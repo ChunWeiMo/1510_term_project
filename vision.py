@@ -15,7 +15,7 @@ def vision_east(character, current_map, vision_range):
             if map_element != "Empty":
                 print(
                     f"You can see {map_element} at East {vision_range} step.")
-                
+
 
 def vision_west(character, current_map, vision_range):
     for vision_range in range(1, 4):
@@ -27,8 +27,9 @@ def vision_west(character, current_map, vision_range):
             break
         else:
             if map_element != "Empty":
-                print(f"You can see {map_element} at Wast {vision_range} step.")
-                
+                print(
+                    f"You can see {map_element} at Wast {vision_range} step.")
+
 
 def vision_north(character, current_map, vision_range):
     for vision_range in range(1, 4):
@@ -42,7 +43,7 @@ def vision_north(character, current_map, vision_range):
             if map_element != "Empty":
                 print(
                     f"You can see {map_element} at North {vision_range} step.")
-                
+
 
 def vision_south(character, current_map, vision_range):
     for vision_range in range(1, 4):
@@ -56,11 +57,33 @@ def vision_south(character, current_map, vision_range):
             if map_element != "Empty":
                 print(
                     f"You can see {map_element} at South {vision_range} step.")
-                
-
-def main():
-    pass
 
 
-if __name__ == "__main__":
-    main()
+def map_element_in_vision(character, current_map, column, row):
+    try:
+        map_element = current_map[(character["X-coordinate"]+column,character["Y-coordinate"]+row)]
+    except KeyError:
+        map_element = None
+    try:
+        current_map[(character["X-coordinate"]+column,character["Y-coordinate"])]
+    except KeyError:
+        map_element = 'EW_wall'
+    try:
+        current_map[(character["X-coordinate"],character["Y-coordinate"]+row)]
+    except KeyError:
+        map_element = 'NS_wall'
+    return map_element
+    
+            
+def print_vision(character, current_map, vision_range):
+    map_icon = {'Empty': ' ', 'Door': 'D', 'Healing_fountain': 'H', 'Enemy': 'E',
+                'Chest': 'C', 'Character': '#', 'EW_wall': '|', 'NS_wall': '-'}
+    for row in range(-vision_range, vision_range+1):
+        print()
+        for column in range(-vision_range, vision_range+1):
+            map_element = map_element_in_vision(character, current_map, column, row)
+            
+            if row == 0 and column == 0:
+                map_element = 'Character'
+
+            print(map_icon[map_element], end=' ')

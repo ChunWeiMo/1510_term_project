@@ -2,9 +2,9 @@
 
 main_story = {
     'welcome': 'Welcome hero!\n'
-               'In this game, you play as a beginner hero who sets off to make a big name for themself.\n'
+               'In this game you play as a beginner hero who sets off to make a big name for themself.\n'
                'Your final goal is to reach level 3 and defeat the dragon!\n'
-               'For more detailed information about the world and enemies of this game, please read the'
+               'For more detailed information about the world and enemies of this game, please read the '
                'game guide section of the README.md\n',
     'intro': 'In the small town of Moland there is a ruined dungeon where a dragon sleeps.\n'
              'It has been prophesized that he will wake up in 100 years to take revenge on the town that sealed '
@@ -28,14 +28,14 @@ main_story = {
 }
 
 help_lines = {
-    "character stats": "First we will begin by slotting your attribute points.\n In this game there are 6 "
+    "character stats": "First we will begin by slotting your attribute points.\nIn this game there are 6 "
                        "attributes:\n"
                        "[1] HP (Health points) - If HP reaches 0, you die and the game is over.\n"
                        "[2] STR (Strength) - Deal more damage to the enemy.\n"
                        "[3] DEF (Defense) - Defense against enemy damage.\n"
                        "[4] CHR (Charisma) - Avoid battles by talking to monsters.\n"
-                       "[5] SPD (Speed) - Allows you to act more often in battle\n"
-                       "[6] LUK (Luck) - Affects lucky map spawn chance\n"
+                       "[5] SPD (Speed) - Allows you to act more often in battle.\n"
+                       "[6] LUK (Luck) - Affects lucky map spawn chance and battle escape chance.\n"
 }
 
 merchant_lines = {}

@@ -39,18 +39,4 @@ def add_attribute_points(attribute_points, character_dictionary):
     print(f"Your stats are: {character_dictionary['Character_status']}\n")
 
 
-def start_from_door(map_elements, character_dictionary):
-    doors = map_elements["Door"]
-    door_rand = doors[random.randint(0, len(doors)-1)]
-    character_dictionary["X-coordinate"] = door_rand[0]
-    character_dictionary["Y-coordinate"] = door_rand[1]
 
-
-def describe_current_location(current_map, character):
-    east_wall, south_wall = map.walls(current_map)
-    print(
-        f"You are at X: {character['X-coordinate']}, Y: {character['Y-coordinate']}.")
-    print()
-    if character['X-coordinate'] > east_wall or character['X-coordinate'] < 0 or character['Y-coordinate'] > south_wall or character['Y-coordinate'] < 0:
-        print("!!WARNING!!: Out of the board")
-        print()

@@ -75,12 +75,12 @@ def map_element_in_vision(character, current_map, column, row):
     return map_element
     
             
-def print_vision(character, current_map, vision_range):
+def print_vision(character, current_map):
     map_icon = {'Empty': ' ', 'Door': 'D', 'Healing_fountain': 'H', 'Enemy': 'E',
                 'Chest': 'C', 'Character': '#', 'EW_wall': '|', 'NS_wall': '-'}
-    for row in range(-vision_range, vision_range+1):
+    for row in range(-character["vision_range"], character["vision_range"]+1):
         print()
-        for column in range(-vision_range, vision_range+1):
+        for column in range(-character["vision_range"], character["vision_range"]+1):
             map_element = map_element_in_vision(character, current_map, column, row)
             
             if row == 0 and column == 0:

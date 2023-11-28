@@ -14,7 +14,10 @@ def make_character():
                             "X-coordinate": 0,
                             "Y-coordinate": 0,
                             "EXP": 0,
-                            "Items": {"Gold": 0, "Potions": 0}}
+                            "Items": {"Gold": 0, "Potions": 0},
+                            "Equipment": 0,
+                            "Buff": 0,
+                            "Tutorials": {"Fight": 0, "Talk": 0, "Chest": 0, "Merchant": 0}}
     attribute_points = 10
     add_attribute_points(attribute_points, character_dictionary)
     return character_dictionary

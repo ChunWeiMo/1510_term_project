@@ -2,6 +2,7 @@ import character
 import map
 import random
 import vision
+import movement
 
 
 def main():
@@ -30,53 +31,31 @@ def main():
     #     print(coordinate)
     # south_wall, east_wall = map.walls(current_map)
 
-    character_status = {'Level': 1, 'HP': 100, 'STR': 10,
-                        'DEF': 1, 'CHR': 1, 'SPD': 1, 'LUK': 2}
-    character_1 = {"character_status": character_status,
-                   "X-coordinate": 1, "Y-coordinate":5}
+    character_1 = {'Character_status': {'Level': 1, 'HP': 100, 'STR': 11, 'DEF': 1, 'CHR': 1, 'SPD': 1, 'LUK': 1},
+        'X-coordinate': 5, 'Y-coordinate': 5, 'EXP': 0, 'Items': {'Gold': 0, 'Potions': 0}, 'vision_range': 10}
+    # character_1 = character.make_character()
+    # print(character_1)
 
     # character.start_from_door(map_elements, character_1)
     # print(character_1)
     
     # ==================
-    # test standing
-    # ==================
-    # if current_map[(character_1["X-coordinate"], character_1["Y-coordinate"])] != "Empty":
-    #     print(
-    #         f'You meet {current_map[(character_1["X-coordinate"], character_1["Y-coordinate"])]}')
-
-    # character.describe_current_location(current_map, character_1)
-    # vision_range = 3
-    # vision.print_vision(character_1, current_map, vision_range)
-    # print()
-    
-    # ==================
-    # test text vision
-    # ==================
-    # vision.vision_north(character_1, current_map, vision_range)
-    # vision.vision_east(character_1, current_map, vision_range)
-    # vision.vision_south(character_1, current_map, vision_range)
-    # vision.vision_west(character_1, current_map, vision_range)
-
-    # ==================
     # test moving
     # ==================
     direction = 0
-    vision_range = 3
-    while direction!= 5:
-        character.describe_current_location(current_map, character_1)
-        vision.print_vision(character_1, current_map, vision_range)
+    while direction != 5:
+        movement.describe_current_location(current_map, character_1)
+        vision.print_vision(character_1, current_map, )
         print()
         direction = int(input("Enter a direction: "))
-        can_move = character.validate_move(current_map, character_1, direction)
+        can_move = movement.validate_move(current_map, character_1, direction)
         if can_move:
-            character.move_character(character_1, direction)
+            movement.move_character(character_1, direction)
             # print(character_1)
         if current_map[(character_1["X-coordinate"], character_1["Y-coordinate"])] != "Empty":
             print(
                 f'You meet {current_map[(character_1["X-coordinate"], character_1["Y-coordinate"])]}')
 
-        
 
 if __name__ == "__main__":
     main()

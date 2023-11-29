@@ -61,28 +61,31 @@ def vision_south(character, current_map, vision_range):
 
 def map_element_in_vision(character, current_map, column, row):
     try:
-        map_element = current_map[(character["X-coordinate"]+column,character["Y-coordinate"]+row)]
+        map_element = current_map[(
+            character["X-coordinate"]+column, character["Y-coordinate"]+row)]
     except KeyError:
         map_element = None
     try:
-        current_map[(character["X-coordinate"]+column,character["Y-coordinate"])]
+        current_map[(character["X-coordinate"]+column,
+                     character["Y-coordinate"])]
     except KeyError:
         map_element = 'EW_wall'
     try:
-        current_map[(character["X-coordinate"],character["Y-coordinate"]+row)]
+        current_map[(character["X-coordinate"], character["Y-coordinate"]+row)]
     except KeyError:
         map_element = 'NS_wall'
     return map_element
-    
-            
+
+
 def print_vision(character, current_map):
-    map_icon = {'Empty': ' ', 'Door': 'D', 'Healing_fountain': 'H', 'Enemy': 'E',
-                'Chest': 'C', 'Character': '#', 'EW_wall': '|', 'NS_wall': '-'}
+    map_icon = {'Empty': ' ', 'Door': 'D', 'Healing_fountain': 'H', 'Enemy': 'E', 'Boss': 'B', 'Final_boss': 'F',
+                'Chest': 'C', 'Merchant': 'M', 'Character': '#', 'EW_wall': '|', 'NS_wall': '-'}
     for row in range(-character["vision_range"], character["vision_range"]+1):
         print()
         for column in range(-character["vision_range"], character["vision_range"]+1):
-            map_element = map_element_in_vision(character, current_map, column, row)
-            
+            map_element = map_element_in_vision(
+                character, current_map, column, row)
+
             if row == 0 and column == 0:
                 map_element = 'Character'
 

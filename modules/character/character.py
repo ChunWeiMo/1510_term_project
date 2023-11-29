@@ -6,14 +6,13 @@ from modules.exploration import story_lines
 
 def make_character():
     character_stats = {"Level": 1, "HP": 100, "STR": 1,
-                       "DEF": 1, "CHR": 1, "SPD": 1, "LUK": 1}
+                       "DEF": 1, "CHR": 1, "SPD": 1, "LUK": 1, "VIS":3}
     print(story_lines.help_lines["character stats"])
     character_dictionary = {"Character_status": character_stats,
                             "X-coordinate": 0,
                             "Y-coordinate": 0,
                             "EXP": 0,
-                            "Items": {"Gold": 0, "Potions": 0},
-                            "vision_range": 3}
+                            "Items": {"Gold": 0, "Potions": 0}}
     attribute_points = 10
     add_attribute_points(attribute_points, character_dictionary)
     return character_dictionary

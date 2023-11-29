@@ -2,9 +2,10 @@
 Map module.
 """
 import random
+import json
 
 
-def make_maps():
+def map_list():
     map_1 = {"Description 1": "You enter a grassy meadow.\n"
                               "There is a merchant getting attacked by a group of monsters!\n"
                               "Will you help him?\n",
@@ -16,13 +17,17 @@ def make_maps():
              "Enemy": [(6, 1), (2, 3), (3, 4), (1, 5), (2, 5), (4, 5), (6, 5), (3, 6), (4, 6), (7, 6), (2, 7), (2, 9)],
              "Merchant": [(3, 5)]}
     map_2 = {"Description 1": "",
-             "Description 2": ""}
+             "Description 2": "",
+             "Door": [(5, 0), (4, 9)]}
     map_3 = {"Description 1": "",
-             "Description 2": ""}
+             "Description 2": "",
+             "Door": [(8, 0), (7, 9)]}
     map_4 = {"Description 1": "",
-             "Description 2": ""}
+             "Description 2": "",
+             "Door": [(0, 3), (9, 6)]}
     map_5 = {"Description 1": "",
-             "Description 2": ""}
+             "Description 2": "",
+             "Door": [(3, 0), (9, 7)]}
     map_6 = {"Description 1": "A group of monsters seems to be surrounding something. "
                               "Do you want to go and investigate?\n",
              "Description 2": "A group of monsters fiercely guards treasure chests. "
@@ -95,26 +100,26 @@ def make_maps():
 def select_map(character_dictionary, map_list):
     if character_dictionary["Character_status"]["Level"] < 3:
         if character_dictionary["Character_status"]["LUK"] > 5:
-            current_map = map_list[random.randint(1, 10)]
+            map_elements = map_list[random.randint(1, 10)]
         else:
-            current_map = map_list[random.randint(1, 9)]
+            map_elements = map_list[random.randint(1, 9)]
     else:
-        current_map = map_list[11]
-    return current_map
+        map_elements = map_list[11]
+    return map_elements
 
 
-def describe_current_map(character_dictionary, current_map):
+def describe_current_map(character_dictionary, map_elements):
     if character_dictionary["Character_status"]["Level"] == 1:
-        print(current_map["Description 1"])
+        print(map_elements["Description 1"])
     else:
-        print(current_map["Description 2"])
+        print(map_elements["Description 2"])
 
 
 def set_element_on_map(map_elements, element, current_map):
     try:
         map_elements[element]
     except KeyError:
-        print(f"There is no {element} in map_elements.")
+        # print(f"There is no {element} in map_elements.")
         return
 
     for coordinate in map_elements[element]:
@@ -133,3 +138,21 @@ def walls(current_map):
         if grid[1] > south_wall:
             south_wall = grid[1]
     return south_wall, east_wall
+
+
+def create_map(character_dictionary, map_list):
+    rows = 10
+    columns = 10
+    current_map = dict()
+    for row in range(rows):
+        for column in range(columns):
+            coordinate = (column, row)
+            current_map[coordinate] = "Empty"
+    map_elements = select_map(character_dictionary, map_list)
+    describe_current_map(character_dictionary, map_elements)
+    element_list = ["Door", "Enemy", "Chest",
+                    "Healing_fountain", "Boss", "Final_boss"]
+    for element in element_list:
+        set_element_on_map(map_elements, element, current_map)
+    return current_map    
+    

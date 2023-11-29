@@ -2,7 +2,7 @@
 Battle module.
 """
 import random
-import character
+from modules.character import character
 
 
 def run_away(character_dictionary):

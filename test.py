@@ -1,9 +1,7 @@
-import character
-import map
 import random
-import vision
-import movement
-
+from modules.exploration import map
+from modules.exploration import vision
+from modules.exploration import movement
 
 def main():
     map_list = map.make_maps()
@@ -58,4 +56,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()

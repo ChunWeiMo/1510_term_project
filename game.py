@@ -5,10 +5,10 @@ A________
 Patricia Lo
 A00959925
 """
-import character
-import map
-import enemy
-import story_lines
+from modules.character import character
+from modules.exploration import map
+from modules.battle import enemy
+from modules.exploration import story_lines
 
 
 def game():

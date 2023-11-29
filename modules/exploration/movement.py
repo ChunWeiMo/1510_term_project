@@ -1,7 +1,7 @@
 """
 Movement module.
 """
-import map
+from modules.exploration import map
 import random
 
 

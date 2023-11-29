@@ -2,9 +2,9 @@
 Enemy module.
 """
 import random
-import battle
-import talk
-import items
+from modules.battle import battle
+from modules.battle import talk
+from modules.character import items
 
 
 def enemy():

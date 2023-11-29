@@ -1,10 +1,8 @@
 """
 Character module.
 """
-import map
 import random
-import story_lines
-
+from modules.exploration import story_lines
 
 def make_character():
     character_stats = {"Level": 1, "HP": 100, "STR": 1,

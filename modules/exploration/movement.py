@@ -5,14 +5,17 @@ from modules.exploration import map
 import random
 
 
-def start_from_door(map_elements, character_dictionary):
-    doors = map_elements["Door"]
+def start_from_door(character_dictionary, current_map):
+    doors = list()
+    for coordinate in current_map:
+        if current_map[coordinate]=='Door':
+            doors.append(coordinate)
     door_rand = doors[random.randint(0, len(doors)-1)]
     character_dictionary["X-coordinate"] = door_rand[0]
     character_dictionary["Y-coordinate"] = door_rand[1]
 
 
-def validate_move(current_map, character_dictionary, direction):
+def validate_move(character_dictionary, direction, current_map):
     north_wall, west_all = 0, 0
     south_wall, east_wall = map.walls(current_map)
     can_move = True
@@ -46,7 +49,7 @@ def move_character(character_dictionary, direction):
         print("moving toward West...")
 
 
-def describe_current_location(current_map, character):
+def describe_current_location(character, current_map):
     east_wall, south_wall = map.walls(current_map)
     print(
         f"You are at X: {character['X-coordinate']}, Y: {character['Y-coordinate']}.")

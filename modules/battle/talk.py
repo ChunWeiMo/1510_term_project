@@ -54,6 +54,7 @@ def talk_to_enemy(character_dictionary, enemy_appeared):
     response_options = randomizer(enemy_appeared, specific_enemy_lines)
     response = get_chat_response(response_options)
     is_enemy_killed = get_reply(response, response_options, character_dictionary, enemy_appeared, specific_enemy_lines)
+    return is_enemy_killed
 
 
 def randomizer(enemy_appeared, specific_enemy_lines):
@@ -82,13 +83,11 @@ def get_reply(response, response_options, character_dictionary, enemy_appeared, 
     is_enemy_killed = False
     if response_options[response] == specific_enemy_lines["Answer 1"]:
         print("The talk was successful!\n")
-        is_enemy_killed = True
-        battle.enemy_defeated(character_dictionary, enemy_appeared)
+        is_enemy_killed = battle.enemy_defeated(character_dictionary, enemy_appeared)
     elif response_options[response] == specific_enemy_lines["Answer 2"]:
         if character_dictionary["Character_status"]["CHR"] + 5 >= 10:
             print("The talk was successful!\n")
-            is_enemy_killed = True
-            battle.enemy_defeated(character_dictionary, enemy_appeared)
+            is_enemy_killed = battle.enemy_defeated(character_dictionary, enemy_appeared)
         else:
             can_start = False
             print("You've angered the monster! Get ready for battle...\n")
@@ -96,10 +95,9 @@ def get_reply(response, response_options, character_dictionary, enemy_appeared, 
     else:
         if character_dictionary["Character_status"]["CHR"] + 3 >= 10:
             print("The talk was successful!\n")
-            is_enemy_killed = True
-            battle.enemy_defeated(character_dictionary, enemy_appeared)
+            is_enemy_killed = battle.enemy_defeated(character_dictionary, enemy_appeared)
         else:
             can_start = False
             print("You've angered the monster! Get ready for battle...\n")
-            battle.fight(character_dictionary, enemy_appeared, can_start)
+            is_enemy_killed = battle.fight(character_dictionary, enemy_appeared, can_start)
     return is_enemy_killed 

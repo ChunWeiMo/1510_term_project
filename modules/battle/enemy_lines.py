@@ -42,25 +42,25 @@ skeleton_chat = {
         "Reply 3": "That's not even funny!",
         "Reply 3.1": "Good try I guess..."}
 ghost_chat = {
-        "Question": "",
-        "Answer 1": "",
-        "Answer 2": "",
-        "Answer 3": "",
-        "Reply 1": "",
-        "Reply 2": "",
-        "Reply 2.1": "",
-        "Reply 3": "",
-        "Reply 3.1": ""}
+        "Question": "Have you seen my child?",
+        "Answer 1": "No, I'll help you search!",
+        "Answer 2": "No idea.",
+        "Answer 3": "You're dead already/",
+        "Reply 1": "Thank you...",
+        "Reply 2": "So heartless!!!",
+        "Reply 2.1": "Where is my child...",
+        "Reply 3": "YOU LIARRR-!",
+        "Reply 3.1": "What...are you serious..."}
 golem_chat = {
-        "Question": "",
-        "Answer 1": "",
-        "Answer 2": "",
-        "Answer 3": "",
-        "Reply 1": "",
-        "Reply 2": "",
-        "Reply 2.1": "",
-        "Reply 3": "",
-        "Reply 3.1": ""}
+        "Question": "You shall not pass. Without the password. The most perfect number.",
+        "Answer 1": "1.61803",
+        "Answer 2": "3.14159",
+        "Answer 3": "6.67430",
+        "Reply 1": "Yes. A most perfect shape.",
+        "Reply 2": "IncORRect.",
+        "Reply 2.1": "NOT PeRFECT. Humans sure do love pies.",
+        "Reply 3": "InCORRecT",
+        "Reply 3.1": "INCorreCt. Important but not beautiful."}
 
 # Lvl 2 enemies
 spider_chat = {
@@ -74,37 +74,38 @@ spider_chat = {
         "Reply 3": "",
         "Reply 3.1": ""}
 archer_chat = {
-        "Question": "",
-        "Answer 1": "",
-        "Answer 2": "",
-        "Answer 3": "",
-        "Reply 1": "",
-        "Reply 2": "",
-        "Reply 2.1": "",
-        "Reply 3": "",
-        "Reply 3.1": ""}
+        "Question": "Can I have some gold?",
+        "Answer 1": "Ok, if you leave me alone (-10 G)",
+        "Answer 2": "No way, bony.",
+        "Answer 3": "You should be giving ME gold!",
+        "Reply 1": "Hehe, thanks~",
+        "Reply 1.1": "You don't have any don't lie to me!!!",
+        "Reply 2": "I'll turn you into bones too!!",
+        "Reply 2.1": "Uhh, ok then.",
+        "Reply 3": "I don't have any! Why do you think I'm asking you??",
+        "Reply 3.1": "EEEK! Yessir! (+5 G)"}
 spirit_chat = {
-        "Question": "",
-        "Answer 1": "",
-        "Answer 2": "",
-        "Answer 3": "",
-        "Reply 1": "",
-        "Reply 2": "",
-        "Reply 2.1": "",
-        "Reply 3": "",
-        "Reply 3.1": ""}
+        "Question": "AHHHHHHHHHHHHHHHH!! WHERE IS HE!!",
+        "Answer 1": "He is waiting for you behind the door.",
+        "Answer 2": "Who?",
+        "Answer 3": "He's gone now.",
+        "Reply 1": "AHHHHHHHH!!! I'M GOING TO KILL HIM!!!!!",
+        "Reply 2": "DON'T LIE!! IHATEHIMHATEHATEHATEHATEKILL!!",
+        "Reply 2.1": "I WILL NEVER STOP LOOKING FOR HIM!!!",
+        "Reply 3": "NOOOO I WANTED TO KILL HIM MYSELF!!!! WHYYYY!!!",
+        "Reply 3.1": "I CAN'T STAND IT!!! I MUST MOVE ON TO KILL HIM IN THE NEXT LIFE!!!!"}
 succubus_chat = {
-        "Question": "",
-        "Answer 1": "",
+        "Question": "Why not come to my place and relax for a while? Sweet adventurer~♥",
+        "Answer 1": "Sure ♥(-2HP)",
         "Answer 2": "",
         "Answer 3": "",
-        "Reply 1": "",
+        "Reply 1": "Such a lovely and tasty adventurer~♥",
         "Reply 2": "",
         "Reply 2.1": "",
         "Reply 3": "",
         "Reply 3.1": ""}
 maid_chat = {
-        "Question": "",
+        "Question": "Good afternoon adventurer! What brings you here?",
         "Answer 1": "",
         "Answer 2": "",
         "Answer 3": "",
@@ -114,15 +115,15 @@ maid_chat = {
         "Reply 3": "",
         "Reply 3.1": ""}
 gargoyle_chat = {
-        "Question": "",
-        "Answer 1": "",
-        "Answer 2": "",
-        "Answer 3": "",
-        "Reply 1": "",
-        "Reply 2": "",
-        "Reply 2.1": "",
-        "Reply 3": "",
-        "Reply 3.1": ""}
+        "Question": "...",
+        "Answer 1": "What a beautiful statue!",
+        "Answer 2": "What a hideous statue!",
+        "Answer 3": "...",
+        "Reply 1": "...",
+        "Reply 2": "How dare you!!!!",
+        "Reply 2.1": "...",
+        "Reply 3": "Don't ignore me!",
+        "Reply 3.1": "..."}
 
     # Miniboss
 cerberus_chat = {

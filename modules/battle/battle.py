@@ -29,6 +29,7 @@ def who_goes_first(character_dictionary, enemy_appeared):
 
 
 def fight(character_dictionary, enemy_appeared, can_start):
+    is_enemy_killed = False
     if can_start:
         turn = who_goes_first(character_dictionary, enemy_appeared)
     else:
@@ -64,10 +65,12 @@ def fight(character_dictionary, enemy_appeared, can_start):
             turn = "character"
     if enemy_appeared["HP"] <= 0:
         enemy_defeated(character_dictionary, enemy_appeared)
+        is_enemy_killed = True
         if character_dictionary["EXP"] >= 100:
             level_up(character_dictionary)
     if character_dictionary["Character_status"]["HP"] == 0:
-        return
+        return 
+    return is_enemy_killed
 
 
 def enemy_defeated(character_dictionary, enemy_appeared):

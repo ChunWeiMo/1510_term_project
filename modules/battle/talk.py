@@ -22,4 +22,5 @@ from modules.battle import enemy_lines
 
 
 def talk_to_enemy(character_dictionary, enemy_appeared):
-    pass
+    is_enemy_killed = False
+    return is_enemy_killed

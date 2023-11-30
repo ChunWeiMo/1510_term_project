@@ -6,7 +6,7 @@ from modules.exploration import map
 from modules.exploration import movement
 from modules.battle import enemy
 
-def open_the_door(character_dictionary):
+def open_the_door(character_dictionary, current_map):
     is_open = False
     while True:
         is_open = input(f"Do you want to open the door? (Y/N): ")
@@ -16,10 +16,9 @@ def open_the_door(character_dictionary):
             current_map = map.create_map(character_dictionary, map_list)
             movement.start_from_door(character_dictionary, current_map)
             return current_map
-            break
         elif is_open.capitalize() == "N":
             print(f"Maybe there is still something surprise here?")
-            break
+            return current_map
         else:
             print(f"Please enter Y/N: ")
             

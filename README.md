@@ -1,14 +1,14 @@
-# 1510 Term Project
+# Patricia Quest
 ## Project Description
 A SUD (Single User Dungeon) game...TBC!
 
 ## Contributors
 
-Name: 
+Name: Chun Wei Mo
 
-Student Number: 
+Student Number: A01375071
 
-GitHub Username: 
+GitHub Username: ChunWeiMo
 
 --------------------------
 

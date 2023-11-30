@@ -53,7 +53,7 @@ def talk_to_enemy(character_dictionary, enemy_appeared):
     print(f"{specific_enemy_lines['Question']}")
     response_options = randomizer(enemy_appeared, specific_enemy_lines)
     response = get_chat_response(response_options)
-    get_reply(response, response_options, character_dictionary, enemy_appeared, specific_enemy_lines)
+    is_enemy_killed = get_reply(response, response_options, character_dictionary, enemy_appeared, specific_enemy_lines)
 
 
 def randomizer(enemy_appeared, specific_enemy_lines):
@@ -79,12 +79,15 @@ def get_chat_response(response_options):
 
 
 def get_reply(response, response_options, character_dictionary, enemy_appeared, specific_enemy_lines):
+    is_enemy_killed = False
     if response_options[response] == specific_enemy_lines["Answer 1"]:
         print("The talk was successful!\n")
+        is_enemy_killed = True
         battle.enemy_defeated(character_dictionary, enemy_appeared)
     elif response_options[response] == specific_enemy_lines["Answer 2"]:
         if character_dictionary["Character_status"]["CHR"] + 5 >= 10:
             print("The talk was successful!\n")
+            is_enemy_killed = True
             battle.enemy_defeated(character_dictionary, enemy_appeared)
         else:
             can_start = False
@@ -93,8 +96,10 @@ def get_reply(response, response_options, character_dictionary, enemy_appeared, 
     else:
         if character_dictionary["Character_status"]["CHR"] + 3 >= 10:
             print("The talk was successful!\n")
+            is_enemy_killed = True
             battle.enemy_defeated(character_dictionary, enemy_appeared)
         else:
             can_start = False
             print("You've angered the monster! Get ready for battle...\n")
             battle.fight(character_dictionary, enemy_appeared, can_start)
+    return is_enemy_killed 

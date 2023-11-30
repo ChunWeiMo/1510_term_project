@@ -19,32 +19,32 @@ def validate_move(character_dictionary, direction, current_map):
     north_wall, west_all = 0, 0
     south_wall, east_wall = map.walls(current_map)
     can_move = True
-    if character_dictionary["Y-coordinate"] <= north_wall and direction == 0:
+    if character_dictionary["Y-coordinate"] <= north_wall and direction == "N":
         can_move = False
         print("You are stopped by North wall\n")
-    if character_dictionary["X-coordinate"] >= east_wall and direction == 1:
+    if character_dictionary["X-coordinate"] >= east_wall and direction == "E":
         can_move = False
         print("You are stopped by East wall\n")
-    if character_dictionary["Y-coordinate"] >= south_wall and direction == 2:
+    if character_dictionary["Y-coordinate"] >= south_wall and direction == "S":
         can_move = False
         print("You are stopped by South wall\n")
-    if character_dictionary["X-coordinate"] <= west_all and direction == 3:
+    if character_dictionary["X-coordinate"] <= west_all and direction == "W":
         can_move = False
         print("You are stopped by West wall\n")
     return can_move
 
 
 def move_character(character_dictionary, direction):
-    if direction == 0:
+    if direction == "N":
         character_dictionary["Y-coordinate"] -= 1
         print("moving toward North...")
-    if direction == 1:
+    if direction == "E":
         character_dictionary["X-coordinate"] += 1
         print("moving toward East...")
-    if direction == 2:
+    if direction == "S":
         character_dictionary["Y-coordinate"] += 1
         print("moving toward South...")
-    if direction == 3:
+    if direction == "W":
         character_dictionary["X-coordinate"] -= 1
         print("moving toward West...")
 

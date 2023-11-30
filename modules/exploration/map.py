@@ -29,27 +29,27 @@ def map_list():
              "Description 2": "You enter the room and immediately feel the heat increase.\n"
                               "What's going on in here? The walls are crusted in what looks like cooled lava...",
              "Door": [(8, 0), (7, 9)],
-             "Chest": [],
-             "Healing_fountain": [],
-             "Boss": [],
-             "Enemy": []}
+             "Chest": [(5, 2), (2, 7)],
+             "Healing_fountain": [(8, 5)],
+             "Boss": [(5, 6)],
+             "Enemy": [(0, 1), (2, 1), (3, 4), (1, 9), (3, 9), (6, 3), (9, 3), (9, 5)]}
     map_4 = {"Description 1": "You find a clearing surrounded by shining lights.\n"
                               "It looks like some monsters are having a party here.",
              "Description 2": "You shudder at what you see when you walk through the door.\n"
                               "There is a dark ritual going on this this room, "
                               "the monsters keep circling and dancing around some treasure.",
              "Door": [(0, 3), (9, 6)],
-             "Chest": [],
-             "Enemy": []}
+             "Chest": [(4, 4), (4, 5), (5, 4), (5, 5)],
+             "Enemy": [(1, 0), (2, 0), (3, 1), (4, 1), (9, 1), (5, 2), (9, 2), (4, 3), (5, 3), (2, 4), (3, 4), (6, 4), (8, 4), (1, 5), (3, 5), (6, 5), (7, 5), (1, 6), (4, 6), (5, 6), (0, 7), (4, 7), (0, 8), (5, 8), (6, 8), (7, 9), (8, 9)]}
     map_5 = {"Description 1": "The grassland ends abruptly and an old battlefield lies in front of you.\n"
                               "There's some treasure to be found here...",
              "Description 2": "You were just in a dark hallway but suddenly this room becomes light and airy"
                               "as if you just walked into a field of flowers.\nWhat kind of illusion is this??!",
              "Door": [(3, 0), (9, 7)],
-             "Chest": [],
-             "Healing_fountain": [],
-             "Boss": [],
-             "Enemy": []}
+             "Chest": [(6, 2), (1, 4), (4, 7)],
+             "Healing_fountain": [(7, 9)],
+             "Boss": [(5, 4)],
+             "Enemy": [(1, 2), (0, 7), (2, 7), (4, 4), (4, 9), (8, 1), (7, 7)]}
     map_6 = {"Description 1": "A group of monsters seems to be surrounding something."
                               "Do you want to go and investigate?\n",
              "Description 2": "A group of monsters fiercely guards treasure chests. "

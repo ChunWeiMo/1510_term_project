@@ -16,7 +16,7 @@ def game():
     Drive the game.
     """
     achieved_goal = False
-    map_list = map.make_maps()
+    map_list = map.map_list()
     print(story_lines.main_story["welcome"])
     character_dictionary = character.make_character()
     print(story_lines.main_story["intro"])

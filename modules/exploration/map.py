@@ -16,33 +16,51 @@ def map_list():
              "Chest": [(1, 1), (7, 5)],
              "Enemy": [(6, 1), (2, 3), (3, 4), (1, 5), (2, 5), (4, 5), (6, 5), (3, 6), (4, 6), (7, 6), (2, 7), (2, 9)],
              "Merchant": [(3, 5)]}
-    map_2 = {"Description 1": "",
-             "Description 2": "",
-             "Door": [(5, 0), (4, 9)]}
-    map_3 = {"Description 1": "",
-             "Description 2": "",
-             "Door": [(8, 0), (7, 9)]}
-    map_4 = {"Description 1": "",
-             "Description 2": "",
-             "Door": [(0, 3), (9, 6)]}
-    map_5 = {"Description 1": "",
-             "Description 2": "",
-             "Door": [(3, 0), (9, 7)]}
-    map_6 = {"Description 1": "A group of monsters seems to be surrounding something. "
+    map_2 = {"Description 1": "There is a big hill and a tall tree in the distance.\n"
+                              "Perhaps there is some treasure under it's roots?",
+             "Description 2": "The room you enter smells damp and moldy.\n"
+                              "It's dark and hard to see where you are going.",
+             "Door": [(5, 0), (4, 9)],
+             "Chest": [(0, 0), (0, 3), (8, 5)],
+             "Enemy": [(2, 2), (0, 8), (2, 6), (5, 7), (7, 2), (8, 6), (9, 9)],
+             "Merchant": [(4, 4)]}
+    map_3 = {"Description 1": "You wander into a dark forest.\n"
+                              "What is wrong with this place! It's swarming with enemies!",
+             "Description 2": "You enter the room and immediately feel the heat increase.\n"
+                              "What's going on in here? The walls are crusted in what looks like cooled lava...",
+             "Door": [(8, 0), (7, 9)],
+             "Chest": [],
+             "Healing_fountain": [],
+             "Boss": [],
+             "Enemy": []}
+    map_4 = {"Description 1": "You find a clearing surrounded by shining lights.\n"
+                              "It looks like some monsters are having a party here.",
+             "Description 2": "You shudder at what you see when you walk through the door.\n"
+                              "There is a dark ritual going on this this room, "
+                              "the monsters keep circling and dancing around some treasure.",
+             "Door": [(0, 3), (9, 6)],
+             "Chest": [],
+             "Enemy": []}
+    map_5 = {"Description 1": "The grassland ends abruptly and an old battlefield lies in front of you.\n"
+                              "There's some treasure to be found here...",
+             "Description 2": "You were just in a dark hallway but suddenly this room becomes light and airy"
+                              "as if you just walked into a field of flowers.\nWhat kind of illusion is this??!",
+             "Door": [(3, 0), (9, 7)],
+             "Chest": [],
+             "Healing_fountain": [],
+             "Boss": [],
+             "Enemy": []}
+    map_6 = {"Description 1": "A group of monsters seems to be surrounding something."
                               "Do you want to go and investigate?\n",
              "Description 2": "A group of monsters fiercely guards treasure chests. "
                               "It's time for a high-risk, high-reward endeavor.\n",
              "Door": [(4, 0), (9, 4), (0, 5), (5, 9)],
              "Chest": [(4, 4), (5, 4), (4, 5), (5, 5)],
              "Enemy": [(1, 1), (2, 1), (3, 1), (4, 1), (5, 1), (6, 1), (7, 1), (8, 1),
-                       (1, 2), (2, 2), (3, 2), (4, 2), (5,
-                                                        2), (6, 2), (7, 2), (8, 2),
-                       (1, 3), (2, 3), (7, 3), (8, 3),
-                       (1, 4), (2, 4), (7, 4), (8, 4),
-                       (1, 5), (2, 5), (7, 5), (8, 5),
-                       (1, 6), (2, 6), (7, 6), (8, 6),
-                       (1, 7), (2, 7), (3, 7), (4, 7), (5,
-                                                        7), (6, 7), (7, 7), (8, 7),
+                       (1, 2), (2, 2), (3, 2), (4, 2), (5,2), (6, 2), (7, 2), (8, 2),
+                       (1, 3), (2, 3), (7, 3), (8, 3), (1, 4), (2, 4), (7, 4), (8, 4),
+                       (1, 5), (2, 5), (7, 5), (8, 5), (1, 6), (2, 6), (7, 6), (8, 6),
+                       (1, 7), (2, 7), (3, 7), (4, 7), (5,7), (6, 7), (7, 7), (8, 7),
                        (1, 8), (2, 8), (3, 8), (4, 8), (5, 8), (6, 8), (7, 8), (8, 8),],
              "Boss": [(5, 3), (4, 6)],
              "Merchant": [(3, 5)],
@@ -92,9 +110,9 @@ def map_list():
                 "Merchant": [(9, 9)]
                 }
 
-    map_list = {1: map_1, 2: map_2, 3: map_3, 4: map_4, 5: map_5,
-                6: map_6, 7: map_7, 8: map_8, 9: map_9, 10: map_lucky, 11: map_boss}
-    return map_list
+    map_dictionary = {1: map_1, 2: map_2, 3: map_3, 4: map_4, 5: map_5,
+                      6: map_6, 7: map_7, 8: map_8, 9: map_9, 10: map_lucky, 11: map_boss}
+    return map_dictionary
 
 
 def select_map(character_dictionary, map_list):

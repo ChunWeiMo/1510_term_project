@@ -8,28 +8,28 @@ from modules.character import items
 
 
 def enemy():
-    slime = {"Name": "Slime", "HP": 10, "STR": 2, "DEF": 1, "SPD": 2, "EXP": 3, "Gold": 1}
-    pixie = {"Name": "Pixie", "HP": 6, "STR": 2, "DEF": 1, "SPD": 3, "EXP": 3, "Gold": 1}
-    wolf = {"Name": "Wolf", "HP": 15, "STR": 3, "DEF": 1, "SPD": 2, "EXP": 5, "Gold": 1}
-    skeleton = {"Name": "Skeleton", "HP": 15, "STR": 2, "DEF": 2, "SPD": 2, "EXP": 3, "Gold": 1}
-    ghost = {"Name": "Ghost", "HP": 10, "STR": 2, "DEF": 0, "SPD": 4, "EXP": 5, "Gold": 1}
-    golem = {"Name": "Golem", "HP": 20, "STR": 1, "DEF": 5, "SPD": 0, "EXP": 5, "Gold": 1}
+    slime = {"Name": "Slime", "HP": 10, "STR": 2, "DEF": 1, "SPD": 2, "EXP": 3, "Gold": 1, "Chat": "slime_chat"}
+    pixie = {"Name": "Pixie", "HP": 6, "STR": 2, "DEF": 1, "SPD": 3, "EXP": 3, "Gold": 1, "Chat": "pixie_chat"}
+    wolf = {"Name": "Wolf", "HP": 15, "STR": 3, "DEF": 1, "SPD": 2, "EXP": 5, "Gold": 1, "Chat": "wolf_chat"}
+    skeleton = {"Name": "Skeleton", "HP": 15, "STR": 2, "DEF": 2, "SPD": 2, "EXP": 3, "Gold": 1, "Chat": "skeleton_chat"}
+    ghost = {"Name": "Ghost", "HP": 10, "STR": 2, "DEF": 0, "SPD": 4, "EXP": 5, "Gold": 1, "Chat": "ghost_chat"}
+    golem = {"Name": "Golem", "HP": 20, "STR": 1, "DEF": 5, "SPD": 0, "EXP": 5, "Gold": 1, "Chat": "golem_chat"}
 
-    cave_spider = {"Name": "Cave Spider", "HP": 25, "STR": 1, "DEF": 2, "SPD": 5, "EXP": 3, "Gold": 2}
-    skeleton_archer = {"Name": "Skeleton Archer", "HP": 20, "STR": 4, "DEF": 0, "SPD": 4, "EXP": 3, "Gold": 2}
-    restless_spirit = {"Name": "Restless Spirit", "HP": 30, "STR": 4, "DEF": 1, "SPD": 3, "EXP": 5, "Gold": 2}
-    succubus = {"Name": "Succubus", "HP": 20, "STR": 3, "DEF": 1, "SPD": 4, "EXP": 5, "Gold": 2}
-    dungeon_maid = {"Name": "Dungeon Maid", "HP": 25, "STR": 3, "DEF": 3, "SPD": 2, "EXP": 3, "Gold": 2}
-    gargoyle = {"Name": "Gargoyle", "HP": 40, "STR": 2, "DEF": 6, "SPD": 0, "EXP": 5, "Gold": 2}
+    cave_spider = {"Name": "Cave Spider", "HP": 25, "STR": 1, "DEF": 2, "SPD": 5, "EXP": 3, "Gold": 2, "Chat": "spider_chat"}
+    skeleton_archer = {"Name": "Skeleton Archer", "HP": 20, "STR": 4, "DEF": 0, "SPD": 4, "EXP": 3, "Gold": 2, "Chat": "archer_chat"}
+    restless_spirit = {"Name": "Restless Spirit", "HP": 30, "STR": 4, "DEF": 1, "SPD": 3, "EXP": 5, "Gold": 2, "Chat": "spirit_chat"}
+    succubus = {"Name": "Succubus", "HP": 20, "STR": 3, "DEF": 1, "SPD": 4, "EXP": 5, "Gold": 2, "Chat": "succubus_chat"}
+    dungeon_maid = {"Name": "Dungeon Maid", "HP": 25, "STR": 3, "DEF": 3, "SPD": 2, "EXP": 3, "Gold": 2, "Chat": "maid_chat"}
+    gargoyle = {"Name": "Gargoyle", "HP": 40, "STR": 2, "DEF": 6, "SPD": 0, "EXP": 5, "Gold": 2, "Chat": "gargoyle_chat"}
 
     # special: attack will cause burn for extra 1 dmg
-    cerberus = {"Name": "Cerberus", "HP": 50, "STR": 5, "DEF": 5, "SPD": 0, "EXP": 8, "Gold": 5}
+    cerberus = {"Name": "Cerberus", "HP": 50, "STR": 5, "DEF": 5, "SPD": 0, "EXP": 8, "Gold": 5, "Chat": "cerberus_chat"}
     # special: summons 2 pixies every 3 turns
-    oberon = {"Name": "Oberon", "HP": 40, "STR": 4, "DEF": 0, "SPD": 6, "EXP": 8, "Gold": 5}
+    oberon = {"Name": "Oberon", "HP": 40, "STR": 4, "DEF": 0, "SPD": 6, "EXP": 8, "Gold": 5, "Chat": "oberon_chat"}
     # special: gains 1 HP after attack
-    dracula = {"Name": "Dracula", "HP": 40, "STR": 5, "DEF": 1, "SPD": 4, "EXP": 8, "Gold": 5}
+    dracula = {"Name": "Dracula", "HP": 40, "STR": 5, "DEF": 1, "SPD": 4, "EXP": 8, "Gold": 5, "Chat": "dracula_chat"}
 
-    dragon = {"Name": "Evil Dragon", "HP": 100, "STR": 7, "DEF": 4, "SPD": 3}  # 3 special moves
+    dragon = {"Name": "Evil Dragon", "HP": 100, "STR": 7, "DEF": 4, "SPD": 3, "Chat": "dragon_chat"}  # 3 special moves
 
     enemy_dictionary = {
         "Level 1": {1: slime, 2: pixie, 3: wolf, 4: skeleton, 5: ghost, 6: golem},

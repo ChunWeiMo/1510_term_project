@@ -9,8 +9,10 @@ def run_away(character_dictionary):
     chance = 50 + character_dictionary["Character_status"]["SPD"] + character_dictionary["Character_status"]["LUK"] * 2
     random_number = random.randint(1, 100)
     if chance >= random_number >= 1:
+        print("Successfully escaped!")
         return True
     else:
+        print("You failed to escape...prepare to engage in battle!")
         return False
 
 
@@ -64,8 +66,6 @@ def fight(character_dictionary, enemy_appeared, can_start):
             turn = "character"
     if enemy_appeared["HP"] <= 0:
         enemy_defeated(character_dictionary, enemy_appeared)
-        if character_dictionary["EXP"] >= 100:
-            level_up(character_dictionary)
     if character_dictionary["Character_status"]["HP"] == 0:
         return
 
@@ -77,6 +77,8 @@ def enemy_defeated(character_dictionary, enemy_appeared):
           f"You've gained {enemy_appeared['Gold']} gold!\n"
           f"You've gained {enemy_appeared['EXP']} experience!\n"
           f"Your experience is now at {character_dictionary['EXP']}/100!")
+    if character_dictionary["EXP"] >= 100:
+        level_up(character_dictionary)
 
 
 def level_up(character_dictionary):

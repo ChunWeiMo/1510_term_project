@@ -90,3 +90,4 @@ def print_vision(character, current_map):
                 map_element = 'Character'
 
             print(map_icon[map_element], end=' ')
+    print()

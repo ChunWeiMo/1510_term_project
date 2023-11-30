@@ -1,7 +1,9 @@
 """For enemy talk"""
 
-# Lvl 1 enemies
-slime_chat = {
+
+def enemy_lines():
+    # Lvl 1 enemies
+    slime_chat = {
         "Question": "Plip plop plip plop~~",
         "Answer 1": "*Pat it*",
         "Answer 2": "*Squeeze it*",
@@ -11,7 +13,7 @@ slime_chat = {
         "Reply 2.1": "Pliiiipppp~ (it looks content)",
         "Reply 3": "GRRrr (battle)",
         "Reply 3.1": "plip..(it looks sad and scared)"}
-pixie_chat = {
+    pixie_chat = {
         "Question": "What do you think of fairies?",
         "Answer 1": "They're really cute!",
         "Answer 2": "They like to steal teeth?",
@@ -21,7 +23,7 @@ pixie_chat = {
         "Reply 2.1": "Hmph how could you say that, I'm leaving.",
         "Reply 3": "What! No! I'm gonna pluck out your arms!",
         "Reply 3.1": "Noo! Leave me alone please..."}
-wolf_chat = {
+    wolf_chat = {
         "Question": "Can I take a bite out of you?",
         "Answer 1": "Sure...(-1HP)",
         "Answer 2": "No way!!!",
@@ -31,7 +33,7 @@ wolf_chat = {
         "Reply 2.1": "Ok...guess I'll just starve.",
         "Reply 3": "Looks like you need a lesson in manners!",
         "Reply 3.1": "Yes, that's me...I am an idiot sandwich."}
-skeleton_chat = {
+    skeleton_chat = {
         "Question": "Why do skeletons go together to church to make music?",
         "Answer 1": "They don't have any organs.",
         "Answer 2": "They have no body else to go with!",
@@ -41,7 +43,7 @@ skeleton_chat = {
         "Reply 2.1": "Why don't you be my friend then...",
         "Reply 3": "That's not even funny!",
         "Reply 3.1": "Good try I guess..."}
-ghost_chat = {
+    ghost_chat = {
         "Question": "Have you seen my child?",
         "Answer 1": "No, I'll help you search!",
         "Answer 2": "No idea.",
@@ -51,7 +53,7 @@ ghost_chat = {
         "Reply 2.1": "Where is my child...",
         "Reply 3": "YOU LIARRR-!",
         "Reply 3.1": "What...are you serious..."}
-golem_chat = {
+    golem_chat = {
         "Question": "You shall not pass. Without the password. The most perfect number.",
         "Answer 1": "1.61803",
         "Answer 2": "3.14159",
@@ -62,8 +64,8 @@ golem_chat = {
         "Reply 3": "InCORRecT",
         "Reply 3.1": "INCorreCt. Important but not beautiful."}
 
-# Lvl 2 enemies
-spider_chat = {
+    # Lvl 2 enemies
+    spider_chat = {
         "Question": "",
         "Answer 1": "",
         "Answer 2": "",
@@ -73,7 +75,7 @@ spider_chat = {
         "Reply 2.1": "",
         "Reply 3": "",
         "Reply 3.1": ""}
-archer_chat = {
+    archer_chat = {
         "Question": "Can I have some gold?",
         "Answer 1": "Ok, if you leave me alone (-10 G)",
         "Answer 2": "No way, bony.",
@@ -84,7 +86,7 @@ archer_chat = {
         "Reply 2.1": "Uhh, ok then.",
         "Reply 3": "I don't have any! Why do you think I'm asking you??",
         "Reply 3.1": "EEEK! Yessir! (+5 G)"}
-spirit_chat = {
+    spirit_chat = {
         "Question": "AHHHHHHHHHHHHHHHH!! WHERE IS HE!!",
         "Answer 1": "He is waiting for you behind the door.",
         "Answer 2": "Who?",
@@ -94,7 +96,7 @@ spirit_chat = {
         "Reply 2.1": "I WILL NEVER STOP LOOKING FOR HIM!!!",
         "Reply 3": "NOOOO I WANTED TO KILL HIM MYSELF!!!! WHYYYY!!!",
         "Reply 3.1": "I CAN'T STAND IT!!! I MUST MOVE ON TO KILL HIM IN THE NEXT LIFE!!!!"}
-succubus_chat = {
+    succubus_chat = {
         "Question": "Why not come to my place and relax for a while? Sweet adventurer~♥",
         "Answer 1": "Sure ♥(-2HP)",
         "Answer 2": "",
@@ -104,7 +106,7 @@ succubus_chat = {
         "Reply 2.1": "",
         "Reply 3": "",
         "Reply 3.1": ""}
-maid_chat = {
+    maid_chat = {
         "Question": "Good afternoon adventurer! What brings you here?",
         "Answer 1": "",
         "Answer 2": "",
@@ -114,7 +116,7 @@ maid_chat = {
         "Reply 2.1": "",
         "Reply 3": "",
         "Reply 3.1": ""}
-gargoyle_chat = {
+    gargoyle_chat = {
         "Question": "...",
         "Answer 1": "What a beautiful statue!",
         "Answer 2": "What a hideous statue!",
@@ -126,134 +128,134 @@ gargoyle_chat = {
         "Reply 3.1": "..."}
 
     # Miniboss
-cerberus_chat = {
+    cerberus_chat = {
         "Question 1":
             {"Question": "",
-            "Answer 1": "",
-            "Answer 2": "",
-            "Answer 3": "",
-            "Reply 1": "",
-            "Reply 2": "",
-            "Reply 2.1": "",
-            "Reply 3": "",
-            "Reply 3.1": ""},
+             "Answer 1": "",
+             "Answer 2": "",
+             "Answer 3": "",
+             "Reply 1": "",
+             "Reply 2": "",
+             "Reply 2.1": "",
+             "Reply 3": "",
+             "Reply 3.1": ""},
         "Questions 2":
             {"Question": "",
-            "Answer 1": "",
-            "Answer 2": "",
-            "Answer 3": "",
-            "Reply 1": "",
-            "Reply 2": "",
-            "Reply 2.1": "",
-            "Reply 3": "",
-            "Reply 3.1": ""},
+             "Answer 1": "",
+             "Answer 2": "",
+             "Answer 3": "",
+             "Reply 1": "",
+             "Reply 2": "",
+             "Reply 2.1": "",
+             "Reply 3": "",
+             "Reply 3.1": ""},
         "Question 3":
             {"Question": "",
-            "Answer 1": "",
-            "Answer 2": "",
-            "Answer 3": "",
-            "Reply 1": "",
-            "Reply 2": "",
-            "Reply 2.1": "",
-            "Reply 3": "",
-            "Reply 3.1": ""}}
+             "Answer 1": "",
+             "Answer 2": "",
+             "Answer 3": "",
+             "Reply 1": "",
+             "Reply 2": "",
+             "Reply 2.1": "",
+             "Reply 3": "",
+             "Reply 3.1": ""}}
 
-oberon_chat = {
+    oberon_chat = {
         "Question 1":
             {"Question": "",
-            "Answer 1": "",
-            "Answer 2": "",
-            "Answer 3": "",
-            "Reply 1": "",
-            "Reply 2": "",
-            "Reply 2.1": "",
-            "Reply 3": "",
-            "Reply 3.1": ""},
+             "Answer 1": "",
+             "Answer 2": "",
+             "Answer 3": "",
+             "Reply 1": "",
+             "Reply 2": "",
+             "Reply 2.1": "",
+             "Reply 3": "",
+             "Reply 3.1": ""},
         "Questions 2":
             {"Question": "",
-            "Answer 1": "",
-            "Answer 2": "",
-            "Answer 3": "",
-            "Reply 1": "",
-            "Reply 2": "",
-            "Reply 2.1": "",
-            "Reply 3": "",
-            "Reply 3.1": ""},
+             "Answer 1": "",
+             "Answer 2": "",
+             "Answer 3": "",
+             "Reply 1": "",
+             "Reply 2": "",
+             "Reply 2.1": "",
+             "Reply 3": "",
+             "Reply 3.1": ""},
         "Question 3":
             {"Question": "",
-            "Answer 1": "",
-            "Answer 2": "",
-            "Answer 3": "",
-            "Reply 1": "",
-            "Reply 2": "",
-            "Reply 2.1": "",
-            "Reply 3": "",
-            "Reply 3.1": ""}}
+             "Answer 1": "",
+             "Answer 2": "",
+             "Answer 3": "",
+             "Reply 1": "",
+             "Reply 2": "",
+             "Reply 2.1": "",
+             "Reply 3": "",
+             "Reply 3.1": ""}}
 
-dracula_chat = {
+    dracula_chat = {
         "Question 1":
             {"Question": "",
-            "Answer 1": "",
-            "Answer 2": "",
-            "Answer 3": "",
-            "Reply 1": "",
-            "Reply 2": "",
-            "Reply 2.1": "",
-            "Reply 3": "",
-            "Reply 3.1": ""},
+             "Answer 1": "",
+             "Answer 2": "",
+             "Answer 3": "",
+             "Reply 1": "",
+             "Reply 2": "",
+             "Reply 2.1": "",
+             "Reply 3": "",
+             "Reply 3.1": ""},
         "Questions 2":
             {"Question": "",
-            "Answer 1": "",
-            "Answer 2": "",
-            "Answer 3": "",
-            "Reply 1": "",
-            "Reply 2": "",
-            "Reply 2.1": "",
-            "Reply 3": "",
-            "Reply 3.1": ""},
+             "Answer 1": "",
+             "Answer 2": "",
+             "Answer 3": "",
+             "Reply 1": "",
+             "Reply 2": "",
+             "Reply 2.1": "",
+             "Reply 3": "",
+             "Reply 3.1": ""},
         "Question 3":
             {"Question": "",
-            "Answer 1": "",
-            "Answer 2": "",
-            "Answer 3": "",
-            "Reply 1": "",
-            "Reply 2": "",
-            "Reply 2.1": "",
-            "Reply 3": "",
-            "Reply 3.1": ""}}
+             "Answer 1": "",
+             "Answer 2": "",
+             "Answer 3": "",
+             "Reply 1": "",
+             "Reply 2": "",
+             "Reply 2.1": "",
+             "Reply 3": "",
+             "Reply 3.1": ""}}
 
     # Final Boss
-dragon_chat = {
+    dragon_chat = {
         "Question 1":
             {"Question": "",
-            "Answer 1": "",
-            "Answer 2": "",
-            "Answer 3": "",
-            "Reply 1": "",
-            "Reply 2": "",
-            "Reply 2.1": "",
-            "Reply 3": "",
-            "Reply 3.1": ""},
+             "Answer 1": "",
+             "Answer 2": "",
+             "Answer 3": "",
+             "Reply 1": "",
+             "Reply 2": "",
+             "Reply 2.1": "",
+             "Reply 3": "",
+             "Reply 3.1": ""},
         "Questions 2":
             {"Question": "",
-            "Answer 1": "",
-            "Answer 2": "",
-            "Answer 3": "",
-            "Reply 1": "",
-            "Reply 2": "",
-            "Reply 2.1": "",
-            "Reply 3": "",
-            "Reply 3.1": ""},
+             "Answer 1": "",
+             "Answer 2": "",
+             "Answer 3": "",
+             "Reply 1": "",
+             "Reply 2": "",
+             "Reply 2.1": "",
+             "Reply 3": "",
+             "Reply 3.1": ""},
         "Question 3":
             {"Question": "",
-            "Answer 1": "",
-            "Answer 2": "",
-            "Answer 3": "",
-            "Reply 1": "",
-            "Reply 2": "",
-            "Reply 2.1": "",
-            "Reply 3": "",
-            "Reply 3.1": ""},
+             "Answer 1": "",
+             "Answer 2": "",
+             "Answer 3": "",
+             "Reply 1": "",
+             "Reply 2": "",
+             "Reply 2.1": "",
+             "Reply 3": "",
+             "Reply 3.1": ""},
         "Questions 4":
             {"Question": "",
              "Answer 1": "",
@@ -274,3 +276,11 @@ dragon_chat = {
              "Reply 2.1": "",
              "Reply 3": "",
              "Reply 3.1": ""}}
+
+    enemy_lines_dictionary = {
+        "Level 1": [slime_chat, pixie_chat, wolf_chat, skeleton_chat, ghost_chat, golem_chat],
+        "Level 2": [spider_chat, archer_chat, spirit_chat, succubus_chat, maid_chat, gargoyle_chat],
+        "Miniboss": [cerberus_chat, oberon_chat, dracula_chat],
+        "Final Boss": dragon_chat}
+
+    return enemy_lines_dictionary

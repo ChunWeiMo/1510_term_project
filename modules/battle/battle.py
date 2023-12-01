@@ -66,12 +66,10 @@ def fight(character_dictionary, enemy_appeared, can_start):
             speedy(turn, character_dictionary, enemy_appeared, damage)
             turn = "character"
     if enemy_appeared["HP"] <= 0:
-        enemy_defeated(character_dictionary, enemy_appeared)
-        is_enemy_killed = True
+        is_enemy_killed = enemy_defeated(character_dictionary, enemy_appeared)
     if character_dictionary["Character_status"]["HP"] == 0:
         return 
     return is_enemy_killed
-
 
 def enemy_defeated(character_dictionary, enemy_appeared):
     character_dictionary["EXP"] += enemy_appeared["EXP"]
@@ -82,6 +80,7 @@ def enemy_defeated(character_dictionary, enemy_appeared):
           f"Your experience is now at {character_dictionary['EXP']}/100!")
     if character_dictionary["EXP"] >= 100:
         level_up(character_dictionary)
+    return True
 
 
 def level_up(character_dictionary):

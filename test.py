@@ -23,9 +23,10 @@ def main():
     # ==================
     command = "not assign"
     while command.upper != "Q":
-        vision.print_vision(character_1, current_map)
+        
         print()
         print(character_1)
+        vision.print_vision(character_1, current_map)
         movement.describe_current_location(character_1, current_map)
         
         print("Command list")
@@ -48,6 +49,7 @@ def main():
                     current_map = event.open_the_door(character_1, current_map)
                 elif current_map[(character_1["X-coordinate"], character_1["Y-coordinate"])] == "Enemy":
                     event.encounter_an_enemy(character_1, current_map)
+                # vision.print_vision(character_1, current_map)
         elif command.upper() == 'Q':
             print("\nThank you for playing.")
             print("Close the game.")

@@ -135,11 +135,12 @@ def enemy_lines():
              "Answer 2": "",
              "Answer 3": "",
              "Reply 1": "",
+             "Reply 1.1": "",
              "Reply 2": "",
              "Reply 2.1": "",
              "Reply 3": "",
              "Reply 3.1": ""},
-        "Questions 2":
+        "Question 2":
             {"Question": "",
              "Answer 1": "",
              "Answer 2": "",
@@ -167,11 +168,12 @@ def enemy_lines():
              "Answer 2": "",
              "Answer 3": "",
              "Reply 1": "",
+             "Reply 1.1": "",
              "Reply 2": "",
              "Reply 2.1": "",
              "Reply 3": "",
              "Reply 3.1": ""},
-        "Questions 2":
+        "Question 2":
             {"Question": "",
              "Answer 1": "",
              "Answer 2": "",
@@ -199,11 +201,12 @@ def enemy_lines():
              "Answer 2": "",
              "Answer 3": "",
              "Reply 1": "",
+             "Reply 1.1": "",
              "Reply 2": "",
              "Reply 2.1": "",
              "Reply 3": "",
              "Reply 3.1": ""},
-        "Questions 2":
+        "Question 2":
             {"Question": "",
              "Answer 1": "",
              "Answer 2": "",

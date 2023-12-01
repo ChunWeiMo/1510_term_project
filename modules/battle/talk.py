@@ -90,28 +90,64 @@ def get_chat_response(response_options):
 
 def get_reply(response, response_options, character_dictionary, enemy_appeared, specific_enemy_lines):
     is_enemy_killed = False
-    if response_options[response] == specific_enemy_lines["Answer 1"]:
-        print(f"{specific_enemy_lines['Reply 1']}\n")
-        is_enemy_killed = battle.enemy_defeated_talk(character_dictionary, enemy_appeared)
-    elif response_options[response] == specific_enemy_lines["Answer 2"]:
-        if character_dictionary["Character_status"]["CHR"] + 5 >= 10:
-            print(f"{specific_enemy_lines['Reply 2.1']}\n")
+    check_special_lines(response, response_options, character_dictionary)
+    if character_dictionary["Character_status"]["HP"] != 0:
+        if response_options[response] == specific_enemy_lines["Answer 1"]:
+            print(f"{specific_enemy_lines['Reply 1']}\n")
             is_enemy_killed = battle.enemy_defeated_talk(character_dictionary, enemy_appeared)
+        elif response_options[response] == specific_enemy_lines["Answer 2"]:
+            if character_dictionary["Character_status"]["CHR"] + 5 >= 10:
+                print(f"{specific_enemy_lines['Reply 2.1']}\n")
+                check_special_responses(specific_enemy_lines, character_dictionary)
+                is_enemy_killed = battle.enemy_defeated_talk(character_dictionary, enemy_appeared)
+            else:
+                can_start = False
+                print(f"{specific_enemy_lines['Reply 2']}\n")
+                print(f"You've angered {enemy_appeared['Name']}! Get ready for battle...\n")
+                battle.fight(character_dictionary, enemy_appeared, can_start)
         else:
-            can_start = False
-            print(f"{specific_enemy_lines['Reply 2']}\n")
-            print(f"You've angered {enemy_appeared['Name']}! Get ready for battle...\n")
-            battle.fight(character_dictionary, enemy_appeared, can_start)
-    else:
-        if character_dictionary["Character_status"]["CHR"] + 3 >= 10:
-            print(f"{specific_enemy_lines['Reply 3.1']}\n")
-            is_enemy_killed = battle.enemy_defeated_talk(character_dictionary, enemy_appeared)
-        else:
-            can_start = False
-            print(f"{specific_enemy_lines['Reply 3']}\n")
-            print(f"You've angered {enemy_appeared['Name']}! Get ready for battle...\n")
-            is_enemy_killed = battle.fight(character_dictionary, enemy_appeared, can_start)
+            if character_dictionary["Character_status"]["CHR"] + 3 >= 10:
+                print(f"{specific_enemy_lines['Reply 3.1']}\n")
+                check_special_responses(specific_enemy_lines, character_dictionary)
+                is_enemy_killed = battle.enemy_defeated_talk(character_dictionary, enemy_appeared)
+            else:
+                can_start = False
+                print(f"{specific_enemy_lines['Reply 3']}\n")
+                print(f"You've angered {enemy_appeared['Name']}! Get ready for battle...\n")
+                is_enemy_killed = battle.fight(character_dictionary, enemy_appeared, can_start)
     return is_enemy_killed
+
+
+def check_special_lines(response, response_options, character_dictionary):
+    if response_options[response] == "Sure...(-5 HP)" or response_options[response] == "Sure ♥(-5 HP)":
+        if character_dictionary["Character_status"]["HP"] >= 5:
+            character_dictionary["Character_status"]["HP"] -= 5
+            print(f"You lost 5 HP. You have {character_dictionary['Character_status']['HP']} left.\n")
+        else:
+            print(f"I only have {character_dictionary['Character_status']['HP']} HP left...\nThis is it for me.\n")
+            character_dictionary["Character_status"]["HP"] = 0
+    elif response_options[response] == "Ok, if you leave me alone (-10 Gold)":
+        if character_dictionary["Items"]["Gold"] >= 10:
+            character_dictionary["Items"]["Gold"] -= 10
+            print(f"You lost 10 Gold. You have {character_dictionary['Items']['Gold']} gold left.\n")
+        else:
+            print(f"I only have {character_dictionary['Items']['Gold']} gold left...\nTake it.")
+            character_dictionary["Items"]["Gold"] = 0
+    else:
+        return
+
+
+def check_special_responses(specific_enemy_lines, character_dictionary):
+    if (specific_enemy_lines['Reply 2.1'] == "How's a potion sound?" or
+            specific_enemy_lines['Reply 2.1'] == "I don't have any human food or drinks, "
+                                                 "but I have this potion I got from a dead adventurer!"):
+        character_dictionary["Items"]["Potions"] += 1
+        print(f"You got 1 potion! You now have {character_dictionary['Items']['Potions']} potions.\n")
+    elif specific_enemy_lines['Reply 3.1'] == "EEEK! Yessir! (+5 Gold)":
+        character_dictionary["Items"]["Gold"] += 5
+        print(f"You got 5 gold! You now have {character_dictionary['Items']['Gold']} gold.\n")
+    else:
+        return
 
 
 def talk_boss(specific_enemy_lines, enemy_appeared, character_dictionary, turn, max_turn):

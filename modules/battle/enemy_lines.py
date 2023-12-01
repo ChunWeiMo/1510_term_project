@@ -47,7 +47,7 @@ def enemy_lines():
         "Question": "Have you seen my child?",
         "Answer 1": "No, I'll help you search!",
         "Answer 2": "No idea.",
-        "Answer 3": "You're dead already/",
+        "Answer 3": "You're dead already.",
         "Reply 1": "Thank you...",
         "Reply 2": "So heartless!!!",
         "Reply 2.1": "Where is my child...",

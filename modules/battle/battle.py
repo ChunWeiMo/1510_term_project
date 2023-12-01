@@ -71,6 +71,20 @@ def fight(character_dictionary, enemy_appeared, can_start):
         return 
     return is_enemy_killed
 
+
+def enemy_defeated_talk(character_dictionary, enemy_appeared):
+    character_dictionary["EXP"] += enemy_appeared["EXP"]
+    character_dictionary['Items']['Gold'] += enemy_appeared["Gold"]
+    print("The talk was successful!\n")
+    print(f"{enemy_appeared['Name']} is enamoured with you!\n"
+          f"You've gained {enemy_appeared['Gold']} gold!\n"
+          f"You've gained {enemy_appeared['EXP']} experience!\n"
+          f"Your experience is now at {character_dictionary['EXP']}/100!")
+    if character_dictionary["EXP"] >= 100:
+        level_up(character_dictionary)
+    return True
+
+
 def enemy_defeated(character_dictionary, enemy_appeared):
     character_dictionary["EXP"] += enemy_appeared["EXP"]
     character_dictionary['Items']['Gold'] += enemy_appeared["Gold"]

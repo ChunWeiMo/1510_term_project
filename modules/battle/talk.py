@@ -102,4 +102,4 @@ def get_reply(response, response_options, character_dictionary, enemy_appeared, 
             can_start = False
             print("You've angered the monster! Get ready for battle...\n")
             battle.fight(character_dictionary, enemy_appeared, can_start)
-    return is_enemy_killed 
+    return is_enemy_killed

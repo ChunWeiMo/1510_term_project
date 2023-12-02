@@ -50,7 +50,7 @@ def map_list():
              "Healing_fountain": [(7, 9)],
              "Boss": [(5, 4)],
              "Enemy": [(1, 2), (0, 7), (2, 7), (4, 4), (4, 9), (8, 1), (7, 7)]}
-    map_6 = {"Description 1": "A group of monsters seems to be surrounding something."
+    map_6 = {"Description 1": "A group of monsters seems to be surrounding something. "
                               "Do you want to go and investigate?\n",
              "Description 2": "A group of monsters fiercely guards treasure chests. "
                               "It's time for a high-risk, high-reward endeavor.\n",

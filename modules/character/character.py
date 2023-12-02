@@ -7,9 +7,11 @@ from modules.exploration import story_lines
 
 def make_character():
     character_stats = {"Level": 1, "HP": 100, "STR": 1,
-                       "DEF": 1, "CHR": 1, "SPD": 1, "LUK": 1, "VIS":3}
+                       "DEF": 1, "CHR": 1, "SPD": 1, "LUK": 1, "VIS": 3}
+    character_name = create_name()
     print(story_lines.help_lines["character stats"])
     character_dictionary = {"Character_status": character_stats,
+                            "Name": character_name,
                             "X-coordinate": 0,
                             "Y-coordinate": 0,
                             "EXP": 0,
@@ -19,6 +21,16 @@ def make_character():
     attribute_points = 10
     add_attribute_points(attribute_points, character_dictionary)
     return character_dictionary
+
+
+def create_name():
+    character_name = input("Enter your name (Max 10 letters long):\n")
+    if len(character_name) == 0 or len(character_name) > 10:
+        print("Character name must be between 1-10 characters long.")
+        create_name()
+    else:
+        print(f"\nWelcome {character_name}!\n")
+        return character_name
 
 
 def add_attribute_points(attribute_points, character_dictionary):
@@ -38,6 +50,3 @@ def add_attribute_points(attribute_points, character_dictionary):
             character_dictionary["Character_status"]["LUK"] += 1
         attribute_points -= 1
     print(f"Your stats are: {character_dictionary['Character_status']}\n")
-
-
-

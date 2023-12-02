@@ -58,7 +58,7 @@ def talk_to_enemy(character_dictionary, enemy_appeared):
         max_turn = 5
         achieved_goal_talk = talk_boss(specific_enemy_lines, enemy_appeared, character_dictionary, turn, max_turn)
     else:
-        print(f"{specific_enemy_lines['Question']}")
+        print(f"{enemy_appeared['Name']}: {specific_enemy_lines['Question']}")
         response_options = randomizer(specific_enemy_lines)
         response = get_chat_response(response_options)
         is_enemy_killed = get_reply(response, response_options, character_dictionary,
@@ -100,26 +100,26 @@ def get_reply(response, response_options, character_dictionary, enemy_appeared, 
     check_special_lines(response, response_options, character_dictionary)
     if character_dictionary["Character_status"]["HP"] != 0:
         if response_options[response] == specific_enemy_lines["Answer 1"]:
-            print(f"{specific_enemy_lines['Reply 1']}\n")
+            print(f"{enemy_appeared['Name']}: {specific_enemy_lines['Reply 1']}\n")
             is_enemy_killed = battle.enemy_defeated_talk(character_dictionary, enemy_appeared)
         elif response_options[response] == specific_enemy_lines["Answer 2"]:
             if character_dictionary["Character_status"]["CHR"] + 5 >= 10:
-                print(f"{specific_enemy_lines['Reply 2.1']}\n")
+                print(f"{enemy_appeared['Name']}: {specific_enemy_lines['Reply 2.1']}\n")
                 check_special_responses(specific_enemy_lines, character_dictionary)
                 is_enemy_killed = battle.enemy_defeated_talk(character_dictionary, enemy_appeared)
             else:
                 can_start = False
-                print(f"{specific_enemy_lines['Reply 2']}\n")
+                print(f"{enemy_appeared['Name']}: {specific_enemy_lines['Reply 2']}\n")
                 print(f"You've angered {enemy_appeared['Name']}! Get ready for battle...\n")
                 battle.fight(character_dictionary, enemy_appeared, can_start)
         else:
             if character_dictionary["Character_status"]["CHR"] + 3 >= 10:
-                print(f"{specific_enemy_lines['Reply 3.1']}\n")
+                print(f"{enemy_appeared['Name']}: {specific_enemy_lines['Reply 3.1']}\n")
                 check_special_responses(specific_enemy_lines, character_dictionary)
                 is_enemy_killed = battle.enemy_defeated_talk(character_dictionary, enemy_appeared)
             else:
                 can_start = False
-                print(f"{specific_enemy_lines['Reply 3']}\n")
+                print(f"{enemy_appeared['Name']}: {specific_enemy_lines['Reply 3']}\n")
                 print(f"You've angered {enemy_appeared['Name']}! Get ready for battle...\n")
                 is_enemy_killed = battle.fight(character_dictionary, enemy_appeared, can_start)
     return is_enemy_killed
@@ -181,7 +181,7 @@ def talk_boss(specific_enemy_lines, enemy_appeared, character_dictionary, turn, 
         if not passed:
             break
         else:
-            print(specific_enemy_lines[question]['Question'])
+            print(f"{enemy_appeared['Name']}: {specific_enemy_lines[question]['Question']}")
             response_options = randomizer_boss(specific_enemy_lines, question)
             response = get_chat_response(response_options)
             passed = get_reply_boss(response, response_options, character_dictionary, enemy_appeared,
@@ -220,29 +220,29 @@ def get_reply_boss(response, response_options, character_dictionary, enemy_appea
     passed = False
     if response_options[response] == specific_enemy_lines[question]["Answer 1"]:
         if character_dictionary["Character_status"]["CHR"] + 2 >= 10:
-            print(f"{specific_enemy_lines[question]['Reply 1.1']}\n")
+            print(f"{enemy_appeared['Name']}: {specific_enemy_lines[question]['Reply 1.1']}\n")
             passed = True
         else:
             can_start = False
-            print(f"{specific_enemy_lines[question]['Reply 1']}\n")
+            print(f"{enemy_appeared['Name']}: {specific_enemy_lines[question]['Reply 1']}\n")
             print(f"You've angered {enemy_appeared['Name']}! Get ready for battle...\n")
             battle.fight(character_dictionary, enemy_appeared, can_start)
     elif response_options[response] == specific_enemy_lines[question]["Answer 2"]:
         if character_dictionary["Character_status"]["CHR"] + 1 >= 10:
-            print(f"{specific_enemy_lines[question]['Reply 2.1']}\n")
+            print(f"{enemy_appeared['Name']}: {specific_enemy_lines[question]['Reply 2.1']}\n")
             passed = True
         else:
             can_start = False
-            print(f"{specific_enemy_lines[question]['Reply 2']}\n")
+            print(f"{enemy_appeared['Name']}: {specific_enemy_lines[question]['Reply 2']}\n")
             print(f"You've angered {enemy_appeared['Name']}! Get ready for battle...\n")
             battle.fight(character_dictionary, enemy_appeared, can_start)
     else:
         if character_dictionary["Character_status"]["CHR"] + 0 >= 10:
-            print(f"{specific_enemy_lines[question]['Reply 3.1']}\n")
+            print(f"{enemy_appeared['Name']}: {specific_enemy_lines[question]['Reply 3.1']}\n")
             passed = True
         else:
             can_start = False
-            print(f"{specific_enemy_lines[question]['Reply 3']}\n")
+            print(f"{enemy_appeared['Name']}: {specific_enemy_lines[question]['Reply 3']}\n")
             print(f"You've angered {enemy_appeared['Name']}! Get ready for battle...\n")
             battle.fight(character_dictionary, enemy_appeared, can_start)
     return passed

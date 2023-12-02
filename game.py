@@ -18,9 +18,10 @@ def game():
     achieved_goal = False
     achieved_goal_talk = False
     map_list = map.map_list()
-    print(story_lines.main_story["welcome"])
+    print(story_lines.welcome)
     character_dictionary = character.make_character()
-    print(story_lines.main_story["intro"])
+    main_story = story_lines.get_story(character_dictionary)
+    print(main_story["intro"])
     while character_dictionary["Character_status"]["HP"] > 0 and not achieved_goal:
         if character_dictionary["Character_status"]["Level"] < 3:
             current_map = map.select_map(character_dictionary, map_list)
@@ -39,11 +40,11 @@ def game():
             # next map you enter will be boss map
             current_map = map.select_map(character_dictionary, map_list)
     if character_dictionary["Character_status"]["HP"] == 0:
-        print(story_lines.main_story["death"])
+        print(main_story["death"])
     if achieved_goal:
-        print(story_lines.main_story["win"])
+        print(main_story["win"])
     if achieved_goal_talk:
-        print(story_lines.main_story["win_talk"])
+        print(main_story["win_talk"])
 
 
 def main():

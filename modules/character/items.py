@@ -17,7 +17,9 @@ def use_potion(character_dictionary):
         max_hp = 150
 
     if character_dictionary["Items"]["Potions"] > 0:
-        response = ask_player_potions(character_dictionary)
+        response = None
+        while response is None:
+            response = ask_player_potions(character_dictionary)
         heal_character(character_dictionary, response, max_hp)
     else:
         print("You have 0 potions to use.")
@@ -25,13 +27,16 @@ def use_potion(character_dictionary):
 
 
 def ask_player_potions(character_dictionary):
-    response = int(input(f"You have {character_dictionary['Items']['Potions']} potions and "
-                         f"{character_dictionary['Character_status']['HP']} HP.\n"
-                         f"Enter how many potions you would like to use:\n"))
-    if response <= 0 or response > character_dictionary['Items']['Potions']:
-        print(f"You must enter a number between 1 and {character_dictionary['Items']['Potions']}.")
-        ask_player_potions(character_dictionary)
+    try:
+        response = int(input(f"You have {character_dictionary['Items']['Potions']} potions and "
+                             f"{character_dictionary['Character_status']['HP']} HP.\n"
+                             f"Enter how many potions you would like to use:\n"))
+    except ValueError:
+        print("Please enter the amount of potions as a number.")
     else:
+        while response <= 0 or response > character_dictionary['Items']['Potions']:
+            print(f"You must enter a number between 1 and {character_dictionary['Items']['Potions']}.")
+            response = int(input(f"Enter how many potions you would like to use:\n"))
         return response
 
 
@@ -42,4 +47,4 @@ def heal_character(character_dictionary, response, max_hp):
         character_dictionary["Character_status"]["HP"] = max_hp
     character_dictionary['Items']['Potions'] -= response
     print(f"Your HP is now {character_dictionary['Character_status']['HP']} and you have "
-          f"{character_dictionary['Items']['Potions']} left.")
+          f"{character_dictionary['Items']['Potions']} potions left.")

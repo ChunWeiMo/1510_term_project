@@ -4,6 +4,7 @@ Character module.
 import random
 from modules.exploration import story_lines
 
+
 def make_character():
     character_stats = {"Level": 1, "HP": 100, "STR": 1,
                        "DEF": 1, "CHR": 1, "SPD": 1, "LUK": 1, "VIS":3}
@@ -12,7 +13,7 @@ def make_character():
                             "X-coordinate": 0,
                             "Y-coordinate": 0,
                             "EXP": 0,
-                            "Items": {"Gold": 0, "Potions": 10},
+                            "Items": {"Gold": 0, "Potions": 0},
                             "Equipment": 0
                             }
     attribute_points = 10

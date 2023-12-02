@@ -40,3 +40,6 @@ def heal_character(character_dictionary, response, max_hp):
         character_dictionary["Character_status"]["HP"] += response * 20
     else:
         character_dictionary["Character_status"]["HP"] = max_hp
+    character_dictionary['Items']['Potions'] -= response
+    print(f"Your HP is now {character_dictionary['Character_status']['HP']} and you have "
+          f"{character_dictionary['Items']['Potions']} left.")

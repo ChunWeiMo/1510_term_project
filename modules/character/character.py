@@ -12,7 +12,7 @@ def make_character():
                             "X-coordinate": 0,
                             "Y-coordinate": 0,
                             "EXP": 0,
-                            "Items": {"Gold": 0, "Potions": 0},
+                            "Items": {"Gold": 0, "Potions": 10},
                             "Equipment": 0
                             }
     attribute_points = 10

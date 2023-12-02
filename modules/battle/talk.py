@@ -1,9 +1,5 @@
-"""Talk module
-
-To Do:
--create enemy_defeated but for talk only -no enemy slain dialogue
--print enemy replies
-
+"""
+Talk module
 """
 
 from modules.battle import enemy_lines

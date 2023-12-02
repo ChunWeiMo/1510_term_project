@@ -17,21 +17,21 @@ def use_potion(character_dictionary):
             response = ask_player_potions(character_dictionary)
         heal_character(character_dictionary, response, max_hp)
     else:
-        print("You have 0 potions to use.")
+        print("\nYou have 0 potions to use.")
     return
 
 
 def ask_player_potions(character_dictionary):
     try:
-        response = int(input(f"You have {character_dictionary['Items']['Potions']} potions and "
+        response = int(input(f"\nYou have {character_dictionary['Items']['Potions']} potions and "
                              f"{character_dictionary['Character_status']['HP']} HP.\n"
                              f"Enter how many potions you would like to use:\n"))
     except ValueError:
-        print("Please enter the amount of potions as a number.")
+        print("\nPlease enter the amount of potions as a number.")
     else:
         while response <= 0 or response > character_dictionary['Items']['Potions']:
-            print(f"You must enter a number between 1 and {character_dictionary['Items']['Potions']}.")
-            response = int(input(f"Enter how many potions you would like to use:\n"))
+            print(f"\nYou must enter a number between 1 and {character_dictionary['Items']['Potions']}.")
+            response = int(input(f"\nEnter how many potions you would like to use:\n"))
         return response
 
 
@@ -41,7 +41,7 @@ def heal_character(character_dictionary, response, max_hp):
     else:
         character_dictionary["Character_status"]["HP"] = max_hp
     character_dictionary['Items']['Potions'] -= response
-    print(f"Your HP is now {character_dictionary['Character_status']['HP']} and you have "
+    print(f"\nYour HP is now {character_dictionary['Character_status']['HP']} and you have "
           f"{character_dictionary['Items']['Potions']} potions left.")
 
 

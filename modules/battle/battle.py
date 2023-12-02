@@ -59,10 +59,10 @@ def fight(character_dictionary, enemy_appeared, can_start):
             character_dictionary["Character_status"]["HP"] -= damage
             if character_dictionary['Character_status']['HP'] > 0:
                 print(f"The {enemy_appeared['Name']} dealt {damage} damage to you!\n"
-                      f"You now have {character_dictionary['Character_status']['HP']} HP left.")
+                      f"You have {character_dictionary['Character_status']['HP']} HP left.")
             else:
                 print(f"The {enemy_appeared['Name']} dealt {damage} damage to you!\n"
-                      f"You now have 0 HP left.")
+                      f"You have 0 HP left.")
             speedy(turn, character_dictionary, enemy_appeared, damage)
             turn = "character"
     if enemy_appeared["HP"] <= 0:

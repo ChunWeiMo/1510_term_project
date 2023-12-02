@@ -16,6 +16,7 @@ def game():
     Drive the game.
     """
     achieved_goal = False
+    achieved_goal_talk = False
     map_list = map.map_list()
     print(story_lines.main_story["welcome"])
     character_dictionary = character.make_character()
@@ -41,6 +42,8 @@ def game():
         print(story_lines.main_story["death"])
     if achieved_goal:
         print(story_lines.main_story["win"])
+    if achieved_goal_talk:
+        print(story_lines.main_story["win_talk"])
 
 
 def main():

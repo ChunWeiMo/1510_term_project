@@ -8,5 +8,5 @@ For:
 """
 
 
-def use_potion():
+def use_potion(character_dictionary):
     pass

@@ -65,14 +65,25 @@ def battle_talk_escape(character_dictionary, user_input, enemy_appeared):
     if user_input == "1":
         can_start = True
         is_enemy_killed = battle.fight(character_dictionary, enemy_appeared, can_start)
+        return is_enemy_killed
     elif user_input == "2":
-        is_enemy_killed = talk.talk_to_enemy(character_dictionary, enemy_appeared)
+        if (enemy_appeared["Name"] == "Cerberus" or
+                enemy_appeared["Name"] == "Oberon" or
+                enemy_appeared["Name"] == "Dracula"):
+            is_enemy_killed = talk.talk_to_enemy(character_dictionary, enemy_appeared)
+            return is_enemy_killed
+        elif enemy_appeared["Name"] == "Evil Dragon":
+            achieved_goal_talk = talk.talk_to_enemy(character_dictionary, enemy_appeared)
+            return achieved_goal_talk
+        else:
+            is_enemy_killed = talk.talk_to_enemy(character_dictionary, enemy_appeared)
+            return is_enemy_killed
     elif user_input == "3":
-        items.use_potion()
+        items.use_potion(character_dictionary)
         ask_user(enemy_appeared)
     else:
         can_run = battle.run_away(character_dictionary)
         if not can_run:
             can_start = False
             is_enemy_killed = battle.fight(character_dictionary, enemy_appeared, can_start)
-    return is_enemy_killed
+        return is_enemy_killed

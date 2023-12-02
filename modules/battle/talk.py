@@ -49,21 +49,32 @@ def get_enemy_lines(enemy_appeared):
 
 
 def talk_to_enemy(character_dictionary, enemy_appeared):
+    is_enemy_killed = False
+    achieved_goal_talk = False
     specific_enemy_lines = get_enemy_lines(enemy_appeared)
     turn = 1
-    if enemy_appeared["Name"] == "Cerberus" or enemy_appeared["Name"] == "Oberon" or enemy_appeared["Name"] == "Dracula":
+    if (enemy_appeared["Name"] == "Cerberus" or
+            enemy_appeared["Name"] == "Oberon" or
+            enemy_appeared["Name"] == "Dracula"):
         max_turn = 3
         is_enemy_killed = talk_boss(specific_enemy_lines, enemy_appeared, character_dictionary, turn, max_turn)
     elif enemy_appeared["Name"] == "Evil Dragon":
         max_turn = 5
-        is_enemy_killed = talk_boss(specific_enemy_lines, enemy_appeared, character_dictionary, turn, max_turn)
+        achieved_goal_talk = talk_boss(specific_enemy_lines, enemy_appeared, character_dictionary, turn, max_turn)
     else:
         print(f"{specific_enemy_lines['Question']}")
         response_options = randomizer(specific_enemy_lines)
         response = get_chat_response(response_options)
         is_enemy_killed = get_reply(response, response_options, character_dictionary,
                                     enemy_appeared, specific_enemy_lines)
-    return is_enemy_killed
+    if (enemy_appeared["Name"] == "Cerberus" or
+            enemy_appeared["Name"] == "Oberon" or
+            enemy_appeared["Name"] == "Dracula"):
+        return is_enemy_killed
+    elif enemy_appeared["Name"] == "Evil Dragon":
+        return achieved_goal_talk
+    else:
+        return is_enemy_killed
 
 
 def randomizer(specific_enemy_lines):
@@ -160,17 +171,17 @@ def check_special_responses(specific_enemy_lines, character_dictionary):
 def talk_boss(specific_enemy_lines, enemy_appeared, character_dictionary, turn, max_turn):
     passed = True
     is_enemy_killed = False
-    if turn == 1:
-        question = 'Question 1'
-    elif turn == 2:
-        question = 'Question 2'
-    elif turn == 3:
-        question = 'Question 3'
-    elif turn == 4:
-        question = 'Question 4'
-    else:
-        question = 'Question 5'
     while turn <= max_turn:
+        if turn == 1:
+            question = 'Question 1'
+        elif turn == 2:
+            question = 'Question 2'
+        elif turn == 3:
+            question = 'Question 3'
+        elif turn == 4:
+            question = 'Question 4'
+        else:
+            question = 'Question 5'
         if not passed:
             break
         else:
@@ -181,8 +192,14 @@ def talk_boss(specific_enemy_lines, enemy_appeared, character_dictionary, turn, 
                                     specific_enemy_lines, question)
             talk_boss(specific_enemy_lines, enemy_appeared, character_dictionary, turn + 1, max_turn)
     if passed:
-        is_enemy_killed = True
-    return is_enemy_killed
+        if (enemy_appeared["Name"] == "Cerberus" or
+                enemy_appeared["Name"] == "Oberon" or
+                enemy_appeared["Name"] == "Dracula"):
+            is_enemy_killed = True
+            return is_enemy_killed
+        elif enemy_appeared["Name"] == "Evil Dragon":
+            achieved_goal_talk = True
+            return achieved_goal_talk
 
 
 def randomizer_boss(specific_enemy_lines, question):

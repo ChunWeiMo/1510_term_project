@@ -24,6 +24,10 @@ main_story = {
              'not a single human spared by the dragon\'s wrath.',
     'win': 'You actually did it! You saved the town of Moland from their unfortunate fate. There will be a great '
            'banquet tonight to celebrate your heroic actions. During the banquet, amongst the drunk townsfolk, '
+           'you slowly slip away in the night, ready for your next adventure.',
+    'win_talk': 'What a feat! You talked the dragon out of harming the townsfolk! They agreed to swear upon a peace'
+                'treaty and the town of Moland became peaceful once again. There will be a great '
+           'banquet tonight to celebrate your heroic actions. During the banquet, amongst the drunk townsfolk, '
            'you slowly slip away in the night, ready for your next adventure.'
 }
 

@@ -5,7 +5,7 @@ import random
 import json
 
 
-def map_list():
+def maps():
     map_1 = {"Description 1": "You enter a grassy meadow.\n"
                               "There is a merchant getting attacked by a group of monsters!\n"
                               "Will you help him?\n",

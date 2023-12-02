@@ -17,7 +17,7 @@ def game():
     """
     achieved_goal = False
     achieved_goal_talk = False
-    map_list = map.map_list()
+    map_list = map.maps()
     print(story_lines.welcome)
     character_dictionary = character.make_character()
     main_story = story_lines.get_story(character_dictionary)
@@ -36,7 +36,7 @@ def game():
             user_input = enemy.ask_user(enemy_appeared)
             enemy.battle_talk_escape(character_dictionary, user_input, enemy_appeared)
         else:
-            print(story_lines.main_story["level 3"])
+            print(main_story["level 3"])
             # next map you enter will be boss map
             current_map = map.select_map(character_dictionary, map_list)
     if character_dictionary["Character_status"]["HP"] == 0:

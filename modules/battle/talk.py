@@ -120,9 +120,9 @@ def get_reply(response, response_options, character_dictionary, enemy_appeared, 
 
 def check_special_lines(response, response_options, character_dictionary):
     if response_options[response] == "Sure...(-5 HP)" or response_options[response] == "Sure ♥(-5 HP)":
-        if character_dictionary["Character_status"]["HP"] >= 5:
+        if character_dictionary["Character_status"]["HP"] > 5:
             character_dictionary["Character_status"]["HP"] -= 5
-            print(f"You lost 5 HP. You have {character_dictionary['Character_status']['HP']} left.\n")
+            print(f"You lost 5 HP. You have {character_dictionary['Character_status']['HP']} HP left.\n")
         else:
             print(f"I only have {character_dictionary['Character_status']['HP']} HP left...\nThis is it for me.\n")
             character_dictionary["Character_status"]["HP"] = 0
@@ -133,6 +133,13 @@ def check_special_lines(response, response_options, character_dictionary):
         else:
             print(f"I only have {character_dictionary['Items']['Gold']} gold left...\nTake it.")
             character_dictionary["Items"]["Gold"] = 0
+    elif response_options[response] == "Hmmm if it is the only way. (HP -20)":
+        if character_dictionary["Character_status"]["HP"] > 20:
+            character_dictionary["Character_status"]["HP"] -= 20
+            print(f"You lost 20 HP. You have {character_dictionary['Character_status']['HP']} HP left.\n")
+        else:
+            print(f"I only have {character_dictionary['Character_status']['HP']} HP left...\nThis is it for me.\n")
+            character_dictionary["Character_status"]["HP"] = 0
     else:
         return
 

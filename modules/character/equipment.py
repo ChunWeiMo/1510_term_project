@@ -56,16 +56,21 @@ def get_equipment(character_dictionary):
         if equipment_number in equipments:
             equipment = equipments[equipment_number]
             break
-    print(f"You find {equipment[0]}!")
-    print(f"Ability of {equipment[0]}:")
+    print(f"Sweet...You find {equipment[0]}!")
+    print(f"The ability of {equipment[0]}:")
     for ability in equipment[1:]:
         print(f"{ability[0]} {ability[1]}")
     print()
-    return equipment, equipment_number
+    return equipment
 
 
-def use_equipment(character_dictionary, equipment, equipment_number):
-    character_dictionary["Equipment"] = equipment_number
-    for ability in equipment[1:]:
+def use_equipment(character_dictionary, old_equipment, new_equipment):
+    for ability in old_equipment[1:]:
+        if ability[0] in character_dictionary['Character_status']:
+            character_dictionary['Character_status'][ability[0]] -= ability[1]
+    
+    character_dictionary["Equipment"] = new_equipment
+    for ability in new_equipment[1:]:
         if ability[0] in character_dictionary['Character_status']:
             character_dictionary['Character_status'][ability[0]] += ability[1]
+    print()

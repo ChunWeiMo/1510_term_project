@@ -5,6 +5,7 @@ event modules
 from modules.exploration import map
 from modules.exploration import movement
 from modules.battle import enemy
+from modules.character import equipment
 
 def open_the_door(character_dictionary, current_map):
     is_open = False
@@ -12,7 +13,7 @@ def open_the_door(character_dictionary, current_map):
         is_open = input(f"Do you want to open the door? (Y/N): ")
         if is_open.capitalize() == "Y":
             print(f"Yor are leaving this area...")        
-            map_list = map.map_list()
+            map_list = map.maps()
             current_map = map.create_map(character_dictionary, map_list)
             movement.start_from_door(character_dictionary, current_map)
             return current_map
@@ -32,3 +33,21 @@ def encounter_an_enemy(character_dictionary, current_map):
     if is_enemy_killed:
         current_map[(character_dictionary["X-coordinate"],
                      character_dictionary["Y-coordinate"])] = "Empty"
+
+
+def find_a_chest(character_dictionary):
+    get_equipment = equipment.get_equipment(
+        character_dictionary)
+    while True:
+        if character_dictionary["Equipment"]:
+            print(
+                f"Your current equipment is: {character_dictionary['Equipment'][0]} {character_dictionary['Equipment'][1:]}")
+            is_use_equipment = input("Do you want to change it? (Y/N) ")
+        if is_use_equipment.upper() == "Y":
+            equipment.use_equipment(
+                character_dictionary, character_dictionary['Equipment'], get_equipment)
+            print(f"Now you are using {get_equipment[0]}!")
+            break
+        elif is_use_equipment.upper() == "N":
+            print("You prefer wielding familiar things right?")
+            break

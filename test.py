@@ -40,6 +40,7 @@ def main():
         print("Command list")
         print("Move a direction: N / E / S / W")
         print("Save or Load a play data: SAVE / LOAD")
+        print("Show character stats: STATS")
         print("Quit game: Q")
         command = input("Enter a command: ")
         # print(f"command is {command}")
@@ -60,6 +61,11 @@ def main():
                     event.encounter_an_enemy(character_1, current_map)
                 elif current_map[(character_1["X-coordinate"], character_1["Y-coordinate"])] == "Chest":
                     event.find_a_chest(character_1, current_map)
+                elif current_map[(character_1["X-coordinate"], character_1["Y-coordinate"])] == "Healing_fountain":
+                    event.rest_at_fountain(character_1, current_map)
+        elif command.upper() == "STATS":
+            print(character_1["Character_status"])
+            print()
         elif command.upper() == 'Q':
             print("\nThank you for playing.")
             print("Close the game.")

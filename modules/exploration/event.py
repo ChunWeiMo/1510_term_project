@@ -7,12 +7,13 @@ from modules.exploration import movement
 from modules.battle import enemy
 from modules.character import equipment
 
+
 def open_the_door(character_dictionary, current_map):
     is_open = False
     while True:
         is_open = input(f"Do you want to open the door? (Y/N): ")
         if is_open.capitalize() == "Y":
-            print(f"Yor are leaving this area...")        
+            print(f"Yor are leaving this area...")
             map_list = map.maps()
             current_map = map.create_map(character_dictionary, map_list)
             movement.start_from_door(character_dictionary, current_map)
@@ -22,7 +23,7 @@ def open_the_door(character_dictionary, current_map):
             return current_map
         else:
             print(f"Please enter Y/N: ")
-            
+
 
 def encounter_an_enemy(character_dictionary, current_map):
     enemy_dictionary = enemy.enemy()
@@ -36,8 +37,7 @@ def encounter_an_enemy(character_dictionary, current_map):
 
 
 def find_a_chest(character_dictionary, current_map):
-    get_equipment = equipment.get_equipment(
-        character_dictionary)
+    get_equipment = equipment.get_equipment(character_dictionary)
     current_map[(character_dictionary["X-coordinate"],
                  character_dictionary["Y-coordinate"])] = "Empty"
     while True:
@@ -53,3 +53,11 @@ def find_a_chest(character_dictionary, current_map):
         elif is_use_equipment.upper() == "N":
             print("You prefer wielding familiar things right?")
             break
+
+
+def rest_at_fountain(character_dictionary, current_map):
+    print("Take a sip of water, for rest is meant to pave the way for a longer journey ahead.")
+    print("You get heal, HP +5")
+    character_dictionary["Character_status"]["HP"] += 5
+    current_map[(character_dictionary["X-coordinate"],
+                 character_dictionary["Y-coordinate"])] = "Empty"

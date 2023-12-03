@@ -11,10 +11,20 @@ from modules.menu import saveload
 def main():
     # character_1 = character.make_character()
     # print(character_1)
-    character_1 = {'Character_status': {'Level': 1, 'HP': 100, 'STR': 11, 'DEF': 1, 'CHR': 1, 'SPD': 1, 'LUK': 1},
-                   'X-coordinate': 5, 'Y-coordinate': 5, 'EXP': 0, 'Items': {'Gold': 0, 'Potions': 0}, 'vision_range': 3}
+    character_stats = {"Level": 1, "HP": 80, "STR": 10,
+                       "DEF": 7, "CHR": 3, "SPD": 5, "LUK": 9, "VIS": 3}
+    character_name = "lionheartmo"
+    character_1 = {"Character_status": character_stats,
+                            "Name": character_name,
+                            "X-coordinate": 0,
+                            "Y-coordinate": 0,
+                            "EXP": 0,
+                            "Items": {"Gold": 0, "Potions": 0},
+                            "Equipment": ["The lance of curses", ("STR", 6), ("HP", -30)],
+                            "Debuff": {"Burn": 0}
+                            }
 
-    map_list = map.map_list()
+    map_list = map.maps()
     current_map = map.create_map(character_1, map_list)
     movement.start_from_door(character_1, current_map)
 
@@ -49,6 +59,8 @@ def main():
                     current_map = event.open_the_door(character_1, current_map)
                 elif current_map[(character_1["X-coordinate"], character_1["Y-coordinate"])] == "Enemy":
                     event.encounter_an_enemy(character_1, current_map)
+                elif current_map[(character_1["X-coordinate"], character_1["Y-coordinate"])] == "Chest":
+                    event.find_a_chest(character_1)
                 # vision.print_vision(character_1, current_map)
         elif command.upper() == 'Q':
             print("\nThank you for playing.")

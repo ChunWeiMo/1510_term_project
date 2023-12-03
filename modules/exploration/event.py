@@ -35,9 +35,11 @@ def encounter_an_enemy(character_dictionary, current_map):
                      character_dictionary["Y-coordinate"])] = "Empty"
 
 
-def find_a_chest(character_dictionary):
+def find_a_chest(character_dictionary, current_map):
     get_equipment = equipment.get_equipment(
         character_dictionary)
+    current_map[(character_dictionary["X-coordinate"],
+                 character_dictionary["Y-coordinate"])] = "Empty"
     while True:
         if character_dictionary["Equipment"]:
             print(

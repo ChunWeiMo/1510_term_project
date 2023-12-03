@@ -16,7 +16,7 @@ def get_story(character_dictionary):
                    f'\n{character_dictionary["Name"]}: The townsfolk told me '
                    'it was in a dungeon just past this field.\n'
                    f'\n{character_dictionary["Name"]}: I hope there isn\'t anything too scary inside...',
-        'level 3': 'A loud resounding roar can be heard from deep in the depths of the dungeon\n. '
+        'level 3': 'A loud resounding roar can be heard from deep in the depths of the dungeon.\n '
                    f'\n{character_dictionary["Name"]}: Uh-oh...did the dragon wake up while I was leveling up?'
                    f'\nYou hurry towards the sound.\n',
         'death': f'\n{character_dictionary["Name"]}: ARGHhhHHHHhhHhAAAAHhh...\n'
@@ -39,7 +39,7 @@ welcome = ('Welcome hero!\nIn this game you play as a beginner hero who sets off
            'game guide section of the README.md\n')
 
 help_lines = {
-    "character stats": "First we will begin by slotting your attribute points.\nIn this game there are 6 "
+    "character stats": "First we will begin by slotting your attribute points.\nIn this game there are 7 "
                        "attributes:\n"
                        "[1] HP (Health points) - If HP reaches 0, you die and the game is over.\n"
                        "[2] STR (Strength) - Deal more damage to the enemy.\n"
@@ -47,4 +47,5 @@ help_lines = {
                        "[4] CHR (Charisma) - Avoid battles by talking to monsters.\n"
                        "[5] SPD (Speed) - Allows you to act more often in battle.\n"
                        "[6] LUK (Luck) - Affects lucky map spawn chance and battle escape chance.\n"
+                       "[7] VIS (Vision) - How far into the distance you can see.\n"
 }

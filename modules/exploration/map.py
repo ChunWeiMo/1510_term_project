@@ -74,8 +74,8 @@ def maps():
              "Door": [(9, 0), (0, 9)],
              "Chest": [(9, 3), (9, 9)],
              "Enemy": [(3, 0), (3, 1), (7, 1), (7, 2), (8, 2), (9, 2), (1, 3), (2, 3), (3, 3), (4, 3), (5, 3),
-                       (5, 4), (7, 4),  (8, 4), (9, 4), (5, 5), (0,
-                                                                 6), (1, 6), (3, 6), (6, 6), (3, 7), (7, 7),
+                       (5, 4), (7, 4), (8, 4), (9, 4), (5, 5), (0,
+                                                                6), (1, 6), (3, 6), (6, 6), (3, 7), (7, 7),
                        (3, 8), (6, 8), (3, 9)],
              "Healing_fountain": [(0, 0), (4, 4)]
              }
@@ -112,9 +112,9 @@ def maps():
                 "Merchant": [(9, 9)]
                 }
 
-    map_dictionary = {1: map_1, 2: map_2, 3: map_3, 4: map_4, 5: map_5,
-                      6: map_6, 7: map_7, 8: map_8, 9: map_9, 10: map_lucky, 11: map_boss}
-    return map_dictionary
+    map_list = {1: map_1, 2: map_2, 3: map_3, 4: map_4, 5: map_5,
+                6: map_6, 7: map_7, 8: map_8, 9: map_9, 10: map_lucky, 11: map_boss}
+    return map_list
 
 
 def select_map(character_dictionary, map_list):
@@ -131,8 +131,12 @@ def select_map(character_dictionary, map_list):
 def describe_current_map(character_dictionary, map_elements):
     if character_dictionary["Character_status"]["Level"] == 1:
         print(map_elements["Description 1"])
-    else:
+    elif character_dictionary["Character_status"]["Level"] == 2:
         print(map_elements["Description 2"])
+    else:
+        print("You finally enter the boss' chambers.\nIn the middle you see a huge dragon, yawning and blinking"
+              " as if it just woke up.\nThe doors shut behind you with a loud bang, notifying the creature of "
+              "your arrival.")
 
 
 def set_element_on_map(map_elements, element, current_map):
@@ -174,5 +178,4 @@ def create_map(character_dictionary, map_list):
                     "Healing_fountain", "Boss", "Final_boss"]
     for element in element_list:
         set_element_on_map(map_elements, element, current_map)
-    return current_map    
-    
+    return current_map

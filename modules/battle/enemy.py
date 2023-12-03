@@ -43,15 +43,13 @@ def enemy():
 def select_enemy(character_dictionary, enemy_dictionary):
     if character_dictionary["Character_status"]["Level"] == 1:
         enemy_appeared = enemy_dictionary["Level 1"][random.randint(1, 6)]
-    elif character_dictionary["Character_status"]["Level"] == 2:
-        enemy_appeared = enemy_dictionary["Level 2"][random.randint(1, 6)]
     else:
-        enemy_appeared = enemy_dictionary["Final Boss"]
+        enemy_appeared = enemy_dictionary["Level 2"][random.randint(1, 6)]
     return enemy_appeared
 
 
 def ask_user(enemy_appeared):
-    print(f"A {enemy_appeared['Name']} appears before you!")
+    print(f"{enemy_appeared['Name']} appears before you!")
     user_input = input("What will you do?\n"
                        "[1] Battle the monster\n"
                        "[2] Talk to the monster\n"
@@ -64,8 +62,14 @@ def battle_talk_escape(character_dictionary, user_input, enemy_appeared):
     is_enemy_killed = False
     if user_input == "1":
         can_start = True
-        is_enemy_killed = battle.fight(character_dictionary, enemy_appeared, can_start)
-        return is_enemy_killed
+        if (enemy_appeared["Name"] == "Cerberus" or
+                enemy_appeared["Name"] == "Oberon" or
+                enemy_appeared["Name"] == "Dracula"):
+            is_enemy_killed = battle.fight_miniboss(character_dictionary, enemy_appeared, can_start)
+            return is_enemy_killed
+        else:
+            is_enemy_killed = battle.fight(character_dictionary, enemy_appeared, can_start)
+            return is_enemy_killed
     elif user_input == "2":
         if (enemy_appeared["Name"] == "Cerberus" or
                 enemy_appeared["Name"] == "Oberon" or
@@ -82,8 +86,15 @@ def battle_talk_escape(character_dictionary, user_input, enemy_appeared):
         items.use_potion(character_dictionary)
         ask_user(enemy_appeared)
     else:
-        can_run = battle.run_away(character_dictionary)
-        if not can_run:
-            can_start = False
-            is_enemy_killed = battle.fight(character_dictionary, enemy_appeared, can_start)
-        return is_enemy_killed
+        if (enemy_appeared["Name"] == "Cerberus" or
+                enemy_appeared["Name"] == "Oberon" or
+                enemy_appeared["Name"] == "Dracula" or
+                enemy_appeared["Name"] == "Evil Dragon"):
+            print(f"You cannot run away from {enemy_appeared['Name']}!")
+            ask_user(enemy_appeared)
+        else:
+            can_run = battle.run_away(character_dictionary)
+            if not can_run:
+                can_start = False
+                is_enemy_killed = battle.fight(character_dictionary, enemy_appeared, can_start)
+            return is_enemy_killed

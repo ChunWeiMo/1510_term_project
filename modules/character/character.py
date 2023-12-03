@@ -36,8 +36,10 @@ def create_name():
 def add_attribute_points(attribute_points, character_dictionary):
     while attribute_points > 0:
         try:
-            player_point_input = int(input(f"Distribute your attribute points now. You have {attribute_points} points left "
-                                           f"to use.\nWhich attribute would you like to increase?\n[1] STR\n[2] DEF\n[3] "
+            player_point_input = int(input(f"Distribute your attribute points now. You have "
+                                           f"{attribute_points} points left "
+                                           f"to use.\nWhich attribute would you like to increase?\n"
+                                           f"[1] STR\n[2] DEF\n[3] "
                                            f"CHR\n[4] SPD\n[5] LUK\n"))
         except ValueError:
             print("\nPlease enter a number from 1-5.\n")

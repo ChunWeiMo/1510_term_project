@@ -139,20 +139,21 @@ def speedy(turn, character_dictionary, enemy_appeared, damage):
                   f"You now have 0 HP left.")
 
 
-def fight_miniboss(character_dictionary, enemy_appeared, can_start):
+def fight_miniboss(character_dictionary, enemy_appeared):
     is_enemy_killed = False
-    if can_start:
-        turn = who_goes_first(character_dictionary, enemy_appeared)
-    else:
-        turn = "enemy"
-
+    turn = "character"
+    rounds = 0
     while enemy_appeared["HP"] > 0 and character_dictionary["Character_status"]["HP"] > 0:
         if turn == "character":
-            boss_menu(character_dictionary)
-            turn = character_turn(character_dictionary, enemy_appeared, turn)
+            can_run = miniboss_menu(character_dictionary, enemy_appeared)
+            if not can_run:
+                turn = character_turn(character_dictionary, enemy_appeared, turn)
+            else:
+                break
         else:
-            turn = miniboss_turn(character_dictionary, enemy_appeared, turn)
-
+            print(f"\nIt is {enemy_appeared['Name']}'s turn!\n")
+            turn = miniboss_turn(character_dictionary, enemy_appeared, turn, rounds)
+            rounds += 1
     if enemy_appeared["HP"] <= 0:
         is_enemy_killed = enemy_defeated(character_dictionary, enemy_appeared)
     if character_dictionary["Character_status"]["HP"] <= 0:
@@ -160,8 +161,125 @@ def fight_miniboss(character_dictionary, enemy_appeared, can_start):
     return is_enemy_killed
 
 
-def miniboss_turn(character_dictionary, enemy_appeared, turn):
-    pass
+def miniboss_menu(character_dictionary, enemy_appeared):
+    try:
+        boss_response = int(input("It is currently your turn. What would you like to do?\n"
+                                  "[1] Fight\n"
+                                  "[2] Use item\n"
+                                  "[3] Escape\n"))
+    except ValueError:
+        print("\nYou must enter 1 or 3.\n")
+    else:
+        if boss_response < 1 or boss_response > 3:
+            print("\nYou must enter 1 or 3.\n")
+            miniboss_menu(character_dictionary, enemy_appeared)
+        elif boss_response == 1:
+            return
+        elif boss_response == 2:
+            items.use_potion(character_dictionary)
+            boss_menu(character_dictionary)
+        else:
+            can_run = run_away(character_dictionary)
+            return can_run
+
+
+def miniboss_turn(character_dictionary, enemy_appeared, turn, rounds):
+    if enemy_appeared["Name"] == "Cerberus":
+        turn = cerberus_turn(character_dictionary, enemy_appeared)
+    elif enemy_appeared["Name"] == "Oberon":
+        turn = oberon_turn(character_dictionary, enemy_appeared, turn, rounds)
+    else:
+        turn = dracula_turn(character_dictionary, enemy_appeared)
+    return turn
+
+
+def cerberus_turn(character_dictionary, enemy_appeared):
+    rounds = 3
+    if enemy_appeared["STR"] - character_dictionary["Character_status"]["DEF"] <= 0:
+        damage = 1
+    else:
+        damage = enemy_appeared["STR"] - character_dictionary["Character_status"]["DEF"]
+    while rounds > 0:
+        character_dictionary["Character_status"]["HP"] -= damage
+        rounds -= 1
+        if character_dictionary['Character_status']['HP'] > 0:
+            print(f"{enemy_appeared['Name']} dealt {damage} damage to you!\n"
+                  f"You have {character_dictionary['Character_status']['HP']} HP left.\n")
+        else:
+            print(f"{enemy_appeared['Name']} dealt {damage} damage to you!\n"
+                  f"You have 0 HP left.")
+            break
+    turn = "character"
+    return turn
+
+
+def oberon_turn(character_dictionary, enemy_appeared, turn, rounds):
+    if rounds % 3 == 0:
+        summon_pixie(enemy_appeared)
+    if enemy_appeared["STR"] - character_dictionary["Character_status"]["DEF"] <= 0:
+        damage = 1
+    else:
+        damage = enemy_appeared["STR"] - character_dictionary["Character_status"]["DEF"]
+    character_dictionary["Character_status"]["HP"] -= damage
+    if character_dictionary['Character_status']['HP'] > 0:
+        print(f"{enemy_appeared['Name']} dealt {damage} damage to you!\n"
+              f"You have {character_dictionary['Character_status']['HP']} HP left.\n")
+        speedy(turn, character_dictionary, enemy_appeared, damage)
+    else:
+        print(f"{enemy_appeared['Name']} dealt {damage} damage to you!\n"
+              f"You have 0 HP left.")
+    turn = "character"
+    return turn
+
+
+def summon_pixie(enemy_appeared):
+    if enemy_appeared["HP"] + 10 >= 40:
+        enemy_appeared["HP"] = 4
+    else:
+        enemy_appeared["HP"] += 10
+    print("Oberon has summoned a High Pixie! The Pixie heals him for 10 HP.\n"
+          f"Oberon now has {enemy_appeared['HP']} HP.\n")
+
+
+def dracula_turn(character_dictionary, enemy_appeared):
+    if enemy_appeared["STR"] - character_dictionary["Character_status"]["DEF"] <= 0:
+        damage = 1
+    else:
+        damage = enemy_appeared["STR"] - character_dictionary["Character_status"]["DEF"]
+    character_dictionary["Character_status"]["HP"] -= damage
+    if character_dictionary['Character_status']['HP'] > 0:
+        print(f"{enemy_appeared['Name']} dealt {damage} damage to you!\n"
+              f"You have {character_dictionary['Character_status']['HP']} HP left.\n")
+        cure_hp(enemy_appeared, damage)
+        speedy_drac(character_dictionary, enemy_appeared, damage)
+    else:
+        print(f"{enemy_appeared['Name']} dealt {damage} damage to you!\n"
+              f"You have 0 HP left.")
+    turn = "character"
+    return turn
+
+
+def cure_hp(enemy_appeared, damage):
+    if enemy_appeared["HP"] + damage >= 40:
+        enemy_appeared["HP"] = 40
+    else:
+        enemy_appeared["HP"] += damage
+    print("Dracula has sucked your blood! He recovered HP.\n"
+          f"Dracula now has {enemy_appeared['HP']} HP.\n")
+
+
+def speedy_drac(character_dictionary, enemy_appeared, damage):
+    if enemy_appeared["SPD"] > character_dictionary["Character_status"]["SPD"] * 2:
+        character_dictionary["Character_status"]["HP"] -= damage
+        if character_dictionary['Character_status']['HP'] > 0:
+            print(f"{enemy_appeared['Name']} dealt {damage} damage to you!\n"
+                  f"You have {character_dictionary['Character_status']['HP']} HP left.\n")
+            cure_hp(enemy_appeared, damage)
+        else:
+            print(f"{enemy_appeared['Name']} dealt {damage} damage to you!\n"
+                  f"You have 0 HP left.")
+    else:
+        return
 
 
 def fight_final_boss(character_dictionary, enemy_appeared):

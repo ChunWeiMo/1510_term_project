@@ -34,6 +34,7 @@ def game():
 
             # combat starts when you encounter an enemy
             enemy_appeared = enemy.select_enemy(character_dictionary, enemy_dictionary)
+            # enemy_appeared = enemy_dictionary["Miniboss"][3]
             user_input = enemy.ask_user(enemy_appeared)
             enemy.battle_talk_escape(character_dictionary, user_input, enemy_appeared)
         else:
@@ -45,7 +46,8 @@ def game():
 
             # when you encounter final boss
             enemy_appeared = enemy_dictionary["Final Boss"]
-            achieved_goal = battle.fight_final_boss(character_dictionary, enemy_appeared)
+            user_input = enemy.ask_user(enemy_appeared)
+            enemy.battle_talk_escape(character_dictionary, user_input, enemy_appeared)
     if character_dictionary["Character_status"]["HP"] <= 0:
         print(main_story["death"])
     if achieved_goal:

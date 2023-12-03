@@ -24,7 +24,7 @@ def enemy():
 
     # special: attack will cause burn for extra 1 dmg
     cerberus = {"Name": "Cerberus", "HP": 50, "STR": 5, "DEF": 5, "SPD": 0, "EXP": 8, "Gold": 5}
-    # special: summons 2 pixies every 3 turns
+    # special: summons a pixie to heal him every 3 turns
     oberon = {"Name": "Oberon", "HP": 40, "STR": 4, "DEF": 0, "SPD": 6, "EXP": 8, "Gold": 5}
     # special: gains 1 HP after attack
     dracula = {"Name": "Dracula", "HP": 40, "STR": 5, "DEF": 1, "SPD": 4, "EXP": 8, "Gold": 5}
@@ -65,8 +65,11 @@ def battle_talk_escape(character_dictionary, user_input, enemy_appeared):
         if (enemy_appeared["Name"] == "Cerberus" or
                 enemy_appeared["Name"] == "Oberon" or
                 enemy_appeared["Name"] == "Dracula"):
-            is_enemy_killed = battle.fight_miniboss(character_dictionary, enemy_appeared, can_start)
+            is_enemy_killed = battle.fight_miniboss(character_dictionary, enemy_appeared)
             return is_enemy_killed
+        if enemy_appeared["Name"] == "Evil Dragon":
+            achieved_goal = battle.fight_final_boss(character_dictionary, enemy_appeared)
+            return achieved_goal
         else:
             is_enemy_killed = battle.fight(character_dictionary, enemy_appeared, can_start)
             return is_enemy_killed
@@ -86,10 +89,7 @@ def battle_talk_escape(character_dictionary, user_input, enemy_appeared):
         items.use_potion(character_dictionary)
         ask_user(enemy_appeared)
     else:
-        if (enemy_appeared["Name"] == "Cerberus" or
-                enemy_appeared["Name"] == "Oberon" or
-                enemy_appeared["Name"] == "Dracula" or
-                enemy_appeared["Name"] == "Evil Dragon"):
+        if enemy_appeared["Name"] == "Evil Dragon":
             print(f"You cannot run away from {enemy_appeared['Name']}!")
             ask_user(enemy_appeared)
         else:

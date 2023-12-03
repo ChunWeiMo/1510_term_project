@@ -31,26 +31,26 @@ def level2_equipment_list():
             6: ["Platinum shield", ("DEF", 7)],
             7: ["Oracle crystal ball", ("VIS", 2)],
             8: ["Luxurious carriage", ("SPD", 3), ("CHR", 4)],
-            9: ["Spirits guardian", ("DEF", 4),("SPD", 3)],
+            9: ["Spirits guardian", ("DEF", 4), ("SPD", 3)],
             }
 
 
 def level3_equipment_list():
-    return {1: ["Ragnarök", character_stats["STR"]+15],
-            2: ["The Goddess's blessing", character_stats["DEF"]+15],
-            3: ["Garuda's wing", character_stats["SPD"]+15],
-            4: ["Dragon slayer", character_stats["STR"]+10, character_stats["SPD"]+5]
+    return {1: ["Ragnarök", ("STR", 15)],
+            2: ["The Goddess's blessing", ("DEF", 15)],
+            3: ["Garuda's wing", ("SPD", 15)],
+            4: ["Dragon slayer", ("STR", 10),("STR", 5)]
             }
 
 
-def select_equipment(character_dictionary):
+def get_equipment(character_dictionary):
     if character_dictionary['Character_status']['Level'] == 1:
         equipments = level1_equipment_list()
     elif character_dictionary['Character_status']['Level'] == 2:
         equipments = level2_equipment_list()
     else:
         equipments = level3_equipment_list()
-        
+
     while True:
         equipment_number = random.randint(1, 99)
         if equipment_number in equipments:
@@ -62,7 +62,7 @@ def select_equipment(character_dictionary):
         print(f"{ability[0]} {ability[1]}")
     print()
     return equipment, equipment_number
-    
+
 
 def use_equipment(character_dictionary, equipment, equipment_number):
     character_dictionary["Equipment"] = equipment_number

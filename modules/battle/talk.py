@@ -91,7 +91,7 @@ def randomizer(specific_enemy_lines):
 
 
 def get_chat_response(response_options):
-    response = int(input(f"[1]{response_options[1]}\n[2]{response_options[2]}\n[3]{response_options[3]}\n"))
+    response = int(input(f"[1] {response_options[1]}\n[2] {response_options[2]}\n[3] {response_options[3]}\n"))
     return response
 
 
@@ -190,7 +190,7 @@ def talk_boss(specific_enemy_lines, enemy_appeared, character_dictionary, turn, 
         if (enemy_appeared["Name"] == "Cerberus" or
                 enemy_appeared["Name"] == "Oberon" or
                 enemy_appeared["Name"] == "Dracula"):
-            is_enemy_killed = True
+            is_enemy_killed = battle.enemy_defeated_talk(character_dictionary, enemy_appeared)
             return is_enemy_killed
         elif enemy_appeared["Name"] == "Evil Dragon":
             achieved_goal_talk = True

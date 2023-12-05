@@ -33,15 +33,15 @@ def main():
     main_story = story_lines.get_story(character_dictionary)
     print(main_story["intro"])
     
-    map_list = map.maps()
-    current_map = map.create_map(character_dictionary, map_list)
-    movement.start_from_door(character_dictionary, current_map)
+    while character_dictionary["Character_status"]["HP"] > 0 and not achieved_goal and command.upper != "Q":
+        map_list = map.maps()
+        current_map = map.create_map(character_dictionary, map_list)
+        movement.start_from_door(character_dictionary, current_map)
 
-    # ==================
-    # test playing
-    # ==================
-    command = "not assign"
-    while command.upper != "Q":
+        # ==================
+        # start playing
+        # ==================
+        command = "not assign"
         print()
         vision.print_vision(character_dictionary, current_map)
         movement.describe_current_location(character_dictionary, current_map)
@@ -68,6 +68,12 @@ def main():
                     current_map = event.open_the_door(character_dictionary, current_map)
                 elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Enemy":
                     event.encounter_an_enemy(character_dictionary, current_map)
+                elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Miniboss":
+                    # mini boss
+                    pass
+                elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Final Boss":
+                    # final boss
+                    pass
                 elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Chest":
                     event.find_a_chest(character_dictionary, current_map)
                 elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Healing_fountain":
@@ -86,6 +92,12 @@ def main():
         else:
             print("\nInvalid command.")
             print("Please enter a command again.")
+    if character_dictionary["Character_status"]["HP"] <= 0:
+        print(main_story["death"])
+    if achieved_goal:
+        print(main_story["win"])
+    if achieved_goal_talk:
+        print(main_story["win_talk"])
 
 
 if __name__ == "__main__":

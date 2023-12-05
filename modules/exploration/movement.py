@@ -1,16 +1,16 @@
 """
 Movement module.
 """
-from modules.exploration import map
+from modules.exploration import map, event
 import random
 
 
 def start_from_door(character_dictionary, current_map):
     doors = list()
     for coordinate in current_map:
-        if current_map[coordinate]=='Door':
+        if current_map[coordinate] == 'Door':
             doors.append(coordinate)
-    door_rand = doors[random.randint(0, len(doors)-1)]
+    door_rand = doors[random.randint(0, len(doors) - 1)]
     character_dictionary["X-coordinate"] = door_rand[0]
     character_dictionary["Y-coordinate"] = door_rand[1]
 
@@ -54,6 +54,31 @@ def describe_current_location(character, current_map):
     print(
         f"You are at X: {character['X-coordinate']}, Y: {character['Y-coordinate']}.")
     print()
-    if character['X-coordinate'] > east_wall or character['X-coordinate'] < 0 or character['Y-coordinate'] > south_wall or character['Y-coordinate'] < 0:
+    if (character['X-coordinate'] > east_wall or character['X-coordinate'] < 0 or character['Y-coordinate'] >
+            south_wall or character['Y-coordinate'] < 0):
         print("!!WARNING!!: Out of the board")
         print()
+
+
+def check_for_event(character_dictionary, current_map):
+    if current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] != "Empty":
+        print(f'You meet {current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])]}!')
+        print()
+    if current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Door":
+        current_map = event.open_the_door(character_dictionary, current_map)
+    elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Enemy":
+        event.encounter_an_enemy(character_dictionary, current_map)
+    elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Oberon":
+        event.encounter_oberon(character_dictionary, current_map)
+    elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Cerberus":
+        event.encounter_cerberus(character_dictionary, current_map)
+    elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Dracula":
+        event.encounter_dracula(character_dictionary, current_map)
+    elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Final Boss":
+        event.encounter_final_boss(character_dictionary, current_map)
+    elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Chest":
+        event.find_a_chest(character_dictionary, current_map)
+    elif (current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] ==
+          "Healing_fountain"):
+        event.rest_at_fountain(character_dictionary, current_map)
+    return current_map

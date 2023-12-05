@@ -1,5 +1,3 @@
-import random
-import json
 import os
 from modules.exploration import map
 from modules.exploration import vision

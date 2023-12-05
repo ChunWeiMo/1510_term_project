@@ -73,8 +73,8 @@ def main():
                     event.encounter_oberon(character_dictionary, current_map)
                 elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Cerberus":
                     event.encounter_cerberus(character_dictionary, current_map)
-                # elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Dracula":
-                #     event.encounter_oberon(character_dictionary, current_map)
+                elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Dracula":
+                    event.encounter_dracula(character_dictionary, current_map)
                 elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Final Boss":
                     # final boss
                     pass

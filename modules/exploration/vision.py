@@ -80,7 +80,7 @@ def map_element_in_vision(character, current_map, column, row):
 def print_vision(character, current_map):
     map_icon = {'Empty': ' ', 'Door': 'D', 'Healing_fountain': 'H', 'Enemy': 'E',
                 'Boss': 'B', 'Oberon': 'B', "Cerberus": "B", "Dracula": "B",
-                'Final_boss': 'F',
+                'Final Boss': 'F',
                 'Chest': 'C', 'Merchant': 'M', 'Character': '#', 'EW_wall': '|', 'NS_wall': '-'}
     for row in range(-character["Character_status"]["VIS"], character["Character_status"]["VIS"]+1):
         print()

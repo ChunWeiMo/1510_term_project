@@ -108,7 +108,7 @@ def maps():
                  }
     map_boss = {"Description": "",
                 "Door": [(4, 9), (5, 9)],
-                "Final_boss": [(4, 4), (5, 4), (4, 5), (5, 5)],
+                "Final Boss": [(4, 4), (5, 4), (4, 5), (5, 5)],
                 "Merchant": [(9, 9)]
                 }
 
@@ -178,7 +178,7 @@ def create_map(character_dictionary, map_list):
     map_elements = select_map(character_dictionary, map_list)
     describe_current_map(character_dictionary, map_elements)
     element_list = ["Door", "Enemy", "Chest",
-                    "Healing_fountain", "Boss", "Final_boss", "Oberon", "Cerberus", "Dracula"]
+                    "Healing_fountain", "Boss", "Final Boss", "Oberon", "Cerberus", "Dracula"]
     for element in element_list:
         set_element_on_map(map_elements, element, current_map)
     return current_map

@@ -66,6 +66,17 @@ def encounter_dracula(character_dictionary, current_map):
     if is_enemy_killed:
         current_map[(character_dictionary["X-coordinate"],
                      character_dictionary["Y-coordinate"])] = "Empty"
+        
+
+def encounter_final_boss(character_dictionary, current_map):
+    enemy_dictionary = enemy.enemy()
+    enemy_appeared = enemy_dictionary["Final Boss"]
+    user_input = enemy.ask_user(enemy_appeared)
+    is_enemy_killed = enemy.battle_talk_escape(
+        character_dictionary, user_input, enemy_appeared)
+    if is_enemy_killed:
+        current_map[(character_dictionary["X-coordinate"],
+                     character_dictionary["Y-coordinate"])] = "Empty"
     
 def find_a_chest(character_dictionary, current_map):
     get_equipment = equipment.get_equipment(character_dictionary)

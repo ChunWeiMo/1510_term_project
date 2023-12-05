@@ -13,7 +13,7 @@ from modules.character import character
 def main():
     # character_dictionary = character.make_character()
     # print(character_dictionary)
-    character_stats = {"Level": 2, "HP": 80, "STR": 10,
+    character_stats = {"Level": 3, "HP": 80, "STR": 10,
                        "DEF": 7, "CHR": 3, "SPD": 5, "LUK": 9, "VIS": 3}
     character_name = "lionheartmo"
     character_dictionary = {"Character_status": character_stats,
@@ -76,8 +76,7 @@ def main():
                 elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Dracula":
                     event.encounter_dracula(character_dictionary, current_map)
                 elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Final Boss":
-                    # final boss
-                    pass
+                    event.encounter_final_boss(character_dictionary, current_map)
                 elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Chest":
                     event.find_a_chest(character_dictionary, current_map)
                 elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Healing_fountain":

@@ -86,8 +86,6 @@ def main():
             print(character_dictionary["Character_status"])
             print()
         elif command.upper() == 'Q':
-            print("\nThank you for playing.")
-            print("Close the game.")
             break
         elif command.upper() == 'SAVE':
             saveload.savedata(character_dictionary, current_map)
@@ -102,6 +100,8 @@ def main():
         print(main_story["win"])
     if achieved_goal_talk:
         print(main_story["win_talk"])
+    print("\nThank you for playing.")
+    print("Close the game.")
 
 
 if __name__ == "__main__":

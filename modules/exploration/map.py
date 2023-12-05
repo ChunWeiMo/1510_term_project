@@ -64,7 +64,7 @@ def maps():
                        (1, 5), (2, 5), (7, 5), (8, 5), (1, 6), (2, 6), (7, 6), (8, 6),
                        (1, 7), (2, 7), (3, 7), (4, 7), (5, 7), (6, 7), (7, 7), (8, 7),
                        (1, 8), (2, 8), (3, 8), (4, 8), (5, 8), (6, 8), (7, 8), (8, 8)],
-             "Boss": [(5, 3), (4, 6)],
+             "Dracula": [(5, 3), (4, 6)],
              "Merchant": [(3, 5)],
              "Healing_fountain": [(3, 4), (6, 4), (3, 5), (6, 5)]}
     map_7 = {"Description 1": "You accidentally stumbled into the monsters' lair. But fortunately, "
@@ -121,10 +121,10 @@ def select_map(character_dictionary, map_list):
     if character_dictionary["Character_status"]["Level"] < 3:
         if character_dictionary["Character_status"]["LUK"] > 5:
             # map_elements = map_list[random.randint(1, 10)]
-            map_elements = map_list[3]
+            map_elements = map_list[6]
         else:
             # map_elements = map_list[random.randint(1, 9)]
-            map_elements = map_list[3]
+            map_elements = map_list[6]
     else:
         map_elements = map_list[11]
     
@@ -178,7 +178,7 @@ def create_map(character_dictionary, map_list):
     map_elements = select_map(character_dictionary, map_list)
     describe_current_map(character_dictionary, map_elements)
     element_list = ["Door", "Enemy", "Chest",
-                    "Healing_fountain", "Boss", "Final_boss", "Oberon", "Cerberus"]
+                    "Healing_fountain", "Boss", "Final_boss", "Oberon", "Cerberus", "Dracula"]
     for element in element_list:
         set_element_on_map(map_elements, element, current_map)
     return current_map

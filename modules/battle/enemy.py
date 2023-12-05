@@ -1,5 +1,5 @@
 """
-Enemy module.
+Enemy module. This module contains functions related to defining and encountering enemies.
 """
 import random
 from modules.battle import battle
@@ -8,6 +8,13 @@ from modules.character import items
 
 
 def enemy():
+    """
+    Create an enemy dictionary.
+
+    :postcondition: creates a dictionary with 4 elements, a dictionary of level 1 enemies, a dictionary of level 2
+    enemies, a dictionary of minibosses, and a final boss
+    :return: a dictionary of nested dictionaries
+    """
     slime = {"Name": "Slime", "HP": 10, "STR": 2, "DEF": 1, "SPD": 2, "EXP": 3, "Gold": 1}
     pixie = {"Name": "Pixie", "HP": 6, "STR": 2, "DEF": 1, "SPD": 3, "EXP": 3, "Gold": 1}
     wolf = {"Name": "Wolf", "HP": 15, "STR": 3, "DEF": 1, "SPD": 2, "EXP": 5, "Gold": 1}
@@ -22,14 +29,11 @@ def enemy():
     dungeon_maid = {"Name": "Dungeon Maid", "HP": 25, "STR": 3, "DEF": 3, "SPD": 2, "EXP": 3, "Gold": 2}
     gargoyle = {"Name": "Gargoyle", "HP": 40, "STR": 2, "DEF": 6, "SPD": 0, "EXP": 5, "Gold": 2}
 
-    # special: attack will cause burn for extra 1 dmg
     cerberus = {"Name": "Cerberus", "HP": 50, "STR": 5, "DEF": 5, "SPD": 0, "EXP": 8, "Gold": 5}
-    # special: summons a pixie to heal him every 3 turns
     oberon = {"Name": "Oberon", "HP": 40, "STR": 4, "DEF": 0, "SPD": 6, "EXP": 8, "Gold": 5}
-    # special: gains 1 HP after attack
     dracula = {"Name": "Dracula", "HP": 40, "STR": 5, "DEF": 1, "SPD": 4, "EXP": 8, "Gold": 5}
 
-    dragon = {"Name": "Evil Dragon", "HP": 100, "STR": 7, "DEF": 4, "SPD": 3}  # 3 special moves
+    dragon = {"Name": "Evil Dragon", "HP": 100, "STR": 7, "DEF": 4, "SPD": 3}
 
     enemy_dictionary = {
         "Level 1": {1: slime, 2: pixie, 3: wolf, 4: skeleton, 5: ghost, 6: golem},
@@ -41,6 +45,17 @@ def enemy():
 
 
 def select_enemy(character_dictionary, enemy_dictionary):
+    """
+    Select a random enemy for the player to encounter from the level 1 and level 2 enemy dictionaries.
+
+    :param character_dictionary: a dictionary of character attributes
+    :param enemy_dictionary: a dictionary of nested dictionaries
+    :precondition: character_dictionary is a dictionary that includes character status, name, location, experience,
+    items, equipment and debuffs
+    :precondition: enemy_dictionary is a dictionary with 4 elements, a dictionary of level 1 enemies, a dictionary of
+    level 2 enemies, a dictionary of minibosses, and a final boss
+    :return: a dictionary of enemy attributes
+    """
     if character_dictionary["Character_status"]["Level"] == 1:
         enemy_appeared = enemy_dictionary["Level 1"][random.randint(1, 6)]
     else:
@@ -49,6 +64,15 @@ def select_enemy(character_dictionary, enemy_dictionary):
 
 
 def ask_user(enemy_appeared):
+    """
+    Get input from the player on what they want to do upon encountering an enemy.
+
+    :param enemy_appeared: a dictionary of enemy attributes
+    :precondition: enemy_appeared is a dictionary of enemy attributes of the randomly selected enemy
+    encountered by the player
+    :postcondition: returns a positive integer between 1 and 4 inclusive depending on what the player has inputted
+    :return: a positive integer
+    """
     print(f"{enemy_appeared['Name']} appears before you!")
     user_input = input("What will you do?\n"
                        "[1] Battle the monster\n"
@@ -59,6 +83,20 @@ def ask_user(enemy_appeared):
 
 
 def battle_talk_escape(character_dictionary, user_input, enemy_appeared):
+    """
+    Determines what the player will do when encountering an enemy and returns True if the enemy is defeated.
+
+    :param character_dictionary: a dictionary of character attributes
+    :param user_input: a positive integer
+    :param enemy_appeared: a dictionary of enemy attributes
+    :precondition: character_dictionary is a dictionary that includes character status, name, location, experience,
+    items, equipment and debuffs
+    :precondition: user_input is a positive integer between 1 and 4 inclusive
+    :precondition: enemy_appeared is a dictionary of enemy attributes of the randomly selected enemy
+    encountered by the player
+    :postcondition: returns True if the encountered enemy was killed or False if the character has died in the battle
+    :return: a boolean value True or False
+    """
     is_enemy_killed = False
     if user_input == "1":
         can_start = True

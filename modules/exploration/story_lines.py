@@ -49,3 +49,7 @@ help_lines = {
                        "[6] LUK (Luck) - Affects lucky map spawn chance and battle escape chance.\n"
                        "[7] VIS (Vision) - How far into the distance you can see.\n"
 }
+
+title = f"\n================================================\n"
+title += f"              Patricia   Quest\n"
+title += f"================================================\n"

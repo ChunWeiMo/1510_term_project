@@ -84,8 +84,8 @@ def maps():
                               "Never expected to encounter them here.",
              "Description 2": "'Hello, adventurer! Impressive that you've made it this far. Now, let our Four "
                               "Guardians become your opponents!!'",
-             "Door": [(0, 0), (0, 9)],
-             "Boss": [(0, 4), (0, 5), (0, 6), (0, 7)],
+             "Door": [(5, 0), (5, 9)],
+             "Enemy": [(4, 4), (5, 5), (4, 6), (5, 7)],
              "Chest": [(0, 2), (0, 3)],
              "Merchant": [(0, 1)]
              }

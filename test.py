@@ -13,30 +13,31 @@ from modules.character import character
 def main():
     # character_dictionary = character.make_character()
     # print(character_dictionary)
-    # character_stats = {"Level": 1, "HP": 80, "STR": 10,
-    #                    "DEF": 7, "CHR": 3, "SPD": 5, "LUK": 9, "VIS": 3}
-    # character_name = "lionheartmo"
-    # character_dictionary = {"Character_status": character_stats,
-    #                         "Name": character_name,
-    #                         "X-coordinate": 0,
-    #                         "Y-coordinate": 0,
-    #                         "EXP": 0,
-    #                         "Items": {"Gold": 0, "Potions": 0},
-    #                         "Equipment": ["The lance of curses", ("STR", 6), ("HP", -30)],
-    #                         "Debuff": {"Burn": 0}
-    #                         }
+    character_stats = {"Level": 2, "HP": 80, "STR": 10,
+                       "DEF": 7, "CHR": 3, "SPD": 5, "LUK": 9, "VIS": 3}
+    character_name = "lionheartmo"
+    character_dictionary = {"Character_status": character_stats,
+                            "Name": character_name,
+                            "X-coordinate": 0,
+                            "Y-coordinate": 0,
+                            "EXP": 0,
+                            "Items": {"Gold": 0, "Potions": 0},
+                            "Equipment": ["The lance of curses", ("STR", 6), ("HP", -30)],
+                            "Debuff": {"Burn": 0}
+                            }
 
     achieved_goal = False
     achieved_goal_talk = False
     print(story_lines.welcome)
-    character_dictionary = character.make_character()
+    # character_dictionary = character.make_character()
     main_story = story_lines.get_story(character_dictionary)
     print(main_story["intro"])
-    
+    command = "not assign"
+    map_list = map.maps()
+    current_map = map.create_map(character_dictionary, map_list)
+    movement.start_from_door(character_dictionary, current_map)
     while character_dictionary["Character_status"]["HP"] > 0 and not achieved_goal and command.upper != "Q":
-        map_list = map.maps()
-        current_map = map.create_map(character_dictionary, map_list)
-        movement.start_from_door(character_dictionary, current_map)
+        
 
         # ==================
         # start playing
@@ -68,9 +69,12 @@ def main():
                     current_map = event.open_the_door(character_dictionary, current_map)
                 elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Enemy":
                     event.encounter_an_enemy(character_dictionary, current_map)
-                elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Miniboss":
-                    # mini boss
-                    pass
+                elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Oberon":
+                    event.encounter_oberon(character_dictionary, current_map)
+                elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Cerberus":
+                    event.encounter_cerberus(character_dictionary, current_map)
+                # elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Dracula":
+                #     event.encounter_oberon(character_dictionary, current_map)
                 elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Final Boss":
                     # final boss
                     pass

@@ -31,7 +31,7 @@ def maps():
              "Door": [(8, 0), (7, 9)],
              "Chest": [(5, 2), (2, 7)],
              "Healing_fountain": [(8, 5)],
-             "Boss": [(5, 6)],
+             "Cerberus": [(5, 6)],
              "Enemy": [(0, 1), (2, 1), (3, 4), (1, 9), (3, 9), (6, 3), (9, 3), (9, 5)]}
     map_4 = {"Description 1": "You find a clearing surrounded by shining lights.\n"
                               "It looks like some monsters are having a party here.",
@@ -50,7 +50,7 @@ def maps():
              "Door": [(3, 0), (9, 7)],
              "Chest": [(6, 2), (1, 4), (4, 7)],
              "Healing_fountain": [(7, 9)],
-             "Boss": [(5, 4)],
+             "Oberon": [(5, 4)],
              "Enemy": [(1, 2), (0, 7), (2, 7), (4, 4), (4, 9), (8, 1), (7, 7)]}
     map_6 = {"Description 1": "A group of monsters seems to be surrounding something. "
                               "Do you want to go and investigate?\n",
@@ -120,11 +120,14 @@ def maps():
 def select_map(character_dictionary, map_list):
     if character_dictionary["Character_status"]["Level"] < 3:
         if character_dictionary["Character_status"]["LUK"] > 5:
-            map_elements = map_list[random.randint(1, 10)]
+            # map_elements = map_list[random.randint(1, 10)]
+            map_elements =  map_list[3]
         else:
-            map_elements = map_list[random.randint(1, 9)]
+            # map_elements = map_list[random.randint(1, 9)]
+            map_elements =  map_list[3]
     else:
         map_elements = map_list[11]
+    
     return map_elements
 
 
@@ -175,7 +178,7 @@ def create_map(character_dictionary, map_list):
     map_elements = select_map(character_dictionary, map_list)
     describe_current_map(character_dictionary, map_elements)
     element_list = ["Door", "Enemy", "Chest",
-                    "Healing_fountain", "Boss", "Final_boss"]
+                    "Healing_fountain", "Boss", "Final_boss", "Oberon", "Cerberus"]
     for element in element_list:
         set_element_on_map(map_elements, element, current_map)
     return current_map

@@ -34,7 +34,7 @@ def game():
 
             # combat starts when you encounter an enemy
             # enemy_appeared = enemy.select_enemy(character_dictionary, enemy_dictionary)
-            enemy_appeared = enemy_dictionary["Miniboss"][3]
+            enemy_appeared = enemy_dictionary["Miniboss"][2]
             user_input = enemy.ask_user(enemy_appeared)
             enemy.battle_talk_escape(character_dictionary, user_input, enemy_appeared)
         else:

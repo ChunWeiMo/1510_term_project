@@ -229,6 +229,7 @@ def oberon_turn(character_dictionary, enemy_appeared, turn, rounds):
     if rounds % 3 == 0:
         summon_pixie(enemy_appeared)
     enemy_turn(character_dictionary, enemy_appeared, turn)
+    turn = "character"
     return turn
 
 

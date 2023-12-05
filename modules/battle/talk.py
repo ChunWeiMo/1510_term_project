@@ -91,8 +91,15 @@ def randomizer(specific_enemy_lines):
 
 
 def get_chat_response(response_options):
-    response = int(input(f"[1] {response_options[1]}\n[2] {response_options[2]}\n[3] {response_options[3]}\n"))
-    return response
+    try:
+        response = int(input(f"[1] {response_options[1]}\n[2] {response_options[2]}\n[3] {response_options[3]}\n"))
+    except ValueError:
+        print("\nYou must enter an integer between 1 - 3.\n")
+    else:
+        if response < 1 or response > 3:
+            print("\nYou must enter an integer between 1 - 3.\n")
+            get_chat_response(response_options)
+        return response
 
 
 def get_reply(response, response_options, character_dictionary, enemy_appeared, specific_enemy_lines):

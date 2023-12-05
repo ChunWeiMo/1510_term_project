@@ -120,11 +120,11 @@ def maps():
 def select_map(character_dictionary, map_list):
     if character_dictionary["Character_status"]["Level"] < 3:
         if character_dictionary["Character_status"]["LUK"] > 5:
-            # map_elements = map_list[random.randint(1, 10)]
-            map_elements = map_list[6]
+            map_elements = map_list[random.randint(1, 10)]
+            # map_elements = map_list[6]
         else:
-            # map_elements = map_list[random.randint(1, 9)]
-            map_elements = map_list[6]
+            map_elements = map_list[random.randint(1, 9)]
+            # map_elements = map_list[6]
     else:
         map_elements = map_list[11]
     

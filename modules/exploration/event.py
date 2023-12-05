@@ -13,13 +13,13 @@ def open_the_door(character_dictionary, current_map):
     while True:
         is_open = input(f"Do you want to open the door? (Y/N): ")
         if is_open.capitalize() == "Y":
-            print(f"Yor are leaving this area...")
+            print(f"You are leaving this area...")
             map_list = map.maps()
             current_map = map.create_map(character_dictionary, map_list)
             movement.start_from_door(character_dictionary, current_map)
             return current_map
         elif is_open.capitalize() == "N":
-            print(f"Maybe there is still something surprise here?")
+            print(f"Maybe there is still something to explore here?")
             return current_map
         else:
             print(f"Please enter Y/N: ")

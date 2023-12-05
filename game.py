@@ -1,5 +1,6 @@
 import random
 import json
+import os
 from modules.exploration import map
 from modules.exploration import vision
 from modules.exploration import movement
@@ -15,13 +16,31 @@ def main():
     achieved_goal = False
     achieved_goal_talk = False
     map_list = map.maps()
-    print(story_lines.welcome)
-    character_dictionary = character.make_character()
-    main_story = story_lines.get_story(character_dictionary)
-    print(main_story["intro"])
+    print(story_lines.title)
+    
+    save_character = "character.json"
+    save_map = "current_map.json"
+    current_directory = os.getcwd()
+    file_path_save_character = os.path.join(current_directory, save_character)
+    file_path_save_map = os.path.join(current_directory, save_map)
+    
+    is_continue = "not assign"
+    if os.path.exists(file_path_save_character) and os.path.exists(file_path_save_map):
+        print(f"You find your adventure record.")
+        is_continue = input(f"Do you want to continue? (Y/N) \n")
+        
+    if is_continue.upper() == "Y":
+        character_dictionary, current_map = saveload.loaddata()
+    else:
+        print()
+        print(story_lines.welcome)
+        character_dictionary = character.make_character()
+        main_story = story_lines.get_story(character_dictionary)
+        print(main_story["intro"])
+        current_map = map.create_map(character_dictionary, map_list)
+        movement.start_from_door(character_dictionary, current_map)
+    
     command = "not assign"
-    current_map = map.create_map(character_dictionary, map_list)
-    movement.start_from_door(character_dictionary, current_map)
     while character_dictionary["Character_status"]["HP"] > 0 and not achieved_goal and command.upper != "Q":
         # command = "not assign"
         print()
@@ -41,13 +60,15 @@ def main():
                 current_map = movement.check_for_event(character_dictionary, current_map)
         elif command.upper() == "STATS":
             print(f'\n{character_dictionary["Character_status"]}')
+            print(character_dictionary)
             print()
         elif command.upper() == 'Q':
             break
         elif command.upper() == 'SAVE':
             saveload.savedata(character_dictionary, current_map)
         elif command.upper() == "LOAD":
-            character_dictionary, current_map = saveload.loaddata(character_dictionary, current_map)
+            character_dictionary, current_map = saveload.ask_loaddata(
+                character_dictionary, current_map)
         else:
             print("\nInvalid command.")
             print("Please enter a command again.")

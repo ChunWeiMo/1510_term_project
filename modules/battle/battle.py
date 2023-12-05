@@ -235,7 +235,7 @@ def oberon_turn(character_dictionary, enemy_appeared, turn, rounds):
 
 def summon_pixie(enemy_appeared):
     if enemy_appeared["HP"] + 10 >= 40:
-        enemy_appeared["HP"] = 4
+        enemy_appeared["HP"] = 40
     else:
         enemy_appeared["HP"] += 10
     print("Oberon has summoned a High Pixie! The Pixie heals him for 10 HP.\n"

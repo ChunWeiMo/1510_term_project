@@ -4,7 +4,7 @@ event modules
 
 from modules.exploration import map
 from modules.exploration import movement
-from modules.battle import enemy
+from modules.battle import enemy, battle
 from modules.character import equipment
 
 
@@ -42,6 +42,7 @@ def encounter_oberon(character_dictionary, current_map):
     user_input = enemy.ask_user(enemy_appeared)
     is_enemy_killed = enemy.battle_talk_escape(
         character_dictionary, user_input, enemy_appeared)
+    # is_enemy_killed = battle.fight_miniboss(character_dictionary, enemy_appeared)
     if is_enemy_killed:
         current_map[(character_dictionary["X-coordinate"],
                      character_dictionary["Y-coordinate"])] = "Empty"

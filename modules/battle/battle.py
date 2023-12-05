@@ -228,15 +228,7 @@ def cerberus_turn(character_dictionary, enemy_appeared):
 def oberon_turn(character_dictionary, enemy_appeared, turn, rounds):
     if rounds % 3 == 0:
         summon_pixie(enemy_appeared)
-    if enemy_appeared["STR"] - character_dictionary["Character_status"]["DEF"] <= 0:
-        damage = 1
-    else:
-        damage = enemy_appeared["STR"] - character_dictionary["Character_status"]["DEF"]
-    character_dictionary["Character_status"]["HP"] -= damage
-    dead = is_character_dead(character_dictionary, enemy_appeared, damage)
-    if not dead:
-        speedy(turn, character_dictionary, enemy_appeared, damage)
-    turn = "character"
+    enemy_turn(character_dictionary, enemy_appeared, turn)
     return turn
 
 
@@ -285,6 +277,16 @@ def fight_final_boss(character_dictionary, enemy_appeared):
     print("\nThe dragon roars loud and ferocious, sending a chill down your spine.\n")
     achieved_goal = False
     turn = "character"
+    boss_battle(character_dictionary, enemy_appeared, turn)
+    if enemy_appeared["HP"] <= 0:
+        enemy_defeated(character_dictionary, enemy_appeared)
+        achieved_goal = True
+    if character_dictionary["Character_status"]["HP"] <= 0:
+        return
+    return achieved_goal
+
+
+def boss_battle(character_dictionary, enemy_appeared, turn):
     while enemy_appeared["HP"] > 0 and character_dictionary["Character_status"]["HP"] > 0:
         if turn == "character":
             if character_dictionary["Debuff"]["Burn"] > 0:
@@ -299,12 +301,6 @@ def fight_final_boss(character_dictionary, enemy_appeared):
         else:
             print("\nIt is the dragons turn!\n")
             turn = boss_turn(character_dictionary, enemy_appeared, turn)
-    if enemy_appeared["HP"] <= 0:
-        enemy_defeated(character_dictionary, enemy_appeared)
-        achieved_goal = True
-    if character_dictionary["Character_status"]["HP"] <= 0:
-        return
-    return achieved_goal
 
 
 def boss_menu(character_dictionary):

@@ -65,9 +65,10 @@ def get_equipment(character_dictionary):
 
 
 def use_equipment(character_dictionary, old_equipment, new_equipment):
-    for ability in old_equipment[1:]:
-        if ability[0] in character_dictionary['Character_status']:
-            character_dictionary['Character_status'][ability[0]] -= ability[1]
+    if old_equipment != 0:
+        for ability in old_equipment[1:]:
+            if ability[0] in character_dictionary['Character_status']:
+                character_dictionary['Character_status'][ability[0]] -= ability[1]
     
     character_dictionary["Equipment"] = new_equipment
     for ability in new_equipment[1:]:

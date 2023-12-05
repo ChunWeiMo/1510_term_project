@@ -80,21 +80,24 @@ def encounter_final_boss(character_dictionary, current_map):
     
 def find_a_chest(character_dictionary, current_map):
     get_equipment = equipment.get_equipment(character_dictionary)
-    current_map[(character_dictionary["X-coordinate"],
-                 character_dictionary["Y-coordinate"])] = "Empty"
-    while True:
-        if character_dictionary["Equipment"]:
-            print(
-                f"Your current equipment is: {character_dictionary['Equipment'][0]} {character_dictionary['Equipment'][1:]}")
-            is_use_equipment = input("Do you want to change it? (Y/N) ")
-        if is_use_equipment.upper() == "Y":
-            equipment.use_equipment(
+    if character_dictionary["Equipment"] == 0:
+        equipment.use_equipment(
                 character_dictionary, character_dictionary['Equipment'], get_equipment)
-            print(f"Now you are using {get_equipment[0]}!")
-            break
-        elif is_use_equipment.upper() == "N":
-            print("You prefer wielding familiar things right?")
-            break
+    else:
+        while True:
+            if character_dictionary["Equipment"]:
+                print(
+                    f"Your current equipment is: {character_dictionary['Equipment'][0]} {character_dictionary['Equipment'][1:]}")
+                is_use_equipment = input("Do you want to change it? (Y/N) ")
+            if is_use_equipment.upper() == "Y":
+                equipment.use_equipment(
+                    character_dictionary, character_dictionary['Equipment'], get_equipment)
+                print(f"Now you are using {get_equipment[0]}!")
+                break
+            elif is_use_equipment.upper() == "N":
+                print("You prefer wielding familiar things right?")
+                break
+        current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] = "Empty"
 
 
 def rest_at_fountain(character_dictionary, current_map):

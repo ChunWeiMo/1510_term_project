@@ -13,23 +13,23 @@ from modules.character import character
 def main():
     # character_dictionary = character.make_character()
     # print(character_dictionary)
-    character_stats = {"Level": 3, "HP": 80, "STR": 10,
-                       "DEF": 7, "CHR": 3, "SPD": 5, "LUK": 9, "VIS": 3}
-    character_name = "lionheartmo"
-    character_dictionary = {"Character_status": character_stats,
-                            "Name": character_name,
-                            "X-coordinate": 0,
-                            "Y-coordinate": 0,
-                            "EXP": 0,
-                            "Items": {"Gold": 0, "Potions": 0},
-                            "Equipment": ["The lance of curses", ("STR", 6), ("HP", -30)],
-                            "Debuff": {"Burn": 0}
-                            }
+    # character_stats = {"Level": 3, "HP": 80, "STR": 10,
+    #                    "DEF": 7, "CHR": 3, "SPD": 5, "LUK": 9, "VIS": 3}
+    # character_name = "lionheartmo"
+    # character_dictionary = {"Character_status": character_stats,
+    #                         "Name": character_name,
+    #                         "X-coordinate": 0,
+    #                         "Y-coordinate": 0,
+    #                         "EXP": 0,
+    #                         "Items": {"Gold": 0, "Potions": 0},
+    #                         "Equipment": ["The lance of curses", ("STR", 6), ("HP", -30)],
+    #                         "Debuff": {"Burn": 0}
+    #                         }
 
     achieved_goal = False
     achieved_goal_talk = False
     print(story_lines.welcome)
-    # character_dictionary = character.make_character()
+    character_dictionary = character.make_character()
     main_story = story_lines.get_story(character_dictionary)
     print(main_story["intro"])
     command = "not assign"

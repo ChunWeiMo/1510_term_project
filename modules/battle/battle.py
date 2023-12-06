@@ -160,7 +160,7 @@ def speedy(turn, character_dictionary, enemy_appeared, damage):
 def fight_miniboss(character_dictionary, enemy_appeared):
     is_enemy_killed = False
     turn = "character"
-    rounds = 0
+    rounds = 1
     while enemy_appeared["HP"] > 0 and character_dictionary["Character_status"]["HP"] > 0:
         if turn == "character":
             can_run = miniboss_menu(character_dictionary, enemy_appeared)
@@ -195,7 +195,7 @@ def miniboss_menu(character_dictionary, enemy_appeared):
             return
         elif boss_response == 2:
             items.use_potion(character_dictionary)
-            miniboss_menu(character_dictionary)
+            miniboss_menu(character_dictionary, enemy_appeared)
         else:
             can_run = run_away(character_dictionary)
             return can_run
@@ -203,11 +203,7 @@ def miniboss_menu(character_dictionary, enemy_appeared):
 
 def miniboss_turn(character_dictionary, enemy_appeared, turn, rounds):
     if enemy_appeared["Name"] == "Cerberus":
-        # [cerberus_turn(character_dictionary, enemy_appeared) for _ in itertools.repeat(None, 3)]
-        cerberus_turn(character_dictionary, enemy_appeared)
-        cerberus_turn(character_dictionary, enemy_appeared)
-        cerberus_turn(character_dictionary, enemy_appeared)
-
+        [cerberus_turn(character_dictionary, enemy_appeared) for _ in itertools.repeat(None, 3)]
         turn = "character"
     elif enemy_appeared["Name"] == "Oberon":
         turn = oberon_turn(character_dictionary, enemy_appeared, turn, rounds)

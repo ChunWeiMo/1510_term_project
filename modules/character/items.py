@@ -103,6 +103,7 @@ def merchant(character_dictionary):
                 battle_merchant(character_dictionary)
             else:
                 leave_merchant()
+                break
 
 
 def buy(character_dictionary):
@@ -141,6 +142,7 @@ def buy(character_dictionary):
                 check_gold(character_dictionary, potions)
             else:
                 leave_merchant()
+                break
 
 
 def check_gold(character_dictionary, potions):

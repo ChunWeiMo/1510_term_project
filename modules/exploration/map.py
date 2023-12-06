@@ -177,7 +177,7 @@ def create_map(character_dictionary, map_list):
             current_map[coordinate] = "Empty"
     map_elements = select_map(character_dictionary, map_list)
     describe_current_map(character_dictionary, map_elements)
-    element_list = ["Door", "Enemy", "Chest",
+    element_list = ["Door", "Enemy", "Chest", "Merchant",
                     "Healing_fountain", "Boss", "Final Boss", "Oberon", "Cerberus", "Dracula"]
     for element in element_list:
         set_element_on_map(map_elements, element, current_map)

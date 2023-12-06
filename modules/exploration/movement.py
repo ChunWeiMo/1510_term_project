@@ -1,6 +1,7 @@
 """
 Movement module.
 """
+from modules.character import items
 from modules.exploration import map, event
 import random
 
@@ -78,6 +79,8 @@ def check_for_event(character_dictionary, current_map):
         event.encounter_final_boss(character_dictionary, current_map)
     elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Chest":
         event.find_a_chest(character_dictionary, current_map)
+    elif current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] == "Merchant":
+        event.encounter_merchant(character_dictionary, current_map)
     elif (current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] ==
           "Healing_fountain"):
         event.rest_at_fountain(character_dictionary, current_map)

@@ -5,7 +5,7 @@ event modules
 from modules.exploration import map
 from modules.exploration import movement
 from modules.battle import enemy, battle
-from modules.character import equipment
+from modules.character import equipment, items
 
 
 def open_the_door(character_dictionary, current_map):
@@ -57,6 +57,7 @@ def encounter_cerberus(character_dictionary, current_map):
         current_map[(character_dictionary["X-coordinate"],
                      character_dictionary["Y-coordinate"])] = "Empty"
 
+
 def encounter_dracula(character_dictionary, current_map):
     enemy_dictionary = enemy.enemy()
     enemy_appeared = enemy_dictionary["Miniboss"][3]
@@ -77,7 +78,8 @@ def encounter_final_boss(character_dictionary, current_map):
     if is_enemy_killed:
         current_map[(character_dictionary["X-coordinate"],
                      character_dictionary["Y-coordinate"])] = "Empty"
-    
+
+
 def find_a_chest(character_dictionary, current_map):
     get_equipment = equipment.get_equipment(character_dictionary)
     if character_dictionary["Equipment"] == 0:
@@ -87,7 +89,8 @@ def find_a_chest(character_dictionary, current_map):
         while True:
             if character_dictionary["Equipment"]:
                 print(
-                    f"Your current equipment is: {character_dictionary['Equipment'][0]} {character_dictionary['Equipment'][1:]}")
+                    f"Your current equipment is: {character_dictionary['Equipment'][0]} "
+                    f"{character_dictionary['Equipment'][1:]}")
                 is_use_equipment = input("Do you want to change it? (Y/N) ")
             if is_use_equipment.upper() == "Y":
                 equipment.use_equipment(
@@ -104,5 +107,11 @@ def rest_at_fountain(character_dictionary, current_map):
     print("Take a sip of water, for rest is meant to pave the way for a longer journey ahead.")
     print("You get heal, HP +5")
     character_dictionary["Character_status"]["HP"] += 5
+    current_map[(character_dictionary["X-coordinate"],
+                 character_dictionary["Y-coordinate"])] = "Empty"
+
+
+def encounter_merchant(character_dictionary, current_map):
+    items.merchant(character_dictionary)
     current_map[(character_dictionary["X-coordinate"],
                  character_dictionary["Y-coordinate"])] = "Empty"

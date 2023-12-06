@@ -40,6 +40,7 @@ A detailed guide for the game! Info on every enemy and map in the game.
 >Level 3
 - HP: 150
 - 5 attribute points to allocate when reaching level 3
+
 ## Enemies
 >Level 1
 
@@ -68,6 +69,10 @@ A detailed guide for the game! Info on every enemy and map in the game.
 | **DEF** | 5            | 0          | 1           |
 | **SPD** | 0            | 6          | 4           |
 
+### Special Skills
+1. Cerberus: Attacks 3 times in a row.
+2. Oberon: Summons a High Pixie to heal his wounds every 3 turns.
+3. Dracula: Each turn, cures his own HP equal to the amount of damage dealt to the player.
 >Level 3 Final Boss
 
 |         | **Evil Dragon** |
@@ -76,6 +81,11 @@ A detailed guide for the game! Info on every enemy and map in the game.
 | **STR** | 7               |
 | **DEF** | 4               |
 | **SPD** | 3               |
+
+### Skills
+1. Fireball: Deals 2 extra damage and burns the player for 3 turns (Burn DOT: 5 HP per turn).
+2. Tail Whip: Deals 2 extra damage and has a 30% chance to stun the player for 1 turn.
+3. Claw Attack: Deals raw damage. Damage from this attack ignores player defense.
 
 ## Maps
 

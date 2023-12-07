@@ -2,7 +2,6 @@
 Map module.
 """
 import random
-import json
 
 
 def maps():

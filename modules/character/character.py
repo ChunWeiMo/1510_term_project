@@ -5,6 +5,14 @@ from modules.exploration import story_lines
 
 
 def make_character():
+    """
+    Create the base character.
+
+    :postcondition: create a base character and asks the user to add attribute points
+    :postcondition: returns a dictionary that includes character status, name, location, experience,
+    items, equipment and debuffs
+    :return: a dictionary of character attributes
+    """
     character_stats = {"Level": 1, "HP": 100, "STR": 1,
                        "DEF": 1, "CHR": 1, "SPD": 1, "LUK": 1, "VIS": 3}
     character_name = create_name()
@@ -24,6 +32,13 @@ def make_character():
 
 
 def create_name():
+    """
+    Names your character.
+
+    :postcondition: saves a name of the player's choosing, consisting of any unicode character, to the character
+    dictionary and prints a greeting to the player
+    :return: a string of unicode characters
+    """
     character_name = input("Enter your name (Max 10 letters long):\n")
     if len(character_name) == 0 or len(character_name) > 10:
         print("Character name must be between 1-10 characters long.")
@@ -34,6 +49,17 @@ def create_name():
 
 
 def add_attribute_points(attribute_points, character_dictionary):
+    """
+    Adds attribute points to the character dictionary.
+
+    :param attribute_points: an integer
+    :param character_dictionary: a dictionary of character attributes
+    :precondition: attribute_points must be a positive integer
+    :precondition: character_dictionary is a dictionary that includes character status, name, location, experience,
+    items, equipment and debuffs
+    :postcondition: adds attribute points to the character dictionary as specifier by the player and prints out the
+    character status after all attribute points are used
+    """
     while attribute_points > 0:
         try:
             player_point_input = int(input(f"Distribute your attribute points now. You have "
@@ -46,7 +72,8 @@ def add_attribute_points(attribute_points, character_dictionary):
         else:
             if player_point_input > 5 or player_point_input < 1:
                 print("Please enter a number from 1-5.\n")
-                add_attribute_points(attribute_points-attribute_points, character_dictionary)
+                # add_attribute_points(attribute_points-attribute_points, character_dictionary)
+                continue
             elif player_point_input == 1:
                 character_dictionary["Character_status"]["STR"] += 1
                 attribute_points -= 1
@@ -62,4 +89,4 @@ def add_attribute_points(attribute_points, character_dictionary):
             else:
                 character_dictionary["Character_status"]["LUK"] += 1
                 attribute_points -= 1
-        print(f"Your stats are: {character_dictionary['Character_status']}\n")
+    print(f"Your stats are: {character_dictionary['Character_status']}\n")

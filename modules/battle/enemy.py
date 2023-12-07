@@ -77,12 +77,21 @@ def ask_user(enemy_appeared):
     :return: a positive integer
     """
     print(f"{enemy_appeared['Name']} appears before you!")
-    user_input = input("What will you do?\n"
-                       "[1] Battle the monster\n"
-                       "[2] Talk to the monster\n"
-                       "[3] Use item\n"
-                       "[4] Run away\n")
-    return user_input
+    while True:
+        try:
+            user_input = int(input("What will you do?\n"
+                                   "[1] Battle the monster\n"
+                                   "[2] Talk to the monster\n"
+                                   "[3] Use item\n"
+                                   "[4] Run away\n"))
+        except ValueError:
+            print("Please enter a number between 1-4.")
+        else:
+            if user_input > 4 or user_input < 1:
+                print("Please enter a number between 1-4.")
+                continue
+            else:
+                return user_input
 
 
 def battle_talk_escape(character_dictionary, user_input, enemy_appeared):

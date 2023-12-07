@@ -169,11 +169,7 @@ def walls(current_map):
 def create_map(character_dictionary, map_list):
     rows = 10
     columns = 10
-    current_map = dict()
-    for row in range(rows):
-        for column in range(columns):
-            coordinate = (column, row)
-            current_map[coordinate] = "Empty"
+    current_map = {(column, row): "Empty" for row in range(rows) for column in range(columns)}
     map_elements = select_map(character_dictionary, map_list)
     describe_current_map(character_dictionary, map_elements)
     element_list = ["Door", "Enemy", "Chest", "Merchant",

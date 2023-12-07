@@ -72,7 +72,6 @@ def add_attribute_points(attribute_points, character_dictionary):
         else:
             if player_point_input > 5 or player_point_input < 1:
                 print("Please enter a number from 1-5.\n")
-                # add_attribute_points(attribute_points-attribute_points, character_dictionary)
                 continue
             elif player_point_input == 1:
                 character_dictionary["Character_status"]["STR"] += 1

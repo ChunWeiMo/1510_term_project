@@ -217,5 +217,7 @@ def battle_merchant(character_dictionary):
 def leave_merchant():
     """
     Prints merchant line after player finishes interacting with the Merchant.
+
+    :postcondition: prints the merchant's goodbye line
     """
     print("\nMerchant: Thanks for stopping by!")

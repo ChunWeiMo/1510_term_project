@@ -2,7 +2,7 @@ from modules.exploration.map import maps
 from unittest import TestCase
 
 
-class TestWalls(TestCase):
+class TestMaps(TestCase):
     def test_return_maps(self):
         expected_maps = {1: {'Description 1': 'You enter a grassy meadow.\nThere is a merchant getting attacked by a '
                                               'group of monsters!\nWill you help him?\n',

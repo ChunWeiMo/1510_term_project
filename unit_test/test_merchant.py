@@ -23,21 +23,20 @@ class TestMerchant(TestCase):
             merchant(self.character_dictionary)
             mock_battle_merchant.assert_called_with(self.character_dictionary)
 
-    @patch('sys.stdout', new_callable=io.StringIO)
     @patch('builtins.input', side_effect=['3'])
-    def test_leave_option(self, _, mock_output):
-        merchant(self.character_dictionary)
-        expected = ("\nMerchant: Oh! What are you doing here? You must be a hero!\n"
-                    "Come check out my humble store!\n"
-                    "\nMerchant: Thanks for stopping by!\n")
-        self.assertEqual(expected, mock_output.getvalue())
+    def test_leave_option(self, _):
+        with unittest.mock.patch('modules.character.items.leave_merchant') as mock_leave_merchant:
+            merchant(self.character_dictionary)
+            mock_leave_merchant.assert_called_with()
 
-    @patch('sys.stdout', new_callable=io.StringIO)
     @patch('builtins.input', side_effect=['4', '3'])
-    def test_invalid_input_then_valid_input(self, _, mock_output):
-        merchant(self.character_dictionary)
-        expected = ("\nMerchant: Oh! What are you doing here? You must be a hero!\n"
-                    "Come check out my humble store!\n"
-                    "\nPlease enter a number from 1-3.\n"
-                    "\nMerchant: Thanks for stopping by!\n")
-        self.assertEqual(expected, mock_output.getvalue())
+    def test_invalid_input_then_valid_input(self, _):
+        with unittest.mock.patch('modules.character.items.leave_merchant') as mock_leave_merchant:
+            merchant(self.character_dictionary)
+            mock_leave_merchant.assert_called_with()
+
+    @patch('builtins.input', side_effect=['a', '3'])
+    def test_invalid_input_letter_then_valid_input(self, _):
+        with unittest.mock.patch('modules.character.items.leave_merchant') as mock_leave_merchant:
+            merchant(self.character_dictionary)
+            mock_leave_merchant.assert_called_with()

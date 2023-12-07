@@ -175,6 +175,9 @@ def set_element_on_map(map_elements: dict, element: str, current_map: dict):
     :param element: a string
     :param current_map: a dictionary
     :precondition: map_element must have element and a list of coordinate as key-value pairs
+    :precondition: element must be a string
+    :precondition: current_map must have element-coordinate as key-value pair
+    :precondition: coordinate must be a tuple of integers
     :postcondition: change Empty to element if there is an element at the coordinate
 
     >>> element_1 = "Door"

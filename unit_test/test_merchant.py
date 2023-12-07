@@ -1,7 +1,6 @@
 import unittest
 from unittest import TestCase
 from unittest.mock import patch
-import io
 from modules.character.items import merchant
 
 

@@ -39,6 +39,12 @@ class TestBuy(TestCase):
             buy(self.character_dictionary)
             mock_leave_merchant.assert_called_once()
 
+    @patch('builtins.input', side_effect=['a', '4'])
+    def test_invalid_input_litter_then_valid_input(self, _):
+        with unittest.mock.patch('modules.character.items.leave_merchant') as mock_leave_merchant:
+            buy(self.character_dictionary)
+            mock_leave_merchant.assert_called_once()
+
     @patch('builtins.input', side_effect=['3'])
     def test_not_enough_gold(self, _):
         with unittest.mock.patch('modules.character.items.check_gold') as mock_check_gold:

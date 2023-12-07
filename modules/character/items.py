@@ -99,8 +99,10 @@ def merchant(character_dictionary):
                 continue
             elif response == 1:
                 buy(character_dictionary)
+                break
             elif response == 2:
                 battle_merchant(character_dictionary)
+                break
             else:
                 leave_merchant()
                 break
@@ -117,14 +119,14 @@ def buy(character_dictionary):
     potions, 3 will purchase 10 potions, and 4 will let you stop talking to the merchant
     """
     print(f"\nMerchant: Welcome!\n"
-          f"You currently have {character_dictionary['Items']['Gold']} gold.")
+          f"Merchant: You currently have {character_dictionary['Items']['Gold']} gold.")
     while True:
         try:
-            buy_response = int(input(f"Merchant: What would you like to buy?\n"
-                                     f"[1] Potion x1 -----10 Gold\n"
-                                     f"[2] Potion x5 -----45 Gold\n"
-                                     f"[3] Potion x10 ----90 Gold\n"
-                                     f"[4] Leave\n"))
+            buy_response = int(input("Merchant: What would you like to buy?\n"
+                                     "[1] Potion x1 -----10 Gold\n"
+                                     "[2] Potion x5 -----45 Gold\n"
+                                     "[3] Potion x10 ----90 Gold\n"
+                                     "[4] Leave\n"))
         except ValueError:
             print("\nPlease enter a number from 1-4.")
         else:
@@ -134,12 +136,15 @@ def buy(character_dictionary):
             elif buy_response == 1:
                 potions = 1
                 check_gold(character_dictionary, potions)
+                break
             elif buy_response == 2:
                 potions = 5
                 check_gold(character_dictionary, potions)
+                break
             elif buy_response == 3:
                 potions = 10
                 check_gold(character_dictionary, potions)
+                break
             else:
                 leave_merchant()
                 break
@@ -183,7 +188,7 @@ def battle_merchant(character_dictionary):
     zero
     """
     print("\nMerchant: What! you're trying to rob me?!\nMerchant: Hmph, who do you think I am! "
-          "I stay in the dungeon farming for"
+          "I stay in the dungeon farming for "
           "gold day in an day out.\nMerchant: You cannot defeat me!\n")
     merchant_stats = {"Level": 9999, "HP": 9999, "STR": 50, "DEF": 50, "SPD": 1}
     turn = "merchant"

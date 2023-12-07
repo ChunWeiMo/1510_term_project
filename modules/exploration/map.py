@@ -4,7 +4,13 @@ Map module.
 import random
 
 
-def maps():
+def maps() -> dict:
+    """
+    Create a dictionary of 10 maps with description and map elements.
+
+    :postcondition: create a dictionary of 10 maps with description and map elements
+    :return: a dictionary
+    """
     map_1 = {"Description 1": "You enter a grassy meadow.\n"
                               "There is a merchant getting attacked by a group of monsters!\n"
                               "Will you help him?\n",
@@ -116,21 +122,41 @@ def maps():
     return map_list
 
 
-def select_map(character_dictionary, map_list):
+def select_map(character_dictionary: dict, map_list: dict) -> dict:
+    """
+    Return a random map elements according to character level and lucky.
+
+    :param character_dictionary: a dictionary of character attributes
+    :param map_list: a dictionary of 10 map
+    :precondition: attribute_points must be a positive integer
+    :precondition: character_dictionary is a dictionary that includes character status, name, location, experience,
+     items, equipment and debuffs
+    :precondition: the key of map_list is description or map elements
+    :precondition: the value of map_list is the content description or coordinate
+    :return: a dictionary
+    """
     if character_dictionary["Character_status"]["Level"] < 3:
         if character_dictionary["Character_status"]["LUK"] > 5:
             map_elements = map_list[random.randint(1, 10)]
-            # map_elements = map_list[6]
         else:
             map_elements = map_list[random.randint(1, 9)]
-            # map_elements = map_list[6]
     else:
         map_elements = map_list[11]
-    
     return map_elements
 
 
-def describe_current_map(character_dictionary, map_elements):
+def describe_current_map(character_dictionary: dict, map_elements: dict):
+    """
+    Print the description of the map.
+
+    :param character_dictionary: a dictionary of character attributes
+    :param map_elements: a dictionary of map elements
+    :precondition: attribute_points must be a positive integer
+    :precondition: character_dictionary is a dictionary that includes character status, name, location, experience,
+     items, equipment and debuffs
+    :precondition: map_element must have key Description 1 and Description 2
+    :procondition: print the description of the map
+    """
     if character_dictionary["Character_status"]["Level"] == 1:
         print(map_elements["Description 1"])
     elif character_dictionary["Character_status"]["Level"] == 2:
@@ -141,7 +167,31 @@ def describe_current_map(character_dictionary, map_elements):
               "your arrival.")
 
 
-def set_element_on_map(map_elements, element, current_map):
+def set_element_on_map(map_elements: dict, element: str, current_map: dict):
+    """
+    Set elements on current map.
+
+    :param map_elements: a dictionary of map elements
+    :param element: a string
+    :param current_map: a dictionary
+    :precondition: map_element must have element and a list of coordinate as key-value pairs
+    :postcondition: change Empty to element if there is an element at the coordinate
+
+    >>> element_1 = "Door"
+    >>> current_map_1 = {(0, 0): 'Empty', (1, 0): 'Empty', (0, 1): 'Empty', (1, 1): 'Empty'}
+    >>> map_elements_1 = {'Door': [(0, 0)]}
+    >>> set_element_on_map(map_elements_1, element_1, current_map_1)
+    >>> current_map_1
+    {(0, 0): 'Door', (1, 0): 'Empty', (0, 1): 'Empty', (1, 1): 'Empty'}
+
+    >>> element_1 = "Enemy"
+    >>> current_map_1 = {(0, 0): 'Empty', (1, 0): 'Empty', (2, 0): 'Empty', (0, 1): 'Empty', (1, 1): 'Empty',
+    ...                  (2, 1): 'Empty'}
+    >>> map_elements_1 = {'Enemy': [(1, 1), (0, 1)]}
+    >>> set_element_on_map(map_elements_1, element_1, current_map_1)
+    >>> current_map_1
+    {(0, 0): 'Empty', (1, 0): 'Empty', (2, 0): 'Empty', (0, 1): 'Enemy', (1, 1): 'Enemy', (2, 1): 'Empty'}
+    """
     try:
         map_elements[element]
     except KeyError:
@@ -155,7 +205,23 @@ def set_element_on_map(map_elements, element, current_map):
             print(f"{coordinate} is not in the map.")
 
 
-def walls(current_map):
+def walls(current_map: dict) -> tuple:
+    """
+    Return the boundaries of the current map.
+
+    :param current_map: a dictionary
+    :precondition: key is a tuple that contains a set of coordinates
+    :postcondition: get the boundary of the current map
+    :return: a tuple
+    >>> current_map_1 = {(0, 0): 'Empty', (0, 1): 'Empty', (1, 0): 'Empty', (1, 1): 'Empty'}
+    >>> walls(current_map_1)
+    (1, 1)
+
+    >>> current_map_1 = {(0, 0): 'Empty', (0, 1): 'Empty', (1, 0): 'Empty', (1, 1): 'Empty',(2, 0): 'Empty',
+    ... (2, 1): 'Empty'}
+    >>> walls(current_map_1)
+    (1, 2)
+    """
     east_wall = 1
     south_wall = 1
     for grid in current_map:
@@ -166,7 +232,20 @@ def walls(current_map):
     return south_wall, east_wall
 
 
-def create_map(character_dictionary, map_list):
+def create_map(character_dictionary: dict, map_list: dict) -> dict:
+    """
+    Create a map with map elements.
+
+    :param character_dictionary: a dictionary of character attributes
+    :param map_list: a dictionary of 10 map
+    :precondition: attribute_points must be a positive integer
+    :precondition: character_dictionary is a dictionary that includes character status, name, location, experience,
+     items, equipment and debuffs
+    :precondition: the key of map_list is description or map elements
+    :precondition: the value of map_list is the content description or coordinate
+    :postcondition: create a map with map elements
+    :return: a dictionary
+    """
     rows = 10
     columns = 10
     current_map = {(column, row): "Empty" for row in range(rows) for column in range(columns)}

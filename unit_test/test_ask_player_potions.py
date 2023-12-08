@@ -11,7 +11,7 @@ class TestAskPlayerPotions(TestCase):
             'Character_status': {'HP': 100}}
 
     @patch('builtins.input', side_effect=['2'])
-    def test_valid_input(self, _):
+    def test_valid_input_any(self, _):
         expected = ask_player_potions(self.character_dictionary)
         self.assertEqual(expected, 2)
 
@@ -57,13 +57,13 @@ class TestAskPlayerPotions(TestCase):
         self.assertEqual(expected, mock_output.getvalue())
 
     @patch('builtins.input', side_effect=['a', '4'])
-    def test_input_letter_then_valid_input(self, _):
+    def test_invalid_input_letter_then_valid_input(self, _):
         expected = ask_player_potions(self.character_dictionary)
         self.assertEqual(expected, 4)
 
     @patch('sys.stdout', new_callable=io.StringIO)
     @patch('builtins.input', side_effect=['a', '4'])
-    def test_print_input_letter_then_valid_input(self, _, mock_output):
+    def test_print_invalid_input_letter_then_valid_input(self, _, mock_output):
         ask_player_potions(self.character_dictionary)
         expected = "\nPlease enter the amount of potions as a number.\n"
         self.assertEqual(expected, mock_output.getvalue())

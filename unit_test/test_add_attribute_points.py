@@ -26,7 +26,7 @@ class TestAddPoints(TestCase):
 
     @patch('builtins.input', side_effect=[1, 2, 3, 4, 5])
     @patch('sys.stdout', new_callable=io.StringIO)
-    def test_add_attribute_points_different(self, mock_output, _):
+    def test_add_attribute_points_to_different_attributes(self, mock_output, _):
         attribute_points = 5
         character_dictionary = {"Character_status": {"Level": 1, "HP": 100, "STR": 3,
                                                      "DEF": 2, "CHR": 3, "SPD": 3, "LUK": 1, "VIS": 3},
@@ -45,7 +45,7 @@ class TestAddPoints(TestCase):
 
     @patch('builtins.input', side_effect=["a", 1, 2, 3, 10, 4, 5])
     @patch('sys.stdout', new_callable=io.StringIO)
-    def test_incorrect_inputs(self, mock_output, _):
+    def test_multiple_incorrect_inputs(self, mock_output, _):
         attribute_points = 5
         character_dictionary = {"Character_status": {"Level": 1, "HP": 100, "STR": 3,
                                                      "DEF": 2, "CHR": 3, "SPD": 3, "LUK": 1, "VIS": 3},

@@ -1,7 +1,6 @@
 import io
 from unittest import TestCase
 from unittest.mock import patch
-
 from modules.character.items import use_potion
 
 

@@ -83,6 +83,7 @@ def encounter_final_boss(character_dictionary, current_map):
         
 
 def find_a_chest(character_dictionary, current_map):
+    current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] = "Empty"
     is_use_equipment = ""
     get_equipment = equipment.get_equipment(character_dictionary)
     if character_dictionary["Equipment"] == 0:
@@ -103,7 +104,6 @@ def find_a_chest(character_dictionary, current_map):
             elif is_use_equipment.upper() == "N":
                 print("You prefer wielding familiar things right?")
                 break
-        current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] = "Empty"
 
 
 def rest_at_fountain(character_dictionary, current_map):

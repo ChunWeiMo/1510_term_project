@@ -2,6 +2,12 @@
 
 
 def enemy_lines():
+    """
+    Creates a dictionary of all enemy lines.
+
+    :postcondition: creates a dictionary containing all enemy questions and responses
+    :return: a dictionary of keys, a string, and values, a string
+    """
     # Lvl 1 enemies
     slime_chat = {
         "Question": "Plip plop plip plop~~",

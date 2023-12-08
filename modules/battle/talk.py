@@ -200,7 +200,7 @@ def get_reply(response, response_options, character_dictionary, enemy_appeared, 
 
 def check_special_lines(response, response_options, character_dictionary):
     """
-    Check to see if there are any special answer or replies that affect the character dictionary.
+    Check to see if there are any special answers that affect the character dictionary.
 
     :param response: a positive non-zero integer
     :param response_options: a dictionary of enemy responses
@@ -210,8 +210,7 @@ def check_special_lines(response, response_options, character_dictionary):
     the key being an integer and the value being a string
     :precondition: character_dictionary is a dictionary that includes character status, name, location, experience,
     items, equipment and debuffs
-    :postcondition:
-    :return:
+    :postcondition: if the response is a special response, update the character dictionary
     """
     if response_options[response] == "Sure...(-5 HP)" or response_options[response] == "Sure ♥(-5 HP)":
         if character_dictionary["Character_status"]["HP"] > 5:
@@ -239,6 +238,17 @@ def check_special_lines(response, response_options, character_dictionary):
 
 
 def check_special_responses(specific_enemy_lines, character_dictionary):
+    """
+    Check to see if there are any special replies that affect the character dictionary.
+
+    :param specific_enemy_lines: a dictionary of keys and values of strings
+    :param character_dictionary: a dictionary of character attributes
+    :precondition: specific_enemy_lines is a dictionary of talk lines for a specified enemy where the key is a string
+    representing the question or response number and the value is a string representing the line
+    :precondition: character_dictionary is a dictionary that includes character status, name, location, experience,
+    items, equipment and debuffs
+    :postcondition: if the reply is a special reply, update the character dictionary
+    """
     if (specific_enemy_lines['Reply 2.1'] == "How's a potion sound?" or
             specific_enemy_lines['Reply 2.1'] == "I don't have any human food or drinks, "
                                                  "but I have this potion I got from a dead adventurer!"):
@@ -252,6 +262,28 @@ def check_special_responses(specific_enemy_lines, character_dictionary):
 
 
 def talk_boss(specific_enemy_lines, enemy_appeared, character_dictionary, turn, max_turn):
+    """
+    Start talk mode with a miniboss or final boss.
+
+    :param specific_enemy_lines: a dictionary of keys and values of strings
+    :param enemy_appeared: a dictionary of enemy attributes
+    :param character_dictionary: a dictionary of character attributes
+    :param turn: a positive non-zero integer
+    :param max_turn: a positive non-zero integer
+    :precondition: specific_enemy_lines is a dictionary of talk lines for a specified enemy where the key is a string
+    representing the question or response number and the value is a string representing the line
+    :precondition: enemy_appeared is a dictionary of enemy attributes of the randomly selected enemy
+    encountered by the player
+    :precondition: character_dictionary is a dictionary that includes character status, name, location, experience,
+    items, equipment and debuffs
+    :precondition: turn is a positive non-zero integer between 1-5 inclusive
+    :precondition: max_turn is 3 for mini boss and 5 for final boss
+    :postcondition: when talking to a miniboss or boss, upon a successful reply, return True and increase turn by 1
+    :postcondition: when talking to the final boss, upon a successful chat 5 times, return True for goal achieved
+    :postcondition: when talking to a miniboss, upon a successful chat 3 times, return True for enemy defeated
+    :postcondition: when talking to a miniboss or final boss, upon an unsuccessful chat, return False and head into battle
+    :return: a boolean True or False
+    """
     passed = True
     while turn <= max_turn:
         if turn == 1:
@@ -285,6 +317,18 @@ def talk_boss(specific_enemy_lines, enemy_appeared, character_dictionary, turn, 
 
 
 def randomizer_boss(specific_enemy_lines, question):
+    """
+    Generates a random sequence of answers from each boss' specific lines.
+
+    :param specific_enemy_lines: a dictionary of keys and values of strings
+    :param question: a string representing the question number
+    :precondition: specific_enemy_lines is a dictionary of talk lines for a specified enemy where the key is a string
+    representing the question or response number and the value is a string representing the line
+    :precondition: question is a string representing the question number
+    :postcondition: generates a dictionary with answers for a specific enemy in a randomized order with
+    the key being an integer and the value being a string
+    :return: a dictionary of enemy responses
+    """
     answer_randomizer = random.randint(1, 3)
     if answer_randomizer == 1:
         response_options = {1: specific_enemy_lines[question]["Answer 1"],
@@ -303,6 +347,29 @@ def randomizer_boss(specific_enemy_lines, question):
 
 def get_reply_boss(response, response_options, character_dictionary, enemy_appeared, specific_enemy_lines,
                    question):
+    """
+    Print the boss' reply to the player's response.
+
+    :param response: a positive non-zero integer
+    :param response_options: a dictionary of enemy responses
+    :param character_dictionary: a dictionary of character attributes
+    :param enemy_appeared: a dictionary of enemy attributes
+    :param specific_enemy_lines: a dictionary of keys and values of strings
+    :param question: a string representing the question number
+    :precondition: response is a positive non-zero integer between 1-3 inclusive
+    :precondition: response_options is a dictionary with answers for a specific enemy in a randomized order with
+    the key being an integer and the value being a string
+    :precondition: character_dictionary is a dictionary that includes character status, name, location, experience,
+    items, equipment and debuffs
+    :precondition: enemy_appeared is a dictionary of enemy attributes of the randomly selected enemy
+    encountered by the player
+    :precondition: specific_enemy_lines is a dictionary of talk lines for a specified enemy where the key is a string
+    representing the question or response number and the value is a string representing the line
+    :precondition: question is a string representing the question number
+    :postcondition: prints the enemy reply to the response of the player and returns True if the talk was successful
+    :postcondition: if the talk was unsuccessful, enter battle and return True if the battle was won
+    :return: a boolean True or False
+    """
     passed = False
     if enemy_appeared["Name"] == "Evil Dragon":
         battle_type = battle.fight_final_boss

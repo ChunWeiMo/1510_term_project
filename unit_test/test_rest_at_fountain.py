@@ -18,3 +18,4 @@ class TestRestAtFountain(TestCase):
                                  "LUK": 1, "VIS": 3},
             "Name": "heal", "X-coordinate": 1, "Y-coordinate": 7}
         self.assertEqual(expected_character_dictionary, self.character_dictionary)
+

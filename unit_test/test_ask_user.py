@@ -10,27 +10,27 @@ class TestAskUser(TestCase):
         self.enemy_appeared = {'Name': 'Wolf', 'HP': 15, 'STR': 3, 'DEF': 1, 'SPD': 2, 'EXP': 5, 'Gold': 1}
 
     @patch('builtins.input', side_effect=['1'])
-    def test_battle_option(self, _):
-            result = ask_user(self.enemy_appeared)
-            self.assertEqual(result, 1)
+    def test_user_input_1(self, _):
+        result = ask_user(self.enemy_appeared)
+        self.assertEqual(result, 1)
 
     @patch('builtins.input', side_effect=['2'])
-    def test_talk_option(self, _):
+    def test_user_input_2(self, _):
         result = ask_user(self.enemy_appeared)
         self.assertEqual(result, 2)
 
     @patch('builtins.input', side_effect=['3'])
-    def test_use_item_option(self, _):
+    def test_user_input_3(self, _):
         result = ask_user(self.enemy_appeared)
         self.assertEqual(result, 3)
 
     @patch('builtins.input', side_effect=['4'])
-    def test_run_option(self, _):
+    def test_user_input_4(self, _):
         result = ask_user(self.enemy_appeared)
         self.assertEqual(result, 4)
 
     @patch('builtins.input', side_effect=['5', '3'])
-    def test_invalid_input_then_valid_input(self, _):
+    def test_invalid_input_number_then_valid_input(self, _):
         result = ask_user(self.enemy_appeared)
         self.assertEqual(result, 3)
 

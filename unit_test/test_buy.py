@@ -34,13 +34,13 @@ class TestBuy(TestCase):
             mock_leave_merchant.assert_called_once()
 
     @patch('builtins.input', side_effect=['5', '4'])
-    def test_invalid_input_then_valid_input(self, _):
+    def test_invalid_input_number_then_valid_input(self, _):
         with unittest.mock.patch('modules.character.items.leave_merchant') as mock_leave_merchant:
             buy(self.character_dictionary)
             mock_leave_merchant.assert_called_once()
 
     @patch('builtins.input', side_effect=['a', '4'])
-    def test_invalid_input_litter_then_valid_input(self, _):
+    def test_invalid_input_letter_then_valid_input(self, _):
         with unittest.mock.patch('modules.character.items.leave_merchant') as mock_leave_merchant:
             buy(self.character_dictionary)
             mock_leave_merchant.assert_called_once()

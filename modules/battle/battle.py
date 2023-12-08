@@ -414,25 +414,26 @@ def miniboss_menu(character_dictionary, enemy_appeared):
     :postcondition: if the input is not between 1-3 inclusive, display the player's options again
     :return: a boolean True or False or None
     """
-    try:
-        boss_response = int(input("It is currently your turn. What would you like to do?\n"
-                                  "[1] Fight\n"
-                                  "[2] Use item\n"
-                                  "[3] Escape\n"))
-    except ValueError:
-        print("You must enter 1 or 3.\n")
-    else:
-        if boss_response < 1 or boss_response > 3:
+    while True:
+        try:
+            boss_response = int(input("It is currently your turn. What would you like to do?\n"
+                                      "[1] Fight\n"
+                                      "[2] Use item\n"
+                                      "[3] Escape\n"))
+        except ValueError:
             print("You must enter 1 or 3.\n")
-            miniboss_menu(character_dictionary, enemy_appeared)
-        elif boss_response == 1:
-            return
-        elif boss_response == 2:
-            items.use_potion(character_dictionary)
-            miniboss_menu(character_dictionary, enemy_appeared)
         else:
-            can_run = run_away(character_dictionary)
-            return can_run
+            if boss_response < 1 or boss_response > 3:
+                print("You must enter 1 or 3.\n")
+                continue
+            elif boss_response == 1:
+                return
+            elif boss_response == 2:
+                items.use_potion(character_dictionary)
+                continue
+            else:
+                can_run = run_away(character_dictionary)
+                return can_run
 
 
 def miniboss_turn(character_dictionary, enemy_appeared, turn, rounds):
@@ -663,21 +664,22 @@ def boss_menu(character_dictionary):
     :postcondition: if the player chooses to use an item, use the item and display the player's options again
     :postcondition: if the input is not between 1-2 inclusive, display the player's options again
     """
-    try:
-        boss_response = int(input("It is currently your turn. What would you like to do?\n"
-                                  "[1] Fight\n"
-                                  "[2] Use item\n"))
-    except ValueError:
-        print("\nYou must enter 1 or 2.\n")
-    else:
-        if boss_response < 1 or boss_response > 2:
+    while True:
+        try:
+            boss_response = int(input("It is currently your turn. What would you like to do?\n"
+                                      "[1] Fight\n"
+                                      "[2] Use item\n"))
+        except ValueError:
             print("\nYou must enter 1 or 2.\n")
-            boss_menu(character_dictionary)
-        elif boss_response == 1:
-            return
         else:
-            items.use_potion(character_dictionary)
-            boss_menu(character_dictionary)
+            if boss_response < 1 or boss_response > 2:
+                print("\nYou must enter 1 or 2.\n")
+                continue
+            elif boss_response == 1:
+                return
+            else:
+                items.use_potion(character_dictionary)
+                continue
 
 
 def boss_turn(character_dictionary, enemy_appeared, turn):

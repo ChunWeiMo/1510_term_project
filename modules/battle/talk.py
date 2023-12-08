@@ -20,9 +20,9 @@ def get_enemy_lines(enemy_appeared):
 
     >>> enemy_appeared = {"Name": "Slime"}
     >>> get_enemy_lines(enemy_appeared)
-    {'Question': 'Plip plop plip plop~~', 'Answer 1': '*Pat it*', 'Answer 2': '*Squeeze it*', 'Answer 3': '*kick it*',\
-'Reply 1': 'Pliippp! (it looks happy)', 'Reply 2': 'PLIPP! (battle)', 'Reply 2.1': 'Pliiiipppp~\
-(it looks content)', 'Reply 3': 'GRRrr (battle)', 'Reply 3.1': 'plip..(it looks sad and scared)'}
+    {'Question': 'Plip plop plip plop~~', 'Answer 1': '*Pat it*', 'Answer 2': '*Squeeze it*', 'Answer 3': '*kick it*', \
+'Reply 1': 'Pliippp! (it looks happy)', 'Reply 2': 'PLIPP! (battle)', 'Reply 2.1': 'Pliiiipppp~ (it looks content)', 'R\
+eply 3': 'GRRrr (battle)', 'Reply 3.1': 'plip..(it looks sad and scared)'}
     """
     enemy_lines_dictionary = enemy_lines.enemy_lines()
     if enemy_appeared["Name"] == "Slime":

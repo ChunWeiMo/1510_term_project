@@ -23,6 +23,11 @@ Student Number: A00959925
 
 GitHub Username: pkwlo
 
+## Sample Code for Mandatory Python Elements
+
+
+
+
 ## Technologies and Resources Used
 - Python 3.11.5
 

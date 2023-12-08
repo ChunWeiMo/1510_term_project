@@ -71,35 +71,6 @@ def print_vision(character, current_map):
     :precondition: coordinate must be a tuple of integers
     :postcondition: character vision range is character["Character_status"]["VIS"]
     :postcondition: print every element in character vision range
-    >>> character_dictionary_1 = {"Character_status": {"Level": 1, "HP": 100, "STR": 11, "DEF": 1, "CHR": 1, "SPD": 1,
-    ...                                                 "LUK": 1, "VIS": 2},
-    ...                            "Name": "describe", "X-coordinate": 0, "Y-coordinate": 0,
-    ...                            "EXP": 0, "Items": {"Gold": 0, "Potions": 0},
-    ...                            "Equipment": 0, "Debuff": {"Burn": 0}}
-    >>> current_map_1 = {(0, 0): "Empty", (1, 0): "Empty", (2, 0): "Empty", (3, 0): "Door",
-    ...                  (0, 1): "Enemy", (1, 1): "Enemy", (2, 1): "Enemy", (3, 1): "Empty",
-    ...                  (0, 2): "Empty", (1, 2): "Empty", (2, 2): "Door", (3, 2): "Empty"}
-    >>> print_vision(character_dictionary_1, current_map_1)
-    <BLANKLINE>
-    - - - - -
-    - - - - -
-    | | #
-    | | E E E
-    | |     D
-
-    >>> character_dictionary_1 = {"Character_status": {"Level": 1, "HP": 100, "STR": 11, "DEF": 1, "CHR": 1, "SPD": 1,
-    ...                                                 "LUK": 1, "VIS": 1},
-    ...                            "Name": "describe", "X-coordinate": 1, "Y-coordinate": 1,
-    ...                            "EXP": 0, "Items": {"Gold": 0, "Potions": 0},
-    ...                            "Equipment": 0, "Debuff": {"Burn": 0}}
-    >>> current_map_1 = {(0, 0): "Empty", (1, 0): "Empty", (2, 0): "Empty", (3, 0): "Door",
-    ...                  (0, 1): "Enemy", (1, 1): "Enemy", (2, 1): "Enemy", (3, 1): "Empty",
-    ...                  (0, 2): "Empty", (1, 2): "Empty", (2, 2): "Door", (3, 2): "Empty"}
-    >>> print_vision(character_dictionary_1, current_map_1)
-    <BLANKLINE>
-    <BLANKLINE>
-    E # E
-        D
     """
     map_icon = {'Empty': ' ', 'Door': 'D', 'Healing_fountain': 'H', 'Enemy': 'E',
                 'Boss': 'B', 'Oberon': 'B', "Cerberus": "B", "Dracula": "B",

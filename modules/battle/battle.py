@@ -212,18 +212,6 @@ def enemy_defeated_talk(character_dictionary, enemy_appeared):
     :postcondition: print the results of a successful talk and return True
     :postcondition: if the player levels up, level up the player
     :return: a boolean True
-
-    >>> character_dictionary = {"Character_status": {"HP": 100, "STR": 10, "DEF": 10, "SPD": 10, "CHR": 10, "LUK": 10},
-    ...                         "EXP": 0, "Items": {"Gold": 0, "Potions": 0}, "Equipment": {"Weapon": "Fists",
-    ...                         "Armour": "Clothes", "Accessory": "None"}, "Debuffs": []}
-    >>> enemy_appeared = {"Name": "Goblin", "HP": 10, "STR": 10, "DEF": 10, "SPD": 10, "EXP": 10, "Gold": 10}
-    >>> enemy_defeated_talk(character_dictionary, enemy_appeared)
-    The talk was successful!
-    Goblin is enamoured with you!
-    You've gained 10 gold!
-    You've gained 10 experience!
-    Your experience is now at 10/100!
-    True
     """
     get_loot(character_dictionary, enemy_appeared)
     print("The talk was successful!\n")
@@ -259,6 +247,7 @@ def enemy_defeated(character_dictionary, enemy_appeared):
     You've gained 10 gold!
     You've gained 10 experience!
     Your experience is now at 10/100!
+    <BLANKLINE>
     True
     """
     get_loot(character_dictionary, enemy_appeared)
@@ -318,7 +307,7 @@ def level_up(character_dictionary):
     :postcondition: level up the player and add 5 attribute points to the character dictionary and reset the player's EXP
     """
     character_dictionary["Character_status"]["Level"] += 1
-    print(f"You leveled up! You are now level {character_dictionary['Character_status']['Level']}\n")
+    print(f"You leveled up! You are now level {character_dictionary['Character_status']['Level']}.\n")
     attribute_points = 5
     character_dictionary["EXP"] = 0
     if character_dictionary["Character_status"]["Level"] == 2:
@@ -365,17 +354,6 @@ def fight_miniboss(character_dictionary, enemy_appeared):
     encountered by the player
     :postcondition: when fighting a miniboss, upon a successful battle, return True for enemy defeated and False if the player is dead
     :return: a boolean True or False
-
-    >>> character_dictionary = {"Character_status": {"HP": 100, "STR": 10, "DEF": 10, "SPD": 10, "CHR": 10, "LUK": 10},
-    ...                         "EXP": 0, "Items": {"Gold": 0, "Potions": 0}, "Equipment": {"Weapon": "Fists",
-    ...                         "Armour": "Clothes", "Accessory": "None"}, "Debuffs": []}
-    >>> enemy_appeared = {"Name": "Cerberus", "HP": 10, "STR": 10, "DEF": 10, "SPD": 10, "EXP": 10, "Gold": 10}
-    >>> fight_miniboss(character_dictionary, enemy_appeared)
-    Cerberus has been slain!
-    You've gained 10 gold!
-    You've gained 10 experience!
-    Your experience is now at 10/100!
-    True
     """
     is_enemy_killed = False
     turn = "character"

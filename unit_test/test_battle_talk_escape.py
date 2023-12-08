@@ -76,11 +76,11 @@ class TestBTE(TestCase):
         expected = "You cannot run away from Evil Dragon!\nEvil Dragon appears before you!\n"
         self.assertEqual(mock_output.getvalue(), expected)
 
-    def test_input_4_fail_to_run(self):
+    @patch('modules.battle.enemy.random.randint', return_value=100)
+    def test_input_4_fail_to_run(self, _):
         with unittest.mock.patch('modules.battle.battle.fight') as mock_fight:
             enemy_appeared = {"Name": "Slime", "HP": 10, "STR": 2, "DEF": 1, "SPD": 2, "EXP": 3, "Gold": 1}
             user_input = 4
             battle_talk_escape(self.character_dictionary, user_input, enemy_appeared)
-            can_run = False
             can_start = False
             mock_fight.assert_called_with(self.character_dictionary, enemy_appeared, can_start)

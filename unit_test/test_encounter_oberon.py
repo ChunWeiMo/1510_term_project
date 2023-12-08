@@ -18,7 +18,7 @@ class TestEncounterOberon(TestCase):
         self.current_map = {(column, row): 'Empty' for row in range(10) for column in range(10)}
         self.current_map[(7, 1)] = "Oberon"
 
-    def test_encounter_oberon_escape(self):
+    def test_encounter_oberon(self):
         with unittest.mock.patch('modules.battle.enemy.ask_user') as mock_ask_user:
             encounter_oberon(self.character_dictionary, self.current_map)
             enemy_appeared = self.enemy_dictionary["Miniboss"][2]

@@ -3,7 +3,7 @@ Items module. This module holds functions related to using potions in battle and
 """
 
 
-def use_potion(character_dictionary):
+def use_potion(character_dictionary: dict):
     """
     Uses potions if the character has potions in their inventory.
 

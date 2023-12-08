@@ -8,7 +8,22 @@ from modules.battle import enemy
 from modules.character import equipment, items
 
 
-def open_the_door(character_dictionary, current_map):
+def open_the_door(character_dictionary: dict, current_map: dict) -> dict:
+    """
+    Create a new map when character open the door.
+
+    :param character_dictionary: a dictionary of character attributes
+    :param current_map: a dictionary
+    :precondition: attribute_points must be a positive integer
+    :precondition: character_dictionary is a dictionary that includes character status, name, location, experience,
+    :precondition: current_map must have element-coordinate as key-value pair
+    :precondition: coordinate must be a tuple of integers
+    :postcondition: if player input Y, create a random map according character level from map list
+    :postcondition: put character on a random door
+    :postcondition: if player input N, stay
+    :postcondition: keep looping until user enter Y or N
+    :return: a dictionary
+    """
     while True:
         is_open = input(f"Do you want to open the door? (Y/N): ")
         if is_open.capitalize() == "Y":
@@ -24,7 +39,19 @@ def open_the_door(character_dictionary, current_map):
             print(f"Please enter Y/N: ")
 
 
-def encounter_an_enemy(character_dictionary, current_map):
+def encounter_an_enemy(character_dictionary: dict, current_map: dict):
+    """
+    Encounter a random enemy and decide battle, talk or run away.
+
+    :param character_dictionary: a dictionary of character attributes
+    :param current_map: a dictionary
+    :precondition: attribute_points must be a positive integer
+    :precondition: character_dictionary is a dictionary that includes character status, name, location, experience,
+    :precondition: current_map must have element-coordinate as key-value pair
+    :precondition: coordinate must be a tuple of integers
+    :postcondition: generate a random enemy according character level from enemy list
+    :postcondition: if enemy is killed, change map element to Empty
+    """
     enemy_dictionary = enemy.enemy()
     enemy_appeared = enemy.select_enemy(character_dictionary, enemy_dictionary)
     user_input = enemy.ask_user(enemy_appeared)
@@ -35,7 +62,19 @@ def encounter_an_enemy(character_dictionary, current_map):
                      character_dictionary["Y-coordinate"])] = "Empty"
 
 
-def encounter_oberon(character_dictionary, current_map):
+def encounter_oberon(character_dictionary: dict, current_map: dict):
+    """
+    Encounter Oberon and decide battle, talk or run away.
+
+    :param character_dictionary: a dictionary of character attributes
+    :param current_map: a dictionary
+    :precondition: attribute_points must be a positive integer
+    :precondition: character_dictionary is a dictionary that includes character status, name, location, experience,
+    :precondition: current_map must have element-coordinate as key-value pair
+    :precondition: coordinate must be a tuple of integers
+    :postcondition: encounter mini boss Oberon decide battle, talk or run away.
+    :postcondition: if Oberon is killed, change map element to Empty
+    """
     enemy_dictionary = enemy.enemy()
     enemy_appeared = enemy_dictionary["Miniboss"][2]
     user_input = enemy.ask_user(enemy_appeared)
@@ -46,7 +85,19 @@ def encounter_oberon(character_dictionary, current_map):
                      character_dictionary["Y-coordinate"])] = "Empty"
         
 
-def encounter_cerberus(character_dictionary, current_map):
+def encounter_cerberus(character_dictionary: dict, current_map: dict):
+    """
+    Encounter Cerberus and decide battle, talk or run away.
+
+    :param character_dictionary: a dictionary of character attributes
+    :param current_map: a dictionary
+    :precondition: attribute_points must be a positive integer
+    :precondition: character_dictionary is a dictionary that includes character status, name, location, experience,
+    :precondition: current_map must have element-coordinate as key-value pair
+    :precondition: coordinate must be a tuple of integers
+    :postcondition: encounter mini boss Cerberus decide battle, talk or run away.
+    :postcondition: if Cerberus is killed, change map element to Empty
+    """
     enemy_dictionary = enemy.enemy()
     enemy_appeared = enemy_dictionary["Miniboss"][1]
     user_input = enemy.ask_user(enemy_appeared)
@@ -57,7 +108,19 @@ def encounter_cerberus(character_dictionary, current_map):
                      character_dictionary["Y-coordinate"])] = "Empty"
 
 
-def encounter_dracula(character_dictionary, current_map):
+def encounter_dracula(character_dictionary: dict, current_map: dict):
+    """
+    Encounter Dracula and decide battle, talk or run away.
+
+    :param character_dictionary: a dictionary of character attributes
+    :param current_map: a dictionary
+    :precondition: attribute_points must be a positive integer
+    :precondition: character_dictionary is a dictionary that includes character status, name, location, experience,
+    :precondition: current_map must have element-coordinate as key-value pair
+    :precondition: coordinate must be a tuple of integers
+    :postcondition: encounter mini boss Dracula decide battle, talk or run away.
+    :postcondition: if Dracula is killed, change map element to Empty
+    """
     enemy_dictionary = enemy.enemy()
     enemy_appeared = enemy_dictionary["Miniboss"][3]
     user_input = enemy.ask_user(enemy_appeared)
@@ -68,7 +131,20 @@ def encounter_dracula(character_dictionary, current_map):
                      character_dictionary["Y-coordinate"])] = "Empty"
         
 
-def encounter_final_boss(character_dictionary, current_map):
+def encounter_final_boss(character_dictionary: dict, current_map: dict) -> bool:
+    """
+    Encounter Final boss and battle
+
+    :param character_dictionary: a dictionary of character attributes
+    :param current_map: a dictionary
+    :precondition: attribute_points must be a positive integer
+    :precondition: character_dictionary is a dictionary that includes character status, name, location, experience,
+    :precondition: current_map must have element-coordinate as key-value pair
+    :precondition: coordinate must be a tuple of integers
+    :postcondition: encounter mini boss Dracula decide battle, talk or run away.
+    :postcondition: if Final boss is killed, assign true to achieve_goal
+    :return: a boolean
+    """
     achieved_goal = False
     enemy_dictionary = enemy.enemy()
     enemy_appeared = enemy_dictionary["Final Boss"]
@@ -82,7 +158,21 @@ def encounter_final_boss(character_dictionary, current_map):
     return achieved_goal
         
 
-def find_a_chest(character_dictionary, current_map):
+def find_a_chest(character_dictionary: dict, current_map: dict):
+    """
+    Find a chest and decide whether to use it or not.
+
+    :param character_dictionary: a dictionary of character attributes
+    :param current_map: a dictionary
+    :precondition: attribute_points must be a positive integer
+    :precondition: character_dictionary is a dictionary that includes character status, name, location, experience,
+    :precondition: current_map must have element-coordinate as key-value pair
+    :precondition: coordinate must be a tuple of integers
+    :postcondition: change map element to Empty
+    :postcondition: if character has no equipment, use it automatically
+    :postcondition: if character has equipment, input Y to replace it with new equipment
+    :postcondition: if character has equipment, input N keep original equipment
+    """
     current_map[(character_dictionary["X-coordinate"], character_dictionary["Y-coordinate"])] = "Empty"
     is_use_equipment = ""
     get_equipment = equipment.get_equipment(character_dictionary)
@@ -107,6 +197,29 @@ def find_a_chest(character_dictionary, current_map):
 
 
 def rest_at_fountain(character_dictionary, current_map):
+    """
+    Heal 5 hp at healing fountain.
+
+    :param character_dictionary: a dictionary of character attributes
+    :param current_map: a dictionary
+    :precondition: attribute_points must be a positive integer
+    :precondition: character_dictionary is a dictionary that includes character status, name, location, experience,
+    :precondition: current_map must have element-coordinate as key-value pair
+    :precondition: coordinate must be a tuple of integers
+    :postcondition: heal 5 hp
+    :postcondition: change map element to Empty
+
+    >>> character_dictionary_1 = {"Character_status": {"Level": 2, "HP": 110, "STR": 30, "DEF": 10, "CHR": 1, "SPD": 1,
+    ... "LUK": 1, "VIS": 3}, "Name": "heal", "X-coordinate": 2, "Y-coordinate": 7}
+    >>> current_map_1 = {(2, 7): 'Healing_fountain'}
+    >>> rest_at_fountain(character_dictionary_1, current_map_1)
+    Take a sip of water, for rest is meant to pave the way for a longer journey ahead.
+    You get heal, HP +5
+    >>> character_dictionary_1
+    {'Character_status': {'Level': 2, 'HP': 115, 'STR': 30, 'DEF': 10, 'CHR': 1, 'SPD': 1, 'LUK': 1, 'VIS': 3}, 'Name':\
+ 'heal', 'X-coordinate': 2, 'Y-coordinate': 7}
+    """
+
     print("Take a sip of water, for rest is meant to pave the way for a longer journey ahead.")
     print("You get heal, HP +5")
     character_dictionary["Character_status"]["HP"] += 5
@@ -114,7 +227,19 @@ def rest_at_fountain(character_dictionary, current_map):
                  character_dictionary["Y-coordinate"])] = "Empty"
 
 
-def encounter_merchant(character_dictionary, current_map):
+def encounter_merchant(character_dictionary: dict, current_map: dict):
+    """
+    Meet a merchant on the map.
+
+    :param character_dictionary: a dictionary of character attributes
+    :param current_map: a dictionary
+    :precondition: attribute_points must be a positive integer
+    :precondition: character_dictionary is a dictionary that includes character status, name, location, experience,
+    :precondition: current_map must have element-coordinate as key-value pair
+    :precondition: coordinate must be a tuple of integers
+    :postcondition: trade with the merchant
+    :postcondition: change map element to Empty
+    """
     items.merchant(character_dictionary)
     current_map[(character_dictionary["X-coordinate"],
                  character_dictionary["Y-coordinate"])] = "Empty"

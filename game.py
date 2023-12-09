@@ -64,7 +64,10 @@ def main():
         elif command.upper() == 'Q':
             break
         elif command.upper() == 'SAVE':
-            saveload.savedata(character_dictionary, current_map)
+            try:
+                saveload.savedata(character_dictionary, current_map)
+            except TypeError as error:
+                print(error)
         elif command.upper() == "LOAD":
             character_dictionary, current_map = saveload.ask_loaddata(
                 character_dictionary, current_map)

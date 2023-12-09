@@ -26,7 +26,7 @@ def enemy() -> dict:
     skeleton_archer = {"Name": "Skeleton Archer", "HP": 20, "STR": 4, "DEF": 0, "SPD": 4, "EXP": 3, "Gold": 2}
     restless_spirit = {"Name": "Restless Spirit", "HP": 30, "STR": 4, "DEF": 1, "SPD": 3, "EXP": 5, "Gold": 2}
     succubus = {"Name": "Succubus", "HP": 20, "STR": 3, "DEF": 1, "SPD": 4, "EXP": 5, "Gold": 2}
-    dungeon_maid = {"Name": "Dungeon Maid", "HP": 25, "STR": 3, "DEF": 3, "SPD": 2, "EXP": 3, "Gold": 2}
+    dungeon_maid = {"Name": "Dungeon Maid", "HP": 25, "STR": 3, "DEF": 3, "SPD": 2, "EXP": 30, "Gold": 2}
     gargoyle = {"Name": "Gargoyle", "HP": 40, "STR": 2, "DEF": 6, "SPD": 0, "EXP": 5, "Gold": 2}
 
     cerberus = {"Name": "Cerberus", "HP": 50, "STR": 5, "DEF": 5, "SPD": 0, "EXP": 8, "Gold": 5}

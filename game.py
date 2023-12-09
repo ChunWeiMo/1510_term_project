@@ -80,7 +80,7 @@ def main():
     if achieved_goal_talk:
         print(main_story["win_talk"])
     print("\nThank you for playing.")
-    print("Close the game.")
+    print("Closing the game.")
 
 
 if __name__ == "__main__":

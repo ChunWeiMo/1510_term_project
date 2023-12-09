@@ -13,12 +13,12 @@ def get_story(character_dictionary: dict) -> dict:
                  f'nearby field.\n\n{character_dictionary["Name"]}: Guess I\'ll start with these small fry!\n',
         'level 2': f'\n{character_dictionary["Name"]}: Hmm, now I feel a bit stronger '
                    'I think it\'s time to visit the dragon\'s lair.\n'
-                   f'\n{character_dictionary["Name"]}: The townsfolk told me '
+                   f'{character_dictionary["Name"]}: The townsfolk told me '
                    'it was in a dungeon just past this field.\n'
-                   f'\n{character_dictionary["Name"]}: I hope there isn\'t anything too scary inside...',
+                   f'{character_dictionary["Name"]}: I hope there isn\'t anything too scary inside...',
         'level 3': 'A loud resounding roar can be heard from deep in the depths of the dungeon.\n '
-                   f'\n{character_dictionary["Name"]}: Uh-oh...did the dragon wake up while I was leveling up?'
-                   f'\nYou hurry towards the sound.\n',
+                   f'{character_dictionary["Name"]}: Uh-oh...did the dragon wake up while I was leveling up?\n'
+                   f'You hurry towards the sound.\n',
         'death': f'\n{character_dictionary["Name"]}: ARGHhhHHHHhhHhAAAAHhh...\n'
                  'You died...The town of Moland, helpless against the dragon\'s resurrection, has gone up in flames, '
                  'not a single human spared by the dragon\'s wrath.',

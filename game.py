@@ -41,7 +41,6 @@ def main():
     main_story = story_lines.get_story(character_dictionary)
     command = "not assign"
     while character_dictionary["Character_status"]["HP"] > 0 and not achieved_goal and command.upper != "Q":
-        # command = "not assign"
         print()
         vision.print_vision(character_dictionary, current_map)
         movement.describe_current_location(character_dictionary, current_map)

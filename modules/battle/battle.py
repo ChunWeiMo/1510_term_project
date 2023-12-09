@@ -329,7 +329,7 @@ def level_up(character_dictionary: dict):
     :postcondition: level up the player and add 5 attribute points to the character
     dictionary and reset the player's EXP
     """
-    main_story = story_lines.get_story()
+    main_story = story_lines.get_story(character_dictionary)
     character_dictionary["Character_status"]["Level"] += 1
     print(
         f"You leveled up! You are now level {character_dictionary['Character_status']['Level']}.\n"
@@ -340,7 +340,7 @@ def level_up(character_dictionary: dict):
         print(main_story['level 2'])
         character_dictionary["Character_status"]["HP"] = 120
     if character_dictionary["Character_status"]["Level"] == 3:
-        print(main_story['lvl 3'])
+        print(main_story['level 3'])
         character_dictionary["Character_status"]["HP"] = 150
     character.add_attribute_points(attribute_points, character_dictionary)
 

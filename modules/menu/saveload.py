@@ -13,10 +13,13 @@ def savedata(character_dictionary: dict, current_map: dict):
     :precondition: coordinate must be a tuple of integers
     :postcondition: save character_dictionary to character.json
     :postcondition: save current_map to current_map.json
+    :raise TypeError: if current_map is not a dictionary
     """
+    if type(current_map) != dict:
+        raise TypeError("current_map must be a dictionary")
     with open("./character.json", "w") as file_object:
         json.dump(character_dictionary, file_object)
-        converted_map = {str(key): value for key, value in current_map.items()}
+    converted_map = {str(key): value for key, value in current_map.items()}
     with open("./current_map.json", 'w') as file_object:
         json.dump(converted_map, file_object)
         print(f"Playing data is saved successfully!")
@@ -37,7 +40,9 @@ def ask_loaddata(character_dictionary: dict, current_map: dict) -> tuple:
     """
     is_load = input("Unsaved data will be lost.\n Are you sure you want to load savedata? (Y/N)\n")
     if is_load.upper() == "Y":
-        character_dictionary, current_map = loaddata()
+        result = loaddata()
+        if result is not None:
+            character_dictionary, current_map = result
     return character_dictionary, current_map
 
 

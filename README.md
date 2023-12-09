@@ -25,7 +25,61 @@ GitHub Username: pkwlo
 
 ## Sample Code for Mandatory Python Elements
 
+1. use of immutable data structures like tuples to minimize unnecessary mutability
+    > tuple: map.py line 20 -> "Door": [(8, 0), (0, 4), (6, 9)]
+    
+    > tuple: equipment.py line 14 -> ["Steel sword", ("STR", 3)]
+2. use of mutable data structures like lists and dictionaries in a thoughtful and correct manner,
+   > list: map.py line 257 -> element_list = ["Door", "Enemy", "Chest", "Merchant",
+                    "Healing_fountain", "Boss", "Final Boss", "Oberon", "Cerberus", "Dracula"]
+   
+   > dictionary: character.py line 16 -> character_stats = {"Level": 1, "HP": 100, "STR": 1,
+                       "DEF": 1, "CHR": 1, "SPD": 1, "LUK": 1, "VIS": 3}
+3. thoughtful use of exceptions and exception handling that prevents the program from crashing
+    > battle.py line 427 -> try ... except ValueError
 
+    > game.py line 67 -> try ... except TypeError
+4. minimized scope and lifetime of all variables and objects
+5. decomposition of your idea into a collection of small, atomic, independent, and reusable functions
+6. simple flat code that is easy to understand
+7. demonstration of an understanding of how comprehensions work through the meaningful and
+correct use of one or more list/dictionary comprehensions
+    > battle.py line 474 -> [
+            cerberus_turn(character_dictionary, enemy_appeared)
+            for _ in itertools.repeat(None, 3)
+        ]
+
+    > dictionary comprehension: map.py line 254 -> current_map = {(column, row): "Empty" for row in range(rows) for column in range(columns)}
+1. selection using if-statements
+    > movement.py line 112 -> if direction == "N":
+        character_dictionary["Y-coordinate"] -= 1
+        print("moving toward North...")
+    
+    > talk.py line 28 -> if enemy_appeared["Name"] == "Slime":
+        specific_enemy_lines = enemy_lines_dictionary["Level 1"][0]
+2. repetition using the for-loop and/or the while loop where it makes sense but not excessively
+    > game.py line 43 -> while character_dictionary["Character_status"]["HP"] > 0 and not achieved_goal and command.upper != "Q":
+
+    > map.py line 259 for element in element_list:
+        set_element_on_map(map_elements, element, current_map)
+3.  use of the membership operator where it makes sense
+    > equipment.py line 81 -> if equipment_number in equipments:
+            equipment = equipments[equipment_number]
+            break
+4.  appropriate use of the the range function
+    > vision.py line 79 -> for row in range(-character["Character_status"]["VIS"], character["Character_status"]["VIS"]+1)
+5.  thoughtful and meaningful use of one or more functions from itertools
+    > battle.py line 474 -> [
+            cerberus_turn(character_dictionary, enemy_appeared)
+            for _ in itertools.repeat(None, 3)
+        ]
+6.  the random module
+    > map.py line 140 ->  map_elements = map_list[random.randint(1, 10)]
+7.  function annotations
+    > every function
+8.  doctests and/or unit tests for every single function
+    > unit_test folder: 225 tests in total
+9.  ALL output must be formatted using f-strings and/or str.format and/or %-formatting where applicable.
 
 
 ## Technologies and Resources Used

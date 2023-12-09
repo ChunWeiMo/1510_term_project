@@ -46,7 +46,7 @@ class TestGetReplyBoss(TestCase):
                                 self.enemy_appeared, self.specific_enemy_lines, self.question)
         self.assertTrue(result)
 
-    @patch('builtins.input', side_effect=[1, 2])
+    @patch('builtins.input', side_effect=[1])
     def test_response_to_answer_2_not_enough_CHR(self, _):
         response = 2
         character_dictionary = {"Character_status": {"Level": 1, "HP": 100, "STR": 1000,
@@ -61,11 +61,11 @@ class TestGetReplyBoss(TestCase):
     def test_response_to_answer_2_enough_CHR(self, _):
         response = 2
         character_dictionary = {"Character_status": {"Level": 1, "HP": 100, "STR": 1,
-                                                     "DEF": 5, "CHR": 1, "SPD": 1, "LUK": 1, "VIS": 3}, "EXP": 0,
+                                                     "DEF": 5, "CHR": 10, "SPD": 1, "LUK": 1, "VIS": 3}, "EXP": 0,
                                 "Items": {"Gold": 0, "Potions": 0}}
         result = get_reply_boss(response, self.response_options, character_dictionary,
                                 self.enemy_appeared, self.specific_enemy_lines, self.question)
-        self.assertFalse(result)
+        self.assertTrue(result)
 
     def test_response_to_answer_3_not_enough_CHR(self):
         response = 3

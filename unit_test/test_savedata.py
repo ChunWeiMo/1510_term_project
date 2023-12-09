@@ -12,6 +12,10 @@ class TestSaveDate(TestCase):
         savedata(self.character_dictionary, current_map)
         self.assertTrue(os.path.exists("./character.json"))
         self.assertTrue(os.path.exists("./current_map.json"))
+        if os.path.exists("./character.json"):
+            os.remove("./character.json")
+        if os.path.exists("./current_map.json"):
+            os.remove("./current_map.json")
 
     def test_current_map_not_dict_raise_TypeError(self):
         current_map = "current_map"

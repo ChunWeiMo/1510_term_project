@@ -92,7 +92,83 @@ correct use of one or more list/dictionary comprehensions
 # Game Guide
 A detailed guide for the game! Info on every enemy and map in the game. 
 
+## How to play
+
+1. Open the game
+   * New Game
+     * Create a character
+        > ![Alt text](./img/create_new_player.png)
+     * Slot attribute points
+        > ![Alt text](./img/attribute.png) 
+   * Continue your adventure
+        > ![Alt text](./img/continue.png)
+
+2. Exploration
+    > ![Alt text](./img/vision.png)
+  
+   * Command
+     
+       * Map
+            > You can only see what in your *vision range*
+       * Current location: 
+            > You are at X: 6, Y: 1. 
+       * Command list:
+            > N / E / S / W
+            * Move a direction
+            > ![Alt text](./img/move.png)
+            
+            > SAVE / LOAD
+            * Save or Load a play data
+            > STATS
+            * Show character states, equipment, item etc.:
+            > Q
+            * Quit game
+   * Map icon
+        > \#
+        * Character
+        > D
+        * Door: you can move to the next random map
+        > E
+        * Enemy: battle time
+        > B
+        * Mini boss: special enemy with ability
+        > C
+        * Equipment Chest: you can get one equipment
+        > M
+        * Merchant: you can buy potion from their
+        > H
+        * Healing fountain: you can heal HP here
+        > F
+        * Final boss: Evil Dragon
+        > \-\-\-\-\-
+        * North / south wall
+        > |||
+        * East / west wall
+3. Battle
+> Battle the monster
+* start a fight
+![Alt text](./img/battle.png)
+> Talk to the monster
+* can get more award
+![Alt text](./img/talk.png)
+> Use item
+* heal some hp
+  ![Alt text](./img/potion.png)
+> Run away
+* escape the fight
+  
+### ...More content awaits your exploration!
+
 ## Character
+> Attribute
+
+* HP (Health points) - If HP reaches 0, you die and the game is over.
+* STR (Strength) - Deal more damage to the enemy.
+* DEF (Defense) - Defense against enemy damage.
+* CHR (Charisma) - Avoid battles by talking to monsters.
+* SPD (Speed) - Allows you to act more often in battle.
+* LUK (Luck) - Affects lucky map spawn chance and battle escape chance.
+* VIS (Vision) - How far into the distance you can see.
 >Level 1
 - HP: 100
 - Starting stats are 1 in each attribute

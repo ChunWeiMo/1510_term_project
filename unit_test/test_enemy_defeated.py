@@ -15,8 +15,9 @@ class TestDefeatedTalk(TestCase):
             enemy_defeated(character_dictionary, enemy_appeared)
             mock_get_loot.assert_called_with(character_dictionary, enemy_appeared)
 
+    @patch('modules.battle.enemy.random.randint', return_value=1)
     @patch('sys.stdout', new_callable=io.StringIO)
-    def test_print_enemy_defeated(self, mock_output):
+    def test_print_enemy_defeated(self, mock_output, _):
         enemy_appeared = {"Name": "Slime", "HP": 10, "STR": 2, "DEF": 1, "SPD": 2, "EXP": 3, "Gold": 1}
         character_dictionary = {"Character_status": {"Level": 1, "HP": 100, "STR": 1,
                                                      "DEF": 5, "CHR": 1, "SPD": 1, "LUK": 1, "VIS": 3}, "EXP": 0,

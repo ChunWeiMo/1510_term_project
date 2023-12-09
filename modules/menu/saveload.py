@@ -1,5 +1,6 @@
 import json
 
+
 def savedata(character_dictionary: dict, current_map: dict):
     """
     Save playing data to json file.
@@ -39,7 +40,9 @@ def ask_loaddata(character_dictionary: dict, current_map: dict) -> tuple:
     """
     is_load = input("Unsaved data will be lost.\n Are you sure you want to load savedata? (Y/N)\n")
     if is_load.upper() == "Y":
-        character_dictionary, current_map = loaddata()
+        result = loaddata()
+        if result is not None:
+            character_dictionary, current_map = result
     return character_dictionary, current_map
 
 

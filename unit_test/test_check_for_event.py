@@ -112,7 +112,7 @@ class TestCheckForEvent(TestCase):
         expected_message += "You deal 496 damage to Evil Dragon!\n"
         expected_message += "The Evil Dragon has 0 HP left.\n\n"
         expected_message += "Evil Dragon has been slain!\n"
-        expected_message += "You've gained 0 gold!\nYou've gained 0 experience!\nYour experience is now at 0/100!\n\n"
+        expected_message += "You've gained 10 gold!\nYou've gained 10 experience!\nYour experience is now at 10/100!\n\n"
         self.assertEqual(expected_message, mock_output.getvalue())
 
     @patch('random.randint', side_effect=[1, 1])

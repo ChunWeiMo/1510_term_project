@@ -546,7 +546,7 @@ def summon_pixie(enemy_appeared: dict):
     :precondition: enemy_appeared is a dictionary of Oberon's attributes
     :postcondition: summon a High Pixie to heal Oberon for 10 HP and print the results
     """
-    if enemy_appeared["HP"] + 10 >= 40:
+    if enemy_appeared["HP"] >= 30:
         enemy_appeared["HP"] = 40
     else:
         enemy_appeared["HP"] += 10
@@ -620,6 +620,7 @@ def speedy_drac(character_dictionary: dict, enemy_appeared: dict, damage: int):
     is dead
     """
     if enemy_appeared["SPD"] > character_dictionary["Character_status"]["SPD"] * 2:
+        character_dictionary["Character_status"]["HP"] -= damage
         dead = is_character_dead(character_dictionary, enemy_appeared, damage)
         if not dead:
             cure_hp(enemy_appeared, damage)
@@ -764,7 +765,7 @@ def boss_fireball(character_dictionary: dict, enemy_appeared: dict):
     :return: a string "character"
     """
     print(
-        "\nThe dragon takes a deep breath, his throat blowing bright orange.\nNext thing you know the room is filled "
+        "\nThe dragon takes a deep breath, his throat glowing bright orange.\nNext thing you know the room is filled "
         "with flames.\n"
     )
     if enemy_appeared["STR"] - character_dictionary["Character_status"]["DEF"] <= 0:

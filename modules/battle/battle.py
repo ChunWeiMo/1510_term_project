@@ -57,7 +57,7 @@ def who_goes_first(character_dictionary: dict, enemy_appeared: dict) -> str:
     return turn
 
 
-def fight(character_dictionary: dict, enemy_appeared: dict, can_start: bool) -> bool:
+def fight(character_dictionary: dict, enemy_appeared: dict, can_start: bool) -> [bool, None]:
     """
     Start battle mode with an enemy.
 
@@ -256,11 +256,11 @@ def enemy_defeated(character_dictionary: dict, enemy_appeared: dict) -> bool:
     :postcondition: if the player levels up, level up the player
     :return: a boolean True
 
-    >>> character_dictionary = {"Character_status": {"HP": 100, "STR": 10, "DEF": 10, "SPD": 10, "CHR": 10, "LUK": 10},
-    ...                         "EXP": 0, "Items": {"Gold": 0, "Potions": 0}, "Equipment": {"Weapon": "Fists",
-    ...                         "Armour": "Clothes", "Accessory": "None"}, "Debuffs": []}
-    >>> enemy_appeared = {"Name": "Goblin", "HP": 10, "STR": 10, "DEF": 10, "SPD": 10, "EXP": 10, "Gold": 10}
-    >>> enemy_defeated(character_dictionary, enemy_appeared)
+    >>> test_character_dictionary = {"Character_status": {"HP": 100, "STR": 10, "DEF": 10, "SPD": 10,\
+    "CHR": 10, "LUK": 10}, "EXP": 0, "Items": {"Gold": 0, "Potions": 0}, "Equipment": {"Weapon": "Fists",\
+    "Armour": "Clothes", "Accessory": "None"}, "Debuffs": []}
+    >>> test_enemy_appeared = {"Name": "Goblin", "HP": 10, "STR": 10, "DEF": 10, "SPD": 10, "EXP": 10, "Gold": 10}
+    >>> enemy_defeated(test_character_dictionary, test_enemy_appeared)
     Goblin has been slain!
     You've gained 10 gold!
     You've gained 10 experience!
@@ -324,7 +324,8 @@ def level_up(character_dictionary: dict):
     :param character_dictionary: a dictionary of character attributes
     :precondition: character_dictionary is a dictionary that includes character status, name, location, experience,
     items, equipment and debuffs
-    :postcondition: level up the player and add 5 attribute points to the character dictionary and reset the player's EXP
+    :postcondition: level up the player and add 5 attribute points to the character
+    dictionary and reset the player's EXP
     """
     character_dictionary["Character_status"]["Level"] += 1
     print(
@@ -353,8 +354,10 @@ def speedy(turn: str, character_dictionary: dict, enemy_appeared: dict, damage: 
     :precondition: enemy_appeared is a dictionary of enemy attributes of the randomly selected enemy
     encountered by the player
     :precondition: damage is a positive non-zero integer representing the amount of damage dealt to the player
-    :postcondition: if the player's speed is double the enemy's speed, attack the enemy again and check if the enemy is dead
-    :postcondition: if the enemy's speed is double the player's speed, attack the player again and check if the player is dead
+    :postcondition: if the player's speed is double the enemy's speed, attack the enemy again and check if the
+    enemy is dead
+    :postcondition: if the enemy's speed is double the player's speed, attack the player again and check if the
+    player is dead
     """
     if (
         turn == "character"
@@ -370,7 +373,7 @@ def speedy(turn: str, character_dictionary: dict, enemy_appeared: dict, damage: 
         is_character_dead(character_dictionary, enemy_appeared, damage)
 
 
-def fight_miniboss(character_dictionary: dict, enemy_appeared: dict) -> bool:
+def fight_miniboss(character_dictionary: dict, enemy_appeared: dict) -> [bool, None]:
     """
     Start battle mode with a miniboss.
 
@@ -380,7 +383,8 @@ def fight_miniboss(character_dictionary: dict, enemy_appeared: dict) -> bool:
     items, equipment and debuffs
     :precondition: enemy_appeared is a dictionary of enemy attributes of the randomly selected enemy
     encountered by the player
-    :postcondition: when fighting a miniboss, upon a successful battle, return True for enemy defeated and False if the player is dead
+    :postcondition: when fighting a miniboss, upon a successful battle, return True for enemy defeated and False if the
+    player is dead
     :return: a boolean True or False
     """
     is_enemy_killed = False
@@ -390,7 +394,7 @@ def fight_miniboss(character_dictionary: dict, enemy_appeared: dict) -> bool:
         enemy_appeared["HP"] > 0 and character_dictionary["Character_status"]["HP"] > 0
     ):
         if turn == "character":
-            can_run = miniboss_menu(character_dictionary, enemy_appeared)
+            can_run = miniboss_menu(character_dictionary)
             if not can_run:
                 turn = character_turn(character_dictionary, enemy_appeared, turn)
             else:
@@ -406,16 +410,13 @@ def fight_miniboss(character_dictionary: dict, enemy_appeared: dict) -> bool:
     return is_enemy_killed
 
 
-def miniboss_menu(character_dictionary: dict, enemy_appeared: dict) -> bool:
+def miniboss_menu(character_dictionary: dict) -> [bool, None]:
     """
     Display the player's options during battle with a miniboss.
 
     :param character_dictionary: a dictionary of character attributes
-    :param enemy_appeared: a dictionary of enemy attributes
     :precondition: character_dictionary is a dictionary that includes character status, name, location, experience,
     items, equipment and debuffs
-    :precondition: enemy_appeared is a dictionary of enemy attributes of the randomly selected enemy
-    encountered by the player
     :postcondition: display the player's options during battle with a miniboss
     :postcondition: if the player chooses to use an item, use the item and display the player's options again
     :postcondition: if the player chooses to escape, determine whether the player can run away
@@ -465,7 +466,8 @@ def miniboss_turn(
     :precondition: turn is a string of either "character" or "enemy" depending on who's turn it is
     :precondition: rounds is a positive non-zero integer representing the number of rounds passed
     :postcondition: determines which miniboss the player is fighting and calls the appropriate function
-    :postcondition: returns a string of "character" if the next turn will be the player's or "enemy" if the next turn will be the enemy's
+    :postcondition: returns a string of "character" if the next turn will be the player's or "enemy" if the next
+    turn will be the enemy's
     :return: a string of either "character" or None
     """
     if enemy_appeared["Name"] == "Cerberus":
@@ -614,7 +616,8 @@ def speedy_drac(character_dictionary: dict, enemy_appeared: dict, damage: int):
     items, equipment and debuffs
     :precondition: enemy_appeared is a dictionary of Dracula's attributes
     :precondition: damage is a positive non-zero integer representing the amount of damage dealt to the player
-    :postcondition: if the enemy's speed is double the player's speed, attack the player again and check if the player is dead
+    :postcondition: if the enemy's speed is double the player's speed, attack the player again and check if the player
+    is dead
     """
     if enemy_appeared["SPD"] > character_dictionary["Character_status"]["SPD"] * 2:
         dead = is_character_dead(character_dictionary, enemy_appeared, damage)
@@ -624,7 +627,7 @@ def speedy_drac(character_dictionary: dict, enemy_appeared: dict, damage: int):
         return
 
 
-def fight_final_boss(character_dictionary: dict, enemy_appeared: dict) -> bool:
+def fight_final_boss(character_dictionary: dict, enemy_appeared: dict) -> [bool, None]:
     """
     Start battle mode with the final boss.
 
@@ -633,7 +636,8 @@ def fight_final_boss(character_dictionary: dict, enemy_appeared: dict) -> bool:
     :precondition: character_dictionary is a dictionary that includes character status, name, location, experience,
     items, equipment and debuffs
     :precondition: enemy_appeared is a dictionary of enemy attributes of the final boss
-    :postcondition: when fighting the final boss, upon a successful battle, return True for goal achieved and False if the player is dead
+    :postcondition: when fighting the final boss, upon a successful battle, return True for goal achieved and False if
+    the player is dead
     :return: a boolean True or False
     """
     print("\nThe dragon roars loud and ferocious, sending a chill down your spine.\n")
@@ -659,7 +663,8 @@ def boss_battle(character_dictionary: dict, enemy_appeared: dict, turn: str):
     items, equipment and debuffs
     :precondition: enemy_appeared is a dictionary of the final boss' attributes
     :precondition: turn is a string of either "character" or "enemy" depending on who's turn it is
-    :postcondition: when fighting the final boss, upon a successful battle, return True for goal achieved and False if the player is dead
+    :postcondition: when fighting the final boss, upon a successful battle, return True for goal achieved and False if
+    the player is dead
     :return: a boolean True or False
     """
     while (
@@ -726,7 +731,8 @@ def boss_turn(character_dictionary: dict, enemy_appeared: dict, turn: str) -> st
     items, equipment and debuffs
     :precondition: enemy_appeared is a dictionary of the final boss' attributes
     :precondition: turn is a string of either "character" or "enemy" depending on who's turn it is
-    :postcondition: determine randomly which attack the final boss will use and return a string of "character" if the next turn will be the player's or "enemy" if the next turn will be the enemy's after the attack
+    :postcondition: determine randomly which attack the final boss will use and return a string of "character" if the
+    next turn will be the player's or "enemy" if the next turn will be the enemy's after the attack
     :return: a string of either "character" or "enemy"
     """
     attack = random.randint(1, 4)
@@ -798,7 +804,8 @@ def boss_tailwhip(character_dictionary: dict, enemy_appeared: dict):
     :postcondition: calculates how much damage the final boss deals to the player and subtracts it from the player's HP
     :postcondition: prints the amount of damage dealt to the player and how much HP the player has left
     :postcondition: checks if the player is dead and prints a message if dead
-    :postcondition: stun the player with 30% chance for 1 round and if the character is stunned, return a string of "enemy" setting the turn to the enemy's turn
+    :postcondition: stun the player with 30% chance for 1 round and if the character is stunned, return a string of
+    "enemy" setting the turn to the enemy's turn
     :postcondition: returns a string of "character" setting the turn to the player's turn
     :return: a string "character" or "enemy" depending on whether the player is stunned or not
     """

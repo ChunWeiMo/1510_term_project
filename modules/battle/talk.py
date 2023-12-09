@@ -7,7 +7,7 @@ from modules.battle import battle
 import random
 
 
-def get_enemy_lines(enemy_appeared):
+def get_enemy_lines(enemy_appeared: dict) -> dict:
     """
     Get the chat options for a specific enemy.
 
@@ -60,7 +60,7 @@ eply 3': 'GRRrr (battle)', 'Reply 3.1': 'plip..(it looks sad and scared)'}
     return specific_enemy_lines
 
 
-def talk_to_enemy(character_dictionary, enemy_appeared):
+def talk_to_enemy(character_dictionary: dict, enemy_appeared: dict) -> bool:
     """
     Start talk mode with an enemy.
 
@@ -97,7 +97,7 @@ def talk_to_enemy(character_dictionary, enemy_appeared):
         return is_enemy_killed
 
 
-def randomizer(specific_enemy_lines):
+def randomizer(specific_enemy_lines: dict) -> dict:
     """
     Generates a random sequence of answers from each enemy's specific lines.
 
@@ -124,7 +124,7 @@ def randomizer(specific_enemy_lines):
     return response_options
 
 
-def get_chat_response(response_options):
+def get_chat_response(response_options: dict) -> int:
     """
     Ask the player to input their response to an enemy's question.
 
@@ -147,7 +147,8 @@ def get_chat_response(response_options):
             return response
 
 
-def get_reply(response, response_options, character_dictionary, enemy_appeared, specific_enemy_lines):
+def get_reply(response: int, response_options: dict, character_dictionary: dict, enemy_appeared: dict,
+              specific_enemy_lines: dict) -> bool:
     """
     Print the enemy's reply to the player's response.
 
@@ -198,7 +199,7 @@ def get_reply(response, response_options, character_dictionary, enemy_appeared, 
     return is_enemy_killed
 
 
-def check_special_lines(response, response_options, character_dictionary):
+def check_special_lines(response: int, response_options: dict, character_dictionary: dict):
     """
     Check to see if there are any special answers that affect the character dictionary.
 
@@ -237,7 +238,7 @@ def check_special_lines(response, response_options, character_dictionary):
         return
 
 
-def check_special_responses(specific_enemy_lines, character_dictionary):
+def check_special_responses(specific_enemy_lines: dict, character_dictionary: dict):
     """
     Check to see if there are any special replies that affect the character dictionary.
 
@@ -261,7 +262,8 @@ def check_special_responses(specific_enemy_lines, character_dictionary):
         return
 
 
-def talk_boss(specific_enemy_lines, enemy_appeared, character_dictionary, turn, max_turn):
+def talk_boss(specific_enemy_lines: dict, enemy_appeared: dict, character_dictionary: dict, turn: int,
+              max_turn: int) -> bool:
     """
     Start talk mode with a miniboss or final boss.
 
@@ -316,7 +318,7 @@ def talk_boss(specific_enemy_lines, enemy_appeared, character_dictionary, turn, 
             return achieved_goal_talk
 
 
-def randomizer_boss(specific_enemy_lines, question):
+def randomizer_boss(specific_enemy_lines: dict, question: str) -> dict:
     """
     Generates a random sequence of answers from each boss' specific lines.
 
@@ -345,8 +347,8 @@ def randomizer_boss(specific_enemy_lines, question):
     return response_options
 
 
-def get_reply_boss(response, response_options, character_dictionary, enemy_appeared, specific_enemy_lines,
-                   question):
+def get_reply_boss(response: int, response_options: dict, character_dictionary: dict, enemy_appeared: dict,
+                   specific_enemy_lines: dict, question: str) -> bool:
     """
     Print the boss' reply to the player's response.
 

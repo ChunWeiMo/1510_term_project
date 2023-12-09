@@ -7,7 +7,7 @@ from modules.battle import talk
 from modules.character import items
 
 
-def enemy():
+def enemy() -> dict:
     """
     Create an enemy dictionary.
 
@@ -44,7 +44,7 @@ def enemy():
     return enemy_dictionary
 
 
-def select_enemy(character_dictionary, enemy_dictionary):
+def select_enemy(character_dictionary: dict, enemy_dictionary: dict) -> dict:
     """
     Select a random enemy for the player to encounter from the level 1 and level 2 enemy dictionaries.
 
@@ -63,7 +63,7 @@ def select_enemy(character_dictionary, enemy_dictionary):
     return enemy_appeared
 
 
-def ask_user(enemy_appeared):
+def ask_user(enemy_appeared: dict) -> int:
     """
     Get input from the player on what they want to do upon encountering an enemy.
 
@@ -91,7 +91,7 @@ def ask_user(enemy_appeared):
                 return user_input
 
 
-def battle_talk_escape(character_dictionary, user_input, enemy_appeared):
+def battle_talk_escape(character_dictionary: dict, user_input: int, enemy_appeared: dict) -> bool:
     """
     Determines what the player will do when encountering an enemy and returns True if the enemy is defeated.
 

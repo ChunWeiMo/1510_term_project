@@ -4,7 +4,7 @@ Character module.
 from modules.exploration import story_lines
 
 
-def make_character():
+def make_character() -> dict:
     """
     Create the base character.
 
@@ -31,7 +31,7 @@ def make_character():
     return character_dictionary
 
 
-def create_name():
+def create_name() -> str:
     """
     Names your character.
 
@@ -48,7 +48,7 @@ def create_name():
         return character_name
 
 
-def add_attribute_points(attribute_points, character_dictionary):
+def add_attribute_points(attribute_points: int, character_dictionary: dict):
     """
     Adds attribute points to the character dictionary.
 

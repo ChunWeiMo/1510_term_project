@@ -58,7 +58,7 @@ def map_element_in_vision(character: dict, current_map: dict, column: int, row: 
     return map_element
 
 
-def print_vision(character, current_map):
+def print_vision(character: dict, current_map: dict):
     """
     Show Character vision.
 

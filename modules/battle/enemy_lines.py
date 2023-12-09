@@ -1,7 +1,7 @@
 """For enemy talk"""
 
 
-def enemy_lines():
+def enemy_lines() -> dict:
     """
     Creates a dictionary of all enemy lines.
 

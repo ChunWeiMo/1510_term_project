@@ -1,7 +1,7 @@
 """Text lines for the game go here."""
 
 
-def get_story(character_dictionary):
+def get_story(character_dictionary: dict) -> dict:
     main_story = {
         'intro': 'In the small town of Moland there is a ruined dungeon where a dragon sleeps.\n'
                  'It has been prophesized that he will wake up in 100 years to take revenge on the town that sealed '

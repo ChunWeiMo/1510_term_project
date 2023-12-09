@@ -8,7 +8,7 @@ def level1_equipment_list():
     """
     Return level 1 equipments list.
 
-    :postconditinon: generate a dictionary of level 1 equipment with name and buff/debuff
+    :postcondition: generate a dictionary of level 1 equipment with name and buff/debuff
     :return: a dictionary
     """
     return {1: ["Steel sword", ("STR", 3)],
@@ -29,7 +29,7 @@ def level2_equipment_list():
     """
     Return level 2 equipments list.
 
-    :postconditinon: generate a dictionary of level 2 equipment with name and buff/debuff
+    :postcondition: generate a dictionary of level 2 equipment with name and buff/debuff
     :return: a dictionary
     """
     return {1: ["Silver sword", ("STR", 7)],
@@ -48,7 +48,7 @@ def level3_equipment_list():
     """
     Return level 3 equipments list.
 
-    :postconditinon: generate a dictionary of level 2 equipment with name and buff/debuff
+    :postcondition: generate a dictionary of level 2 equipment with name and buff/debuff
     :return: a dictionary
     """
     return {1: ["Ragnarök", ("STR", 15)],
@@ -89,7 +89,7 @@ def get_equipment(character_dictionary: dict) -> list:
     return equipment
 
 
-def use_equipment(character_dictionary, old_equipment, new_equipment):
+def use_equipment(character_dictionary: dict, old_equipment: list, new_equipment: list):
     """
     Use or replace equipment.
 

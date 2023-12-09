@@ -28,7 +28,7 @@ def use_potion(character_dictionary: dict):
     return
 
 
-def ask_player_potions(character_dictionary):
+def ask_player_potions(character_dictionary: dict) -> int:
     """
     Ask the player how many potions they want to use.
 
@@ -52,7 +52,7 @@ def ask_player_potions(character_dictionary):
             return response
 
 
-def heal_character(character_dictionary, response, max_hp):
+def heal_character(character_dictionary: dict, response: int, max_hp: int):
     """
     Use potions to heal character HP.
 
@@ -74,7 +74,7 @@ def heal_character(character_dictionary, response, max_hp):
           f"{character_dictionary['Items']['Potions']} potions left.")
 
 
-def merchant(character_dictionary):
+def merchant(character_dictionary: dict):
     """
      Select what to do when the player meets a merchant.
 
@@ -108,7 +108,7 @@ def merchant(character_dictionary):
                 break
 
 
-def buy(character_dictionary):
+def buy(character_dictionary: dict):
     """
     Select how many potions the player wants to buy from the merchant.
 
@@ -150,7 +150,7 @@ def buy(character_dictionary):
                 break
 
 
-def check_gold(character_dictionary, potions):
+def check_gold(character_dictionary: dict, potions: int):
     """
     Purchases potions if character has enough gold.
 
@@ -177,7 +177,7 @@ def check_gold(character_dictionary, potions):
         leave_merchant()
 
 
-def battle_merchant(character_dictionary):
+def battle_merchant(character_dictionary: dict):
     """
     Starts battle with the merchant.
     

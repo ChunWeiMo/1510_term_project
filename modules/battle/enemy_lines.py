@@ -256,7 +256,7 @@ def enemy_lines() -> dict:
              "Reply 2.1": "Hmm, not interested.",
              "Reply 3": "I accept your duel!",
              "Reply 3.1": "Ok, but you clearly have not yet. So what is it?"},
-        "Questions 2":
+        "Question 2":
             {"Question": "Well, is there anything else you want to say to me?",
              "Answer 1": "I know dragons like shiny things. What if I gave you all my gold?\nWill that placate you?",
              "Answer 2": "Please don't kill the townspeople!",
@@ -278,7 +278,7 @@ def enemy_lines() -> dict:
              "Reply 2.1": "Acting like you don't care huh? Who is the gold hoarder now?",
              "Reply 3": "Heroes, you all have so much pride.\nIt makes me want to kill you!",
              "Reply 3.1": "Hah! Morals huh."},
-        "Questions 4":
+        "Question 4":
             {"Question": "If I refuse will you kill me?",
              "Answer 1": "I'm sure we can come to an understanding.",
              "Answer 2": "Yes.",

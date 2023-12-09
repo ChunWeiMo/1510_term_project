@@ -58,7 +58,6 @@ def main():
                 movement.move_character(character_dictionary, direction)
                 current_map, achieved_goal = movement.check_for_event(character_dictionary, current_map)
         elif command.upper() == "STATS":
-            print(f'\n{character_dictionary["Character_status"]}')
             print(character_dictionary)
             print()
         elif command.upper() == 'Q':

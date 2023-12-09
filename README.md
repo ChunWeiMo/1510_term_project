@@ -161,7 +161,14 @@ A detailed guide for the game! Info on every enemy and map in the game.
 
 ## Character
 > Attribute
-- 
+
+* HP (Health points) - If HP reaches 0, you die and the game is over.
+* STR (Strength) - Deal more damage to the enemy.
+* DEF (Defense) - Defense against enemy damage.
+* CHR (Charisma) - Avoid battles by talking to monsters.
+* SPD (Speed) - Allows you to act more often in battle.
+* LUK (Luck) - Affects lucky map spawn chance and battle escape chance.
+* VIS (Vision) - How far into the distance you can see.
 >Level 1
 - HP: 100
 - Starting stats are 1 in each attribute

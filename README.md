@@ -77,6 +77,10 @@ correct use of one or more list/dictionary comprehensions
     > map.py line 140 ->  map_elements = map_list[random.randint(1, 10)]
 7.  function annotations
     > every function
+
+    > story_line.py line 4-> def get_story(character_dictionary: dict) -> dict
+
+    > map.py line 125 -> def select_map(character_dictionary: dict, map_list: dict) -> dict
 8.  doctests and/or unit tests for every single function
     > unit_test folder: 225 tests in total
 9.  ALL output must be formatted using f-strings and/or str.format and/or %-formatting where applicable.

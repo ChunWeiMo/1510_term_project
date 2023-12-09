@@ -1,5 +1,5 @@
 """
-Talk module
+Talk module. The functions in this module are used for talking to the enemy.
 """
 
 from modules.battle import enemy_lines
@@ -185,7 +185,7 @@ def get_reply(response: int, response_options: dict, character_dictionary: dict,
                 can_start = False
                 print(f"{enemy_appeared['Name']}: {specific_enemy_lines['Reply 2']}\n")
                 print(f"You've angered {enemy_appeared['Name']}! Get ready for battle...\n")
-                battle.fight(character_dictionary, enemy_appeared, can_start)
+                is_enemy_killed = battle.fight(character_dictionary, enemy_appeared, can_start)
         else:
             if character_dictionary["Character_status"]["CHR"] + 3 >= 10:
                 print(f"{enemy_appeared['Name']}: {specific_enemy_lines['Reply 3.1']}\n")
@@ -225,7 +225,7 @@ def check_special_lines(response: int, response_options: dict, character_diction
             character_dictionary["Items"]["Gold"] -= 10
             print(f"You lost 10 Gold. You have {character_dictionary['Items']['Gold']} gold left.\n")
         else:
-            print(f"I only have {character_dictionary['Items']['Gold']} gold left...\nTake it.")
+            print(f"I only have {character_dictionary['Items']['Gold']} gold left...\nTake it.\n")
             character_dictionary["Items"]["Gold"] = 0
     elif response_options[response] == "Hmmm if it is the only way. (HP -20)":
         if character_dictionary["Character_status"]["HP"] > 20:

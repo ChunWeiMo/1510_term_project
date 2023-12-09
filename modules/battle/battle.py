@@ -471,10 +471,8 @@ def miniboss_turn(
     :return: a string of either "character" or None
     """
     if enemy_appeared["Name"] == "Cerberus":
-        [
-            cerberus_turn(character_dictionary, enemy_appeared)
-            for _ in itertools.repeat(None, 3)
-        ]
+        [cerberus_turn(character_dictionary, enemy_appeared)
+            for _ in itertools.repeat(None, 3)]
         turn = "character"
     elif enemy_appeared["Name"] == "Oberon":
         turn = oberon_turn(character_dictionary, enemy_appeared, turn, rounds)

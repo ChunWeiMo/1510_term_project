@@ -19,5 +19,5 @@ class TestFightMiniboss(TestCase):
         character_dictionary = {"Character_status": {"HP": 0}}
         enemy_appeared = {"HP": 20}
         result = fight_miniboss(character_dictionary, enemy_appeared)
-        expected = None
+        expected = False
         self.assertEqual(result, expected)

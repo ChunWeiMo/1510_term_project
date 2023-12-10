@@ -327,7 +327,6 @@ def talk_boss(specific_enemy_lines: dict, enemy_appeared: dict, character_dictio
             return achieved_goal
 
 
-
 def randomizer_boss(specific_enemy_lines: dict, question: str) -> dict:
     """
     Generates a random sequence of answers from each boss' specific lines.

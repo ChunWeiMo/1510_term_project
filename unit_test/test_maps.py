@@ -39,7 +39,7 @@ class TestMaps(TestCase):
                          5: {'Description 1': "The grassland ends abruptly and an old battlefield lies in front of "
                                               "you.\nThere's some treasure to be found here...",
                              'Description 2': 'You were just in a dark hallway but suddenly this room becomes light '
-                                              'and airyas if you just walked into a field of flowers.\n'
+                                              'and airy as if you just walked into a field of flowers.\n'
                                               'What kind of illusion is this??!',
                              'Door': [(3, 0), (9, 7)], 'Chest': [(6, 2), (1, 4), (4, 7)],
                              'Healing_fountain': [(7, 9)], 'Oberon': [(5, 4)],

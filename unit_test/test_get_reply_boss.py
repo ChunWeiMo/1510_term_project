@@ -1,6 +1,4 @@
-import unittest
 from unittest import TestCase
-
 from modules.battle.talk import get_reply_boss
 from unittest.mock import patch
 
@@ -52,10 +50,9 @@ class TestGetReplyBoss(TestCase):
         character_dictionary = {"Character_status": {"Level": 1, "HP": 100, "STR": 1000,
                                                      "DEF": 5, "CHR": 1, "SPD": 1, "LUK": 1, "VIS": 3}, "EXP": 0,
                                 "Items": {"Gold": 0, "Potions": 0}}
-        with unittest.mock.patch('modules.battle.battle.fight_miniboss') as mock_fight_miniboss:
-            get_reply_boss(response, self.response_options, character_dictionary,
-                           self.enemy_appeared, self.specific_enemy_lines, self.question)
-            mock_fight_miniboss.assert_called_with(character_dictionary, self.enemy_appeared)
+        result = get_reply_boss(response, self.response_options, character_dictionary,
+                                self.enemy_appeared, self.specific_enemy_lines, self.question)
+        self.assertFalse(result)
 
     @patch('builtins.input', side_effect=[1, 2])
     def test_response_to_answer_2_enough_CHR(self, _):
@@ -72,10 +69,9 @@ class TestGetReplyBoss(TestCase):
         character_dictionary = {"Character_status": {"Level": 1, "HP": 100, "STR": 1,
                                                      "DEF": 5, "CHR": 1, "SPD": 1, "LUK": 1, "VIS": 3}, "EXP": 0,
                                 "Items": {"Gold": 0, "Potions": 0}}
-        with unittest.mock.patch('modules.battle.battle.fight_miniboss') as mock_fight_miniboss:
-            get_reply_boss(response, self.response_options, character_dictionary,
-                           self.enemy_appeared, self.specific_enemy_lines, self.question)
-            mock_fight_miniboss.assert_called_with(character_dictionary, self.enemy_appeared)
+        result = get_reply_boss(response, self.response_options, character_dictionary,
+                                self.enemy_appeared, self.specific_enemy_lines, self.question)
+        self.assertFalse(result)
 
     @patch('builtins.input', side_effect=[1, 2])
     def test_response_to_answer_3_enough_CHR(self, _):

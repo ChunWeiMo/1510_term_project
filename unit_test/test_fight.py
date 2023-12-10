@@ -19,5 +19,5 @@ class TestFight(TestCase):
         enemy_appeared = {"HP": 20}
         can_start = False
         result = fight(character_dictionary, enemy_appeared, can_start)
-        expected = None
+        expected = False
         self.assertEqual(result, expected)

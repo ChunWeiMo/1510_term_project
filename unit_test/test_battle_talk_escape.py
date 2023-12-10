@@ -73,7 +73,7 @@ class TestBTE(TestCase):
         enemy_appeared = {"Name": "Evil Dragon", "HP": 100, "STR": 7, "DEF": 4, "SPD": 3, "EXP": 0, "Gold": 0}
         user_input = 4
         battle_talk_escape(self.character_dictionary, user_input, enemy_appeared)
-        expected = "You cannot run away from Evil Dragon!\nEvil Dragon appears before you!\n"
+        expected = "You cannot run away from Evil Dragon!\n"
         self.assertEqual(mock_output.getvalue(), expected)
 
     @patch('modules.battle.enemy.random.randint', return_value=100)

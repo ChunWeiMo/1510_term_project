@@ -73,8 +73,6 @@ def main():
             print("Please enter a command again.")
     if character_dictionary["Character_status"]["HP"] <= 0:
         print(main_story["death"])
-    # if achieved_goal:
-    #     print(main_story["win"])
     print("\nThank you for playing.")
     print("Closing the game.")
 

@@ -18,8 +18,8 @@ def get_enemy_lines(enemy_appeared: dict) -> dict:
      the question or response number and the value is a string representing the line
     :return: a dictionary of keys and values of strings
 
-    >>> enemy_appeared = {"Name": "Slime"}
-    >>> get_enemy_lines(enemy_appeared)
+    >>> enemy_appeared_1 = {"Name": "Slime"}
+    >>> get_enemy_lines(enemy_appeared_1)
     {'Question': 'Plip plop plip plop~~', 'Answer 1': '*Pat it*', 'Answer 2': '*Squeeze it*', 'Answer 3': '*kick it*', \
 'Reply 1': 'Pliippp! (it looks happy)', 'Reply 2': 'PLIPP! (battle)', 'Reply 2.1': 'Pliiiipppp~ (it looks content)', 'R\
 eply 3': 'GRRrr (battle)', 'Reply 3.1': 'plip..(it looks sad and scared)'}
@@ -283,7 +283,8 @@ def talk_boss(specific_enemy_lines: dict, enemy_appeared: dict, character_dictio
     :postcondition: when talking to a miniboss or boss, upon a successful reply, return True and increase turn by 1
     :postcondition: when talking to the final boss, upon a successful chat 5 times, return True for goal achieved
     :postcondition: when talking to a miniboss, upon a successful chat 3 times, return True for enemy defeated
-    :postcondition: when talking to a miniboss or final boss, upon an unsuccessful chat, return False and head into battle
+    :postcondition: when talking to a miniboss or final boss, upon an unsuccessful chat, return False and head into batt
+    le
     :return: a boolean True or False
     """
     passed = True

@@ -13,8 +13,8 @@ def make_character() -> dict:
     items, equipment and debuffs
     :return: a dictionary of character attributes
     """
-    character_stats = {"Level": 3, "HP": 100, "STR": 10,
-                       "DEF": 10, "CHR": 10, "SPD": 10, "LUK": 1, "VIS": 3}
+    character_stats = {"Level": 1, "HP": 100, "STR": 1,
+                       "DEF": 1, "CHR": 1, "SPD": 1, "LUK": 1, "VIS": 3}
     character_name = create_name()
     print(story_lines.help_lines["character stats"])
     character_dictionary = {"Character_status": character_stats,

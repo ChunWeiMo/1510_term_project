@@ -145,16 +145,16 @@ def encounter_final_boss(character_dictionary: dict, current_map: dict) -> bool:
     :postcondition: if Final boss is killed, assign true to achieve_goal
     :return: a boolean
     """
-    achieved_goal = False
     enemy_dictionary = enemy.enemy()
     enemy_appeared = enemy_dictionary["Final Boss"]
     user_input = enemy.ask_user(enemy_appeared)
-    is_enemy_killed = enemy.battle_talk_escape(
+    achieved_goal = enemy.battle_talk_escape(
         character_dictionary, user_input, enemy_appeared)
-    if is_enemy_killed:
-        current_map[(character_dictionary["X-coordinate"],
-                     character_dictionary["Y-coordinate"])] = "Empty"
-        achieved_goal = True
+    if achieved_goal:
+        current_map[(4, 5)] = "Empty"
+        current_map[(5, 5)] = "Empty"
+        current_map[(4, 4)] = "Empty"
+        current_map[(5, 4)] = "Empty"
     return achieved_goal
         
 

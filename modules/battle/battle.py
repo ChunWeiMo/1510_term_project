@@ -631,7 +631,7 @@ def speedy_drac(character_dictionary: dict, enemy_appeared: dict, damage: int):
         return
 
 
-def fight_final_boss(character_dictionary: dict, enemy_appeared: dict) -> [bool, None]:
+def fight_final_boss(character_dictionary: dict, enemy_appeared: dict) -> bool:
     """
     Start battle mode with the final boss.
 
@@ -645,15 +645,15 @@ def fight_final_boss(character_dictionary: dict, enemy_appeared: dict) -> [bool,
     :return: a boolean True or False
     """
     print("\nThe dragon roars loud and ferocious, sending a chill down your spine.\n")
-    achieved_goal = False
     turn = "character"
     boss_battle(character_dictionary, enemy_appeared, turn)
     if enemy_appeared["HP"] <= 0:
         enemy_defeated(character_dictionary, enemy_appeared)
         achieved_goal = True
+        return achieved_goal
     if character_dictionary["Character_status"]["HP"] <= 0:
-        return
-    return achieved_goal
+        achieved_goal = False
+        return achieved_goal
 
 
 def boss_battle(character_dictionary: dict, enemy_appeared: dict, turn: str):
@@ -671,9 +671,7 @@ def boss_battle(character_dictionary: dict, enemy_appeared: dict, turn: str):
     the player is dead
     :return: a boolean True or False
     """
-    while (
-        enemy_appeared["HP"] > 0 and character_dictionary["Character_status"]["HP"] > 0
-    ):
+    while enemy_appeared["HP"] > 0 and character_dictionary["Character_status"]["HP"] > 0:
         if turn == "character":
             if character_dictionary["Debuff"]["Burn"] > 0:
                 print(
@@ -689,6 +687,7 @@ def boss_battle(character_dictionary: dict, enemy_appeared: dict, turn: str):
         else:
             print("\nIt is the dragons turn!\n")
             turn = boss_turn(character_dictionary, enemy_appeared, turn)
+    return
 
 
 def boss_menu(character_dictionary: dict):

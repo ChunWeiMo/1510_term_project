@@ -18,5 +18,5 @@ class TestFinalBoss(TestCase):
                                 "Items": {"Gold": 0, "Potions": 0}, "Debuff": {"Burn": 0}}
         enemy_appeared = {"Name": "Evil Dragon", "HP": 100, "STR": 7, "DEF": 4, "SPD": 3, "EXP": 10, "Gold": 10}
         result = fight_final_boss(character_dictionary, enemy_appeared)
-        expected = None
+        expected = False
         self.assertEqual(result, expected)

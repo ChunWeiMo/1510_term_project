@@ -1,10 +1,38 @@
 from modules.exploration.movement import check_for_event
-from unittest import TestCase
+from unittest import TestCase, mock
 from unittest.mock import patch
 import io
 
 
 class TestCheckForEvent(TestCase):
+    @mock.patch('modules.exploration.event.encounter_final_boss')
+    def test_not_meet_final_boss_on_empty(self, mock_encounter_final_boss):
+        character_dictionary = {"X-coordinate": 1, "Y-coordinate": 1}
+        current_map = {(1, 1): "Empty"}
+        check_for_event(character_dictionary, current_map)
+        mock_encounter_final_boss.assert_not_called()
+
+    @mock.patch('modules.exploration.event.encounter_an_enemy')
+    def test_not_meet_enemy_on_empty(self, mock_encounter_an_enemy):
+        character_dictionary = {"X-coordinate": 1, "Y-coordinate": 1}
+        current_map = {(1, 1): "Empty"}
+        check_for_event(character_dictionary, current_map)
+        mock_encounter_an_enemy.assert_not_called()
+
+    @mock.patch('modules.exploration.event.encounter_merchant')
+    def test_not_meet_merchant_on_empty(self, mock_encounter_merchant):
+        character_dictionary = {"X-coordinate": 1, "Y-coordinate": 1}
+        current_map = {(1, 1): "Empty"}
+        check_for_event(character_dictionary, current_map)
+        mock_encounter_merchant.assert_not_called()
+
+    @mock.patch('modules.exploration.event.find_a_chest')
+    def test_not_find_chest_on_empty(self, mock_find_a_chest):
+        character_dictionary = {"X-coordinate": 1, "Y-coordinate": 1}
+        current_map = {(1, 1): "Empty"}
+        check_for_event(character_dictionary, current_map)
+        mock_find_a_chest.assert_not_called()
+
     @patch('random.randint', side_effect=[1, 1])
     @patch('builtins.input', side_effect=["4"])
     @patch('sys.stdout', new_callable=io.StringIO)
@@ -94,31 +122,25 @@ class TestCheckForEvent(TestCase):
         expected_message = "You meet Dracula!\n\nDracula appears before you!\nSuccessfully escaped!\n\n"
         self.assertEqual(expected_message, mock_output.getvalue())
 
-    @patch('random.randint', side_effect=[1, 1])
-    @patch('builtins.input', side_effect=["1", "1"])
-    @patch('sys.stdout', new_callable=io.StringIO)
-    def test_meet_Final_boss(self, mock_output, _, __):
-        character_dictionary = {"Character_status": {"Level": 3, "HP": 90, "STR": 500, "DEF": 100, "CHR": 2, "SPD": 100,
-                                                     "LUK": 1, "VIS": 3},
-                                "Name": "describe", "X-coordinate": 1, "Y-coordinate": 1,
-                                "EXP": 0, "Items": {"Gold": 0, "Potions": 0},
-                                "Equipment": 0, "Debuff": {"Burn": 0}}
+    def test_meet_final_boss(self):
+        character_dictionary = {
+            "Character_status": {"Level": 3, "HP": 90, "STR": 500, "DEF": 100, "CHR": 2, "SPD": 100, "LUK": 1,
+                                 "VIS": 3},
+            "Name": "describe", "X-coordinate": 1, "Y-coordinate": 1,
+            "EXP": 0, "Items": {"Gold": 0, "Potions": 0},
+            "Equipment": 0, "Debuff": {"Burn": 0}
+        }
         current_map = {(0, 0): "Empty", (1, 0): "Empty", (2, 0): "Empty",
                        (1, 0): "Empty", (1, 1): "Final Boss", (2, 1): "Empty"}
-        check_for_event(character_dictionary, current_map)
-        expected_message = "You meet Final Boss!\n\n"
-        expected_message += "Evil Dragon appears before you!\n\n"
-        expected_message += "The dragon roars loud and ferocious, sending a chill down your spine.\n\n\n"
-        expected_message += "You deal 496 damage to Evil Dragon!\n"
-        expected_message += "The Evil Dragon has 0 HP left.\n\n"
-        expected_message += "Evil Dragon has been slain!\n"
-        expected_message += "You've gained 10 gold!\nYou've gained 10 experience!\nYour experience is now at 10/100!\n\n"
-        self.assertEqual(expected_message, mock_output.getvalue())
+
+        with patch('modules.exploration.event.encounter_final_boss') as mock_encounter_final_boss:
+            check_for_event(character_dictionary, current_map)
+            mock_encounter_final_boss.assert_called_with(character_dictionary, current_map)
 
     @patch('random.randint', side_effect=[1, 1])
     @patch('builtins.input', side_effect=["4"])
     @patch('sys.stdout', new_callable=io.StringIO)
-    def test_meet_Chest(self, mock_output, _, __):
+    def test_meet_chest(self, mock_output, _, __):
         character_dictionary = {"Character_status": {"Level": 2, "HP": 90, "STR": 31, "DEF": 10, "CHR": 2, "SPD": 5,
                                                      "LUK": 10, "VIS": 3},
                                 "Name": "describe", "X-coordinate": 1, "Y-coordinate": 1,

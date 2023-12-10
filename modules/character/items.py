@@ -225,4 +225,4 @@ def leave_merchant():
 
     :postcondition: prints the merchant's goodbye line
     """
-    print("\nMerchant: Thanks for stopping by!")
+    print(f"\nMerchant: Thanks for stopping by!")

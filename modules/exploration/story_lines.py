@@ -22,16 +22,18 @@ def get_story(character_dictionary: dict) -> dict:
         'death': f'\n{character_dictionary["Name"]}: ARGHhhHHHHhhHhAAAAHhh...\n'
                  'You died...The town of Moland, helpless against the dragon\'s resurrection, has gone up in flames, '
                  'not a single human spared by the dragon\'s wrath.',
-        'win': 'You actually did it! You saved the town of Moland from their unfortunate fate. There will be a great '
-               'banquet tonight to celebrate your heroic actions. During the banquet, amongst the drunk townsfolk, '
-               'you slowly slip away in the night, ready for your next adventure.',
-        'win_talk': 'What a feat! You talked the dragon out of harming the townsfolk! They agreed to swear upon a peace'
-                    'treaty and the town of Moland became peaceful once again. There will be a great '
-                    'banquet tonight to celebrate your heroic actions. During the banquet, amongst the drunk townsfolk,'
-                    ' you slowly slip away in the night, ready for your next adventure.'
     }
     return main_story
 
+
+win = ('You actually did it! You saved the town of Moland from their unfortunate fate.\nThere will be a great banquet '
+       'tonight to celebrate your heroic actions.\nDuring the banquet, amongst the drunk townsfolk, '
+       'you slowly slip away in the night, ready for your next adventure.')
+
+win_talk = ('What a feat! You talked the dragon out of harming the townsfolk! They agreed to swear upon a peace treaty '
+            'and the town of Moland became peaceful once again.\nThere will be a great banquet tonight '
+            'to celebrate your heroic actions.\nDuring the banquet, amongst the drunk townsfolk, '
+            'you slowly slip away in the night, ready for your next adventure.')
 
 welcome = ('Welcome hero!\nIn this game you play as a beginner hero who sets off to make a big name for themself.\n'
            'Your final goal is to reach level 3 and defeat the dragon!\n'

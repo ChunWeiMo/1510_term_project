@@ -129,11 +129,9 @@ def battle_talk_escape(character_dictionary: dict, user_input: int, enemy_appear
             return is_enemy_killed
     elif user_input == 3:
         items.use_potion(character_dictionary)
-        ask_user(enemy_appeared)
     else:
         if enemy_appeared["Name"] == "Evil Dragon":
             print(f"You cannot run away from {enemy_appeared['Name']}!")
-            ask_user(enemy_appeared)
         else:
             can_run = battle.run_away(character_dictionary)
             if not can_run:

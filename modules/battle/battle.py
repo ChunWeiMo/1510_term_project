@@ -92,7 +92,7 @@ def fight(character_dictionary: dict, enemy_appeared: dict, can_start: bool) -> 
     if enemy_appeared["HP"] <= 0:
         is_enemy_killed = enemy_defeated(character_dictionary, enemy_appeared)
     if character_dictionary["Character_status"]["HP"] <= 0:
-        return
+        is_enemy_killed = False
     return is_enemy_killed
 
 
@@ -411,7 +411,7 @@ def fight_miniboss(character_dictionary: dict, enemy_appeared: dict) -> [bool, N
     if enemy_appeared["HP"] <= 0:
         is_enemy_killed = enemy_defeated(character_dictionary, enemy_appeared)
     if character_dictionary["Character_status"]["HP"] <= 0:
-        return
+        is_enemy_killed = False
     return is_enemy_killed
 
 
@@ -650,6 +650,7 @@ def fight_final_boss(character_dictionary: dict, enemy_appeared: dict) -> bool:
     if enemy_appeared["HP"] <= 0:
         enemy_defeated(character_dictionary, enemy_appeared)
         achieved_goal = True
+        print(story_lines.win)
         return achieved_goal
     if character_dictionary["Character_status"]["HP"] <= 0:
         achieved_goal = False

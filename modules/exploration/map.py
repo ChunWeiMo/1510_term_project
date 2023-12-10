@@ -50,7 +50,7 @@ def maps() -> dict:
                        (7, 5), (1, 6), (4, 6), (5, 6), (0, 7), (4, 7), (0, 8), (5, 8), (6, 8), (7, 9), (8, 9)]}
     map_5 = {"Description 1": "The grassland ends abruptly and an old battlefield lies in front of you.\n"
                               "There's some treasure to be found here...",
-             "Description 2": "You were just in a dark hallway but suddenly this room becomes light and airy"
+             "Description 2": "You were just in a dark hallway but suddenly this room becomes light and airy "
                               "as if you just walked into a field of flowers.\nWhat kind of illusion is this??!",
              "Door": [(3, 0), (9, 7)],
              "Chest": [(6, 2), (1, 4), (4, 7)],

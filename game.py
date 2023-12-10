@@ -13,7 +13,6 @@ def main():
     Drive the game.
     """
     achieved_goal = False
-    achieved_goal_talk = False
     map_list = map.maps()
     print(story_lines.title)
     save_character = "character.json"
@@ -74,10 +73,8 @@ def main():
             print("Please enter a command again.")
     if character_dictionary["Character_status"]["HP"] <= 0:
         print(main_story["death"])
-    if achieved_goal:
-        print(main_story["win"])
-    if achieved_goal_talk:
-        print(main_story["win_talk"])
+    # if achieved_goal:
+    #     print(main_story["win"])
     print("\nThank you for playing.")
     print("Closing the game.")
 

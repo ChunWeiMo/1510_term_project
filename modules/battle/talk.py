@@ -6,6 +6,8 @@ from modules.battle import enemy_lines
 from modules.battle import battle
 import random
 
+from modules.exploration import story_lines
+
 
 def get_enemy_lines(enemy_appeared: dict) -> dict:
     """
@@ -86,8 +88,8 @@ def talk_to_enemy(character_dictionary: dict, enemy_appeared: dict) -> bool:
         return is_enemy_killed
     elif enemy_appeared["Name"] == "Evil Dragon":
         max_turn = 5
-        achieved_goal_talk = talk_boss(specific_enemy_lines, enemy_appeared, character_dictionary, turn, max_turn)
-        return achieved_goal_talk
+        achieved_goal = talk_boss(specific_enemy_lines, enemy_appeared, character_dictionary, turn, max_turn)
+        return achieved_goal
     else:
         print(f"{enemy_appeared['Name']}: {specific_enemy_lines['Question']}")
         response_options = randomizer(specific_enemy_lines)
@@ -300,7 +302,12 @@ def talk_boss(specific_enemy_lines: dict, enemy_appeared: dict, character_dictio
         else:
             question = 'Question 5'
         if not passed:
-            break
+            if enemy_appeared["Name"] == "Evil Dragon":
+                battle_type = battle.fight_final_boss
+            else:
+                battle_type = battle.fight_miniboss
+            is_enemy_killed = battle_type(character_dictionary, enemy_appeared)
+            return is_enemy_killed
         else:
             print(f"{enemy_appeared['Name']}: {specific_enemy_lines[question]['Question']}")
             response_options = randomizer_boss(specific_enemy_lines, question)
@@ -315,8 +322,10 @@ def talk_boss(specific_enemy_lines: dict, enemy_appeared: dict, character_dictio
             is_enemy_killed = battle.enemy_defeated_talk(character_dictionary, enemy_appeared)
             return is_enemy_killed
         elif enemy_appeared["Name"] == "Evil Dragon":
-            achieved_goal_talk = True
-            return achieved_goal_talk
+            print(story_lines.win_talk)
+            achieved_goal = True
+            return achieved_goal
+
 
 
 def randomizer_boss(specific_enemy_lines: dict, question: str) -> dict:
@@ -373,12 +382,6 @@ def get_reply_boss(response: int, response_options: dict, character_dictionary: 
     :postcondition: if the talk was unsuccessful, enter battle and return True if the battle was won
     :return: a boolean True or False
     """
-    passed = False
-    if enemy_appeared["Name"] == "Evil Dragon":
-        battle_type = battle.fight_final_boss
-    else:
-        battle_type = battle.fight_miniboss
-
     if response_options[response] == specific_enemy_lines[question]["Answer 1"]:
         if character_dictionary["Character_status"]["CHR"] + 2 >= 10:
             print(f"{enemy_appeared['Name']}: {specific_enemy_lines[question]['Reply 1.1']}\n")
@@ -386,7 +389,7 @@ def get_reply_boss(response: int, response_options: dict, character_dictionary: 
         else:
             print(f"{enemy_appeared['Name']}: {specific_enemy_lines[question]['Reply 1']}\n")
             print(f"You've angered {enemy_appeared['Name']}! Get ready for battle...\n")
-            battle_type(character_dictionary, enemy_appeared)
+            passed = False
     elif response_options[response] == specific_enemy_lines[question]["Answer 2"]:
         if character_dictionary["Character_status"]["CHR"] + 1 >= 10:
             print(f"{enemy_appeared['Name']}: {specific_enemy_lines[question]['Reply 2.1']}\n")
@@ -394,7 +397,7 @@ def get_reply_boss(response: int, response_options: dict, character_dictionary: 
         else:
             print(f"{enemy_appeared['Name']}: {specific_enemy_lines[question]['Reply 2']}\n")
             print(f"You've angered {enemy_appeared['Name']}! Get ready for battle...\n")
-            battle_type(character_dictionary, enemy_appeared)
+            passed = False
     else:
         if character_dictionary["Character_status"]["CHR"] + 0 >= 10:
             print(f"{enemy_appeared['Name']}: {specific_enemy_lines[question]['Reply 3.1']}\n")
@@ -402,5 +405,5 @@ def get_reply_boss(response: int, response_options: dict, character_dictionary: 
         else:
             print(f"{enemy_appeared['Name']}: {specific_enemy_lines[question]['Reply 3']}\n")
             print(f"You've angered {enemy_appeared['Name']}! Get ready for battle...\n")
-            battle_type(character_dictionary, enemy_appeared)
+            passed = False
     return passed

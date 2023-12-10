@@ -105,7 +105,7 @@ def use_equipment(character_dictionary: dict, old_equipment: list, new_equipment
     >>> character_dictionary_1 = {
     ...        "Character_status": {"Level": 1, "HP": 70, "STR": 18, "DEF": 5, "CHR": 5, "SPD": 5, "LUK": 5, "VIS": 2},
     ...        "Equipment": 0}
-    >>> old_equipment_1 = 0
+    >>> old_equipment_1 = [0]
     >>> new_equipment_1 = ["Cloak", ("SPD", 3)]
     >>> use_equipment(character_dictionary_1, old_equipment_1, new_equipment_1)
     <BLANKLINE>
